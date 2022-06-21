@@ -1,9 +1,3 @@
-# Preface {.unnumbered}
+# これはなんですか {.unnumbered}
 
-This is a Quarto book.
-
-To learn more about Quarto books visit <https://quarto.org/docs/books>.
-
-```{r}
-1 + 1
-```
+これは現代数理統計学（竹村）の輪読に使う資料です．せっかくなのでQuartoを使ってみることにします．参加者は @statditto，@yoshizou，@kiriharaの3人です．

@@ -1,0 +1,285 @@
+# 確率と１次元の確率変数
+
+- 2022/06/21 13:00~
+- 発表担当：
+- 演習問題担当：
+  - 2.1~2.7
+  - 2.8~2.14
+  
+発表スライド
+
+## 負の二項分布の確率母関数，期待値，および分散を求めよ．
+
+コイン投げを例にする．コインの表が出る確率を $p$ とし，確率変数 $X$ を $r$ 回表が出るまでの裏の回数とする． $r+k-1$ 回目までに裏が $k$ 回あらわれ，最後の $r+k$ 回目に確率 $p$ で表が出ると言い換えることができる．
+
+$$
+\begin{aligned}
+P(X=k) &= \dbinom{r+k-1}{k} (1-p)^kp^{r-1} \times p \\
+&= \dbinom{r+k-1}{k} (1-p)^kp^r
+\end{aligned}
+$$
+
+(2.58)式の $(1-q)^{-r}$ のテーラー展開 は次の通りである．
+
+$$(1-q)^{-r} = \sum_{k=0}^{\infty} \dbinom{r+k-1}{k} q^k$$
+
+これを用いることで確率母関数は次のように表せる．
+
+$$
+\begin{aligned}
+G(s) &= E[ s^X ] \\
+&= \sum_{k=0}^{\infty} s^k p(k) \\
+&= \sum_{k=0}^{\infty} s^k \dbinom{r+k-1}{k} (1-p)^kp^r \\
+&= p^r \sum_{k=0}^{\infty} \dbinom{r+k-1}{k} ((1-p)s)^k \\
+&= p^r \sum_{k=0}^{\infty} \dbinom{r+k-1}{k} (qs)^k \\
+&= p^r (1-qs)^{-r}
+\end{aligned}
+$$
+
+$G(s)$ を $s$ で微分して，
+
+$$
+\begin{aligned}
+G'(1) &= (p^r (1-qs)^{-r})'\\
+&= ((1-(s-1) \frac{q}{p})^{-r})' \\
+&= (-r) \cdot (1-(s-1) \frac{q}{p})^{-r-1} \cdot (- \frac{q}{p}) \\
+&= (-r) \cdot (- \frac{q}{p}) \\
+&=  \frac{qr}{p} 
+\end{aligned}
+$$
+
+$$
+\begin{aligned}
+G''(1) &= \{ (-r) \cdot (1-(s-1) \frac{q}{p})^{-r-1} \cdot (- \frac{q}{p}) \}' \\
+&= (\frac{qr}{p}) \cdot ((1-(s-1) \frac{q}{p})^{-r-1})' \\
+&= (\frac{qr}{p}) \cdot  (-\frac{q}{p}) \cdot (-r-1) \cdot (1-(s-1) \frac{q}{p})^{-r-2}) \\
+&= \frac{q^2r(r+1)}{p^2}
+\end{aligned}
+$$
+
+$$
+\begin{aligned}
+E[X] &= G'(1)\\
+&= \frac{(1-p)r}{p} \\
+V[X] &= G''(1) + G'(1) - (G'(1))^2 \\
+&= \frac{q^2r(r+1)}{p^2} + \frac{qr}{p}- (\frac{qr}{p})^2\\
+&= \frac{(1-p)r}{p^2}
+\end{aligned}
+$$
+
+## 標準正規分布の密度関数 $\phi(x)$ に関する次の二式を示せ．また，それを用いて正規分布 $\mathcal{N}(\mu,\sigma^2)$ の平均が $\mu$ ，分散が $\sigma^2$ となることを確認せよ．
+
+$$
+\int_{-\infty}^{\infty} x \phi (x) dx = 0,\int_{-\infty}^{\infty} x^2 \phi (x) dx = 1
+$$
+第一式については， $x$ が奇関数， $\phi(x)$ が偶関数であることから，それらの積である $x\phi(x)$ は奇関数となる．そのため，明らかに0となる．
+第二式については， $x^2 \phi (x) = -x \cdot \phi (x)'$ であることから部分積分を用いて
+
+$$
+\begin{aligned}
+\int_{-\infty}^{\infty} x^2 \phi (x) dx &= 2\int_{0}^{\infty} x^2 \phi (x) dx \\
+&= 2\int_{0}^{\infty} -x \cdot \phi (x)' dx \\
+&= 2[-x \phi(x)]_{0}^{\infty} -  2\int_{0}^{\infty} -\phi (x) dx \\
+&= 0 + 2 \times \frac{1}{2} = 1
+\end{aligned}
+$$
+  
+  $X \sim N(0,1)$，$Y \sim \mu + \sigma X$ とすると，
+  
+$$
+\begin{aligned}
+E[Y] &= E[\mu + \sigma X] \\
+&= E[\mu] + E[\sigma X] \\
+&= \mu \\
+V[Y] &= E[(\mu + \sigma X)^2] - (E[\mu + \sigma X])^2 \\
+&= E[\mu^2 + 2 \mu \sigma X + \sigma^2 X^2] - \mu^2 \\
+&= \mu^2 + E[2 \mu \sigma X] + E[\sigma^2 X^2] - \mu^2 \\
+&= \sigma^2 E[X^2] \\
+&= \sigma^2
+\end{aligned}
+$$
+  
+## ガンマ関数の漸化式を用いてベータ分布 $Be(a,b)$ の平均と期待値を求めよ．
+  
+漸化式は次の通りである．
+  
+$$
+\Gamma(a+1) = a \Gamma(a),B(a,b) = \frac{\Gamma(a)\Gamma(b)}{\Gamma(a+b)}
+$$
+  
+$$
+\begin{aligned}
+E[X] &= \frac{1}{B(a,b)} \int_0^1 x\cdot x^{a -1}(1-x)^{b-1}dx \\
+&= \frac{1}{B(a,b)} \int_0^1 x^{a}(1-x)^{b-1}dx \\
+&= \frac{B(a+1,b)}{B(a,b)} \\
+&= \frac{\Gamma(a+1)\Gamma(b)}{\Gamma(a+b+1)} \cdot \frac{\Gamma(a+b)}{\Gamma(a) \Gamma(b)} \\
+&= \frac{a\Gamma(a)\Gamma(b)}{(a+b)\Gamma(a+b)} \cdot \frac{\Gamma(a+b)}{\Gamma(a) \Gamma(b)} \\
+&= \frac{a}{a+b}
+\end{aligned}
+$$
+
+$$
+\begin{aligned}
+E[X^2] &= \frac{1}{B(a,b)} \int_0^1 x^2 \cdot x^{a -1}(1-x)^{b-1}dx \\
+&= \frac{1}{B(a,b)} \int_0^1 x^{a+1}(1-x)^{b-1}dx \\
+&= \frac{B(a+2,b)}{B(a,b)} \\
+&= \frac{\Gamma(a+2)\Gamma(b)}{\Gamma(a+b+2)} \cdot \frac{\Gamma(a+b)}{\Gamma(a) \Gamma(b)} \\
+&= \frac{(a+1) a \Gamma(a)\Gamma(b)}{(a+b+1) (a+b) \Gamma(a+b)} \cdot \frac{\Gamma(a+b)}{\Gamma(a) \Gamma(b)} \\
+&= \frac{(a+1)a}{(a+b+1)(a+b)}
+\end{aligned}
+$$
+$$
+\begin{aligned}
+V[X] &= E[X^2] - E[X]^2 \\
+&= \frac{(a+1)a}{(a+b+1)(a+b)} - \frac{a^2}{(a+b)(a+b)} \\
+&= \frac{ab}{(a+b)^2(a+b+1)}
+\end{aligned}
+$$
+
+
+## 対数級数分布について，対数関数のテーラー展開を用いて基準化係数 $c(\theta)$ を求めよ．また，積率母関数，期待値，および分散を求めよ．
+
+対数級数分布は次の式で表せる．
+
+$$
+p(x) = c(\theta) \frac{\theta^x}{x},x=1,2,\ldots ,0 < \theta < 1
+$$
+
+ここで，対数関数のテーラー展開について考えることで，基準化定数を求めることができる．
+
+$$
+\begin{aligned}
+\log(1+x) &= x - \frac{x^2}{2} + \frac{x^3}{3} - \frac{x^4}{4} + \cdots\\
+\log(1-\theta) &=- ( \theta + \frac{\theta^2}{2} + \frac{\theta^3}{3} + \frac{\theta^4}{4} + \cdots) \\
+-\log(1-\theta) &= \sum_{k=1}^{\infty} \frac{\theta^k}{k}\\
+\therefore c(\theta) &= \frac{1}{- \log(1-\theta)}
+\end{aligned}
+$$
+
+積率母関数はうまく対数級数分布の形になおすことで求められる．
+
+$$
+\begin{aligned}
+G(s) &= E[S^X]\\
+&= \sum_{x=1}^{\infty} s^x p(x) \\
+&= c(\theta) \sum_{x=1}^{\infty} s^x \frac{(s \theta)^x}{x} \\
+&= c(\theta) \cdot \frac{1}{c(s\theta)} \\
+&= \frac{- \log(1- s \theta)}{- \log(1-\theta)} 
+\end{aligned}
+$$
+$$
+\begin{aligned}
+G'(1) &= (\frac{- \log(1- s \theta)}{- \log(1-\theta)})' \\
+&= \frac{1}{- \log(1-\theta)} \cdot (- \frac{- \theta}{1-s\theta}) \\
+&= \frac{1}{- \log(1-\theta)} \cdot \frac{\theta}{1-\theta}\\
+
+G''(1) &= \frac{1}{- \log(1-\theta)} \cdot (\frac{\theta}{1-s\theta})' \\
+&= \frac{1}{- \log(1-\theta)} \cdot \frac{\theta^2}{(1-\theta)^2}
+\end{aligned}
+$$
+頑張って計算する．
+
+$$
+\begin{aligned}
+Var[X] &= G''(1) + E[X] - E[X]^2 \\
+&= \frac{\theta}{(- \log(1-\theta))^2 (1-\theta)^2} (-\log(1-\theta)-\theta)
+\end{aligned}
+$$
+
+## 対数正規分布の密度関数，期待値，分散を求めよ．
+
+$X \sim \mathcal{N}(\mu,\sigma^2)$のとき，$Y \sim e^X$の分布を対数正規分布と呼ぶ．変数変換を利用して密度関数を求める．
+
+$$
+\begin{aligned}
+F_Y(y) &= P(Y\leq y)\\
+&= P(e^X\leq y) \\
+&= P(X\leq \log y)\\
+&= F_X(\log y)\\
+f_Y(y) &= \frac{d}{dx} F_X(\log y) \\
+&= f_X(\log y) \cdot \frac{1}{y} \\
+&= \frac{1}{y \sqrt{2 \pi}\sigma}\exp\{- \frac{1}{2 \sigma^2} \cdot (\log y - \mu)\}
+\end{aligned}
+$$
+
+解答には積率母関数を求めるかのような記載があるが，できなかった（積分が発散する）．
+
+$$
+\begin{aligned}
+G(s) &= E[e^{\theta Y}] \\
+&= \int_0^\infty e^{\theta y} f_Y(y)dy \\
+&= \int_0^\infty \frac{1}{y \sqrt{2 \pi}\sigma}\exp\{- \frac{1}{2 \sigma^2} \cdot (\log y - \mu) ^2+ \theta y\} dy \\
+y=e^z,dy=\frac{dz}{y}\\
+&= \int_{-\infty}^{\infty} \frac{1}{\sqrt{2 \pi}\sigma}\exp\{- \frac{1}{2 \sigma^2} \cdot (z - \mu)^2 + \theta e^z\} dz
+\end{aligned}
+$$
+
+これは$\theta >0$ のとき，$z \rightarrow \infty$ で積分が発散してしまう．代わりに積率を求める．
+
+$$
+\begin{aligned}
+E[y^r] &=  \int_0^\infty y^r \frac{1}{y \sqrt{2 \pi}\sigma}\exp\{- \frac{1}{2 \sigma^2} \cdot (\log y - \mu)^2 + \theta y\} dy \\
+y=e^z,dy=\frac{dz}{y}\\
+&=  \int_0^\infty e^{rz} \frac{1}{\sqrt{2 \pi}\sigma} \exp\{- \frac{1}{2 \sigma^2} \cdot (z - \mu)^2\} dy \\
+&= e^{\mu r+\frac{1}{2} \sigma^{2} r^{2}} \int_0^\infty  \frac{1}{\sqrt{2 \pi}\sigma} \exp\{- \frac{1}{2 \sigma^2} \cdot (z - \mu - \sigma^2r)^2\} dy
+\end{aligned}
+$$
+
+
+これにより，$E[Y] = e^{\mu + \frac{1}{2}\sigma^2}$，$Var[Y]=e^{2 \mu + \sigma^2}(e^{\sigma^2}-1)$であることがわかる．
+
+## ポアソン分布に対して $Y$ の分布が過分散であることを示せ．
+
+$$
+P(Y=y) = \int_0^{\infty} \frac{\lambda^y}{y!}e^{-\lambda}g(\lambda) d \lambda
+$$
+
+$\Lambda \sim g(\lambda)$と考え，$\mu = E[\Lambda],\sigma^2 = Var[\Lambda]$とおく．また，条件付き期待値に関する公式は次の通りである．
+
+$$
+\begin{aligned}
+Var[Y] &= E[k(X)] + Var[h(X)]\\
+&= E[Var[Y|X]] + Var[E[Y|X]]
+\end{aligned}
+$$
+
+これは$Y$の分散は「$Y$の条件付き分散の期待値」と「$Y$の条件付き期待値の分散」の和に分解できることを示している．
+
+$$
+\begin{aligned}
+E_Y[Y] &= E_\Lambda[E_Y[Y|\Lambda]]\\
+&= E_\Lambda[\Lambda] \\
+&= \mu\\
+Var[Y] &= E[Var[Y|\Lambda]] + Var[E[Y|\Lambda]] \\
+&= E[\Lambda] + Var[\Lambda] \\
+&= \mu + \sigma^2
+\end{aligned}
+$$
+
+
+## 同様の議論を二項分布について行え．
+
+
+$P \sim g(\cdot)$とする．$E[P]=E[Y/n]=p$である．$Var[P]=\sigma^2$をおく．
+
+$$
+\begin{aligned}
+Var[Y] &= E[Var[Y|P]] + Var[E[Y|P]] \\
+&= E[nP(1-P)] + Var[nP] \\
+&= E[nP]-nE[P^2]+n^2\sigma^2 \\
+&= np - nE[P^2] + n^2\sigma^2 
+\end{aligned}
+$$
+
+右辺から$np(1-p)$を引くと
+
+$$
+\begin{aligned}
+&= np - nE[P^2] + n^2\sigma^2 -np(1-p)\\
+&= n^2\sigma^2 + np^2 - nE[P^2]\\
+&= n^2\sigma^2 - n(E[P^2]-E[P]^2)\\
+&= n^2\sigma^2 - n\sigma^2\\
+&= n\sigma^2(n-1) >0
+\end{aligned}
+$$
+
