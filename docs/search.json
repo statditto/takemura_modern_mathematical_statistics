@@ -1,0 +1,72 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "竹村現代数理統計学",
+    "section": "",
+    "text": "これは現代数理統計学（竹村）の輪読に使う資料です．せっかくなのでQuartoを使ってみることにします．参加者は @ statditto，@ yoshizou，@ kirihara の3人です．"
+  },
+  {
+    "objectID": "one-dim-random-variable.html",
+    "href": "one-dim-random-variable.html",
+    "title": "2  確率と１次元の確率変数",
+    "section": "",
+    "text": "2022/06/21 13:00~\n発表担当：\n演習問題担当：\n\n2.1~2.7\n2.8~2.14\n発表スライド"
+  },
+  {
+    "objectID": "one-dim-random-variable.html#負の二項分布の確率母関数期待値および分散を求めよ",
+    "href": "one-dim-random-variable.html#負の二項分布の確率母関数期待値および分散を求めよ",
+    "title": "2  確率と１次元の確率変数",
+    "section": "2.1 負の二項分布の確率母関数，期待値，および分散を求めよ．",
+    "text": "2.1 負の二項分布の確率母関数，期待値，および分散を求めよ．\nコイン投げを例にする．コインの表が出る確率を \\(p\\) とし，確率変数 \\(X\\) を \\(r\\) 回表が出るまでの裏の回数とする． \\(r+k-1\\) 回目までに裏が \\(k\\) 回あらわれ，最後の \\(r+k\\) 回目に確率 \\(p\\) で表が出ると言い換えることができる．\n\\[\n\\begin{aligned}\nP(X=k) &= \\dbinom{r+k-1}{k} (1-p)^kp^{r-1} \\times p \\\\\n&= \\dbinom{r+k-1}{k} (1-p)^kp^r\n\\end{aligned}\n\\]\n(2.58)式の \\((1-q)^{-r}\\) のテーラー展開 は次の通りである．\n\\[(1-q)^{-r} = \\sum_{k=0}^{\\infty} \\dbinom{r+k-1}{k} q^k\\]\nこれを用いることで確率母関数は次のように表せる．\n\\[\n\\begin{aligned}\nG(s) &= E[ s^X ] \\\\\n&= \\sum_{k=0}^{\\infty} s^k p(k) \\\\\n&= \\sum_{k=0}^{\\infty} s^k \\dbinom{r+k-1}{k} (1-p)^kp^r \\\\\n&= p^r \\sum_{k=0}^{\\infty} \\dbinom{r+k-1}{k} ((1-p)s)^k \\\\\n&= p^r \\sum_{k=0}^{\\infty} \\dbinom{r+k-1}{k} (qs)^k \\\\\n&= p^r (1-qs)^{-r}\n\\end{aligned}\n\\]\n\\(G(s)\\) を \\(s\\) で微分して，\n\\[\n\\begin{aligned}\nG'(1) &= (p^r (1-qs)^{-r})'\\\\\n&= ((1-(s-1) \\frac{q}{p})^{-r})' \\\\\n&= (-r) \\cdot (1-(s-1) \\frac{q}{p})^{-r-1} \\cdot (- \\frac{q}{p}) \\\\\n&= (-r) \\cdot (- \\frac{q}{p}) \\\\\n&=  \\frac{qr}{p}\n\\end{aligned}\n\\]\n\\[\n\\begin{aligned}\nG''(1) &= \\{ (-r) \\cdot (1-(s-1) \\frac{q}{p})^{-r-1} \\cdot (- \\frac{q}{p}) \\}' \\\\\n&= (\\frac{qr}{p}) \\cdot ((1-(s-1) \\frac{q}{p})^{-r-1})' \\\\\n&= (\\frac{qr}{p}) \\cdot  (-\\frac{q}{p}) \\cdot (-r-1) \\cdot (1-(s-1) \\frac{q}{p})^{-r-2}) \\\\\n&= \\frac{q^2r(r+1)}{p^2}\n\\end{aligned}\n\\]\n\\[\n\\begin{aligned}\nE[X] &= G'(1)\\\\\n&= \\frac{(1-p)r}{p} \\\\\nV[X] &= G''(1) + G'(1) - (G'(1))^2 \\\\\n&= \\frac{q^2r(r+1)}{p^2} + \\frac{qr}{p}- (\\frac{qr}{p})^2\\\\\n&= \\frac{(1-p)r}{p^2}\n\\end{aligned}\n\\]"
+  },
+  {
+    "objectID": "one-dim-random-variable.html#標準正規分布の密度関数-phix-に関する次の二式を示せまたそれを用いて正規分布-mathcalnmusigma2-の平均が-mu-分散が-sigma2-となることを確認せよ",
+    "href": "one-dim-random-variable.html#標準正規分布の密度関数-phix-に関する次の二式を示せまたそれを用いて正規分布-mathcalnmusigma2-の平均が-mu-分散が-sigma2-となることを確認せよ",
+    "title": "2  確率と１次元の確率変数",
+    "section": "2.2 標準正規分布の密度関数 \\(\\phi(x)\\) に関する次の二式を示せ．また，それを用いて正規分布 \\(\\mathcal{N}(\\mu,\\sigma^2)\\) の平均が \\(\\mu\\) ，分散が \\(\\sigma^2\\) となることを確認せよ．",
+    "text": "2.2 標準正規分布の密度関数 \\(\\phi(x)\\) に関する次の二式を示せ．また，それを用いて正規分布 \\(\\mathcal{N}(\\mu,\\sigma^2)\\) の平均が \\(\\mu\\) ，分散が \\(\\sigma^2\\) となることを確認せよ．\n\\[\n\\int_{-\\infty}^{\\infty} x \\phi (x) dx = 0,\\int_{-\\infty}^{\\infty} x^2 \\phi (x) dx = 1\n\\]\n第一式については， \\(x\\) が奇関数， \\(\\phi(x)\\) が偶関数であることから，それらの積である \\(x\\phi(x)\\) は奇関数となる．そのため，明らかに0となる． 第二式については， \\(x^2 \\phi (x) = -x \\cdot \\phi (x)'\\) であることから部分積分を用いて\n\\[\n\\begin{aligned}\n\\int_{-\\infty}^{\\infty} x^2 \\phi (x) dx &= 2\\int_{0}^{\\infty} x^2 \\phi (x) dx \\\\\n&= 2\\int_{0}^{\\infty} -x \\cdot \\phi (x)' dx \\\\\n&= 2[-x \\phi(x)]_{0}^{\\infty} -  2\\int_{0}^{\\infty} -\\phi (x) dx \\\\\n&= 0 + 2 \\times \\frac{1}{2} = 1\n\\end{aligned}\n\\]\n\\(X \\sim N(0,1)\\)，\\(Y \\sim \\mu + \\sigma X\\) とすると，\n\\[\n\\begin{aligned}\nE[Y] &= E[\\mu + \\sigma X] \\\\\n&= E[\\mu] + E[\\sigma X] \\\\\n&= \\mu \\\\\nV[Y] &= E[(\\mu + \\sigma X)^2] - (E[\\mu + \\sigma X])^2 \\\\\n&= E[\\mu^2 + 2 \\mu \\sigma X + \\sigma^2 X^2] - \\mu^2 \\\\\n&= \\mu^2 + E[2 \\mu \\sigma X] + E[\\sigma^2 X^2] - \\mu^2 \\\\\n&= \\sigma^2 E[X^2] \\\\\n&= \\sigma^2\n\\end{aligned}\n\\]"
+  },
+  {
+    "objectID": "one-dim-random-variable.html#ガンマ関数の漸化式を用いてベータ分布-beab-の平均と期待値を求めよ",
+    "href": "one-dim-random-variable.html#ガンマ関数の漸化式を用いてベータ分布-beab-の平均と期待値を求めよ",
+    "title": "2  確率と１次元の確率変数",
+    "section": "2.3 ガンマ関数の漸化式を用いてベータ分布 \\(Be(a,b)\\) の平均と期待値を求めよ．",
+    "text": "2.3 ガンマ関数の漸化式を用いてベータ分布 \\(Be(a,b)\\) の平均と期待値を求めよ．\n漸化式は次の通りである．\n\\[\n\\Gamma(a+1) = a \\Gamma(a),B(a,b) = \\frac{\\Gamma(a)\\Gamma(b)}{\\Gamma(a+b)}\n\\]\n\\[\n\\begin{aligned}\nE[X] &= \\frac{1}{B(a,b)} \\int_0^1 x\\cdot x^{a -1}(1-x)^{b-1}dx \\\\\n&= \\frac{1}{B(a,b)} \\int_0^1 x^{a}(1-x)^{b-1}dx \\\\\n&= \\frac{B(a+1,b)}{B(a,b)} \\\\\n&= \\frac{\\Gamma(a+1)\\Gamma(b)}{\\Gamma(a+b+1)} \\cdot \\frac{\\Gamma(a+b)}{\\Gamma(a) \\Gamma(b)} \\\\\n&= \\frac{a\\Gamma(a)\\Gamma(b)}{(a+b)\\Gamma(a+b)} \\cdot \\frac{\\Gamma(a+b)}{\\Gamma(a) \\Gamma(b)} \\\\\n&= \\frac{a}{a+b}\n\\end{aligned}\n\\]\n\\[\n\\begin{aligned}\nE[X^2] &= \\frac{1}{B(a,b)} \\int_0^1 x^2 \\cdot x^{a -1}(1-x)^{b-1}dx \\\\\n&= \\frac{1}{B(a,b)} \\int_0^1 x^{a+1}(1-x)^{b-1}dx \\\\\n&= \\frac{B(a+2,b)}{B(a,b)} \\\\\n&= \\frac{\\Gamma(a+2)\\Gamma(b)}{\\Gamma(a+b+2)} \\cdot \\frac{\\Gamma(a+b)}{\\Gamma(a) \\Gamma(b)} \\\\\n&= \\frac{(a+1) a \\Gamma(a)\\Gamma(b)}{(a+b+1) (a+b) \\Gamma(a+b)} \\cdot \\frac{\\Gamma(a+b)}{\\Gamma(a) \\Gamma(b)} \\\\\n&= \\frac{(a+1)a}{(a+b+1)(a+b)}\n\\end{aligned}\n\\]\n\\[\n\\begin{aligned}\nV[X] &= E[X^2] - E[X]^2 \\\\\n&= \\frac{(a+1)a}{(a+b+1)(a+b)} - \\frac{a^2}{(a+b)(a+b)} \\\\\n&= \\frac{ab}{(a+b)^2(a+b+1)}\n\\end{aligned}\n\\]"
+  },
+  {
+    "objectID": "one-dim-random-variable.html#対数級数分布について対数関数のテーラー展開を用いて基準化係数-ctheta-を求めよまた積率母関数期待値および分散を求めよ",
+    "href": "one-dim-random-variable.html#対数級数分布について対数関数のテーラー展開を用いて基準化係数-ctheta-を求めよまた積率母関数期待値および分散を求めよ",
+    "title": "2  確率と１次元の確率変数",
+    "section": "2.4 対数級数分布について，対数関数のテーラー展開を用いて基準化係数 \\(c(\\theta)\\) を求めよ．また，積率母関数，期待値，および分散を求めよ．",
+    "text": "2.4 対数級数分布について，対数関数のテーラー展開を用いて基準化係数 \\(c(\\theta)\\) を求めよ．また，積率母関数，期待値，および分散を求めよ．\n対数級数分布は次の式で表せる．\n\\[\np(x) = c(\\theta) \\frac{\\theta^x}{x},x=1,2,\\ldots ,0 < \\theta < 1\n\\]\nここで，対数関数のテーラー展開について考えることで，基準化定数を求めることができる．\n\\[\n\\begin{aligned}\n\\log(1+x) &= x - \\frac{x^2}{2} + \\frac{x^3}{3} - \\frac{x^4}{4} + \\cdots\\\\\n\\log(1-\\theta) &=- ( \\theta + \\frac{\\theta^2}{2} + \\frac{\\theta^3}{3} + \\frac{\\theta^4}{4} + \\cdots) \\\\\n-\\log(1-\\theta) &= \\sum_{k=1}^{\\infty} \\frac{\\theta^k}{k}\\\\\n\\therefore c(\\theta) &= \\frac{1}{- \\log(1-\\theta)}\n\\end{aligned}\n\\]\n積率母関数はうまく対数級数分布の形になおすことで求められる．\n\\[\n\\begin{aligned}\nG(s) &= E[S^X]\\\\\n&= \\sum_{x=1}^{\\infty} s^x p(x) \\\\\n&= c(\\theta) \\sum_{x=1}^{\\infty} s^x \\frac{(s \\theta)^x}{x} \\\\\n&= c(\\theta) \\cdot \\frac{1}{c(s\\theta)} \\\\\n&= \\frac{- \\log(1- s \\theta)}{- \\log(1-\\theta)}\n\\end{aligned}\n\\]\n$$\n\\[\\begin{aligned}\nG'(1) &= (\\frac{- \\log(1- s \\theta)}{- \\log(1-\\theta)})' \\\\\n&= \\frac{1}{- \\log(1-\\theta)} \\cdot (- \\frac{- \\theta}{1-s\\theta}) \\\\\n&= \\frac{1}{- \\log(1-\\theta)} \\cdot \\frac{\\theta}{1-\\theta}\\\\\n\nG''(1) &= \\frac{1}{- \\log(1-\\theta)} \\cdot (\\frac{\\theta}{1-s\\theta})' \\\\\n&= \\frac{1}{- \\log(1-\\theta)} \\cdot \\frac{\\theta^2}{(1-\\theta)^2}\n\\end{aligned}\\]\n$$\n頑張って計算する．\n\\[\n\\begin{aligned}\nVar[X] &= G''(1) + E[X] - E[X]^2 \\\\\n&= \\frac{\\theta}{(- \\log(1-\\theta))^2 (1-\\theta)^2} (-\\log(1-\\theta)-\\theta)\n\\end{aligned}\n\\]"
+  },
+  {
+    "objectID": "one-dim-random-variable.html#対数正規分布の密度関数期待値分散を求めよ",
+    "href": "one-dim-random-variable.html#対数正規分布の密度関数期待値分散を求めよ",
+    "title": "2  確率と１次元の確率変数",
+    "section": "2.5 対数正規分布の密度関数，期待値，分散を求めよ．",
+    "text": "2.5 対数正規分布の密度関数，期待値，分散を求めよ．\n\\(X \\sim \\mathcal{N}(\\mu,\\sigma^2)\\)のとき，\\(Y \\sim e^X\\)の分布を対数正規分布と呼ぶ．変数変換を利用して密度関数を求める．\n\\[\n\\begin{aligned}\nF_Y(y) &= P(Y\\leq y)\\\\\n&= P(e^X\\leq y) \\\\\n&= P(X\\leq \\log y)\\\\\n&= F_X(\\log y)\\\\\nf_Y(y) &= \\frac{d}{dx} F_X(\\log y) \\\\\n&= f_X(\\log y) \\cdot \\frac{1}{y} \\\\\n&= \\frac{1}{y \\sqrt{2 \\pi}\\sigma}\\exp\\{- \\frac{1}{2 \\sigma^2} \\cdot (\\log y - \\mu)\\}\n\\end{aligned}\n\\]\n解答には積率母関数を求めるかのような記載があるが，できなかった（積分が発散する）．\n\\[\n\\begin{aligned}\nG(s) &= E[e^{\\theta Y}] \\\\\n&= \\int_0^\\infty e^{\\theta y} f_Y(y)dy \\\\\n&= \\int_0^\\infty \\frac{1}{y \\sqrt{2 \\pi}\\sigma}\\exp\\{- \\frac{1}{2 \\sigma^2} \\cdot (\\log y - \\mu) ^2+ \\theta y\\} dy \\\\\ny=e^z,dy=\\frac{dz}{y}\\\\\n&= \\int_{-\\infty}^{\\infty} \\frac{1}{\\sqrt{2 \\pi}\\sigma}\\exp\\{- \\frac{1}{2 \\sigma^2} \\cdot (z - \\mu)^2 + \\theta e^z\\} dz\n\\end{aligned}\n\\]\nこれは\\(\\theta >0\\) のとき，\\(z \\rightarrow \\infty\\) で積分が発散してしまう．代わりに積率を求める．\n\\[\n\\begin{aligned}\nE[y^r] &=  \\int_0^\\infty y^r \\frac{1}{y \\sqrt{2 \\pi}\\sigma}\\exp\\{- \\frac{1}{2 \\sigma^2} \\cdot (\\log y - \\mu)^2 + \\theta y\\} dy \\\\\ny=e^z,dy=\\frac{dz}{y}\\\\\n&=  \\int_0^\\infty e^{rz} \\frac{1}{\\sqrt{2 \\pi}\\sigma} \\exp\\{- \\frac{1}{2 \\sigma^2} \\cdot (z - \\mu)^2\\} dy \\\\\n&= e^{\\mu r+\\frac{1}{2} \\sigma^{2} r^{2}} \\int_0^\\infty  \\frac{1}{\\sqrt{2 \\pi}\\sigma} \\exp\\{- \\frac{1}{2 \\sigma^2} \\cdot (z - \\mu - \\sigma^2r)^2\\} dy\n\\end{aligned}\n\\]\nこれにより，\\(E[Y] = e^{\\mu + \\frac{1}{2}\\sigma^2}\\)，\\(Var[Y]=e^{2 \\mu + \\sigma^2}(e^{\\sigma^2}-1)\\)であることがわかる．"
+  },
+  {
+    "objectID": "one-dim-random-variable.html#ポアソン分布に対して-y-の分布が過分散であることを示せ",
+    "href": "one-dim-random-variable.html#ポアソン分布に対して-y-の分布が過分散であることを示せ",
+    "title": "2  確率と１次元の確率変数",
+    "section": "2.6 ポアソン分布に対して \\(Y\\) の分布が過分散であることを示せ．",
+    "text": "2.6 ポアソン分布に対して \\(Y\\) の分布が過分散であることを示せ．\n\\[\nP(Y=y) = \\int_0^{\\infty} \\frac{\\lambda^y}{y!}e^{-\\lambda}g(\\lambda) d \\lambda\n\\]\n\\(\\Lambda \\sim g(\\lambda)\\)と考え，\\(\\mu = E[\\Lambda],\\sigma^2 = Var[\\Lambda]\\)とおく．また，条件付き期待値に関する公式は次の通りである．\n\\[\n\\begin{aligned}\nVar[Y] &= E[k(X)] + Var[h(X)]\\\\\n&= E[Var[Y|X]] + Var[E[Y|X]]\n\\end{aligned}\n\\]\nこれは\\(Y\\)の分散は「\\(Y\\)の条件付き分散の期待値」と「\\(Y\\)の条件付き期待値の分散」の和に分解できることを示している．\n\\[\n\\begin{aligned}\nE_Y[Y] &= E_\\Lambda[E_Y[Y|\\Lambda]]\\\\\n&= E_\\Lambda[\\Lambda] \\\\\n&= \\mu\\\\\nVar[Y] &= E[Var[Y|\\Lambda]] + Var[E[Y|\\Lambda]] \\\\\n&= E[\\Lambda] + Var[\\Lambda] \\\\\n&= \\mu + \\sigma^2\n\\end{aligned}\n\\]"
+  },
+  {
+    "objectID": "one-dim-random-variable.html#同様の議論を二項分布について行え",
+    "href": "one-dim-random-variable.html#同様の議論を二項分布について行え",
+    "title": "2  確率と１次元の確率変数",
+    "section": "2.7 同様の議論を二項分布について行え．",
+    "text": "2.7 同様の議論を二項分布について行え．\n\\(P \\sim g(\\cdot)\\)とする．\\(E[P]=E[Y/n]=p\\)である．\\(Var[P]=\\sigma^2\\)をおく．\n\\[\n\\begin{aligned}\nVar[Y] &= E[Var[Y|P]] + Var[E[Y|P]] \\\\\n&= E[nP(1-P)] + Var[nP] \\\\\n&= E[nP]-nE[P^2]+n^2\\sigma^2 \\\\\n&= np - nE[P^2] + n^2\\sigma^2\n\\end{aligned}\n\\]\n右辺から\\(np(1-p)\\)を引くと\n\\[\n\\begin{aligned}\n&= np - nE[P^2] + n^2\\sigma^2 -np(1-p)\\\\\n&= n^2\\sigma^2 + np^2 - nE[P^2]\\\\\n&= n^2\\sigma^2 - n(E[P^2]-E[P]^2)\\\\\n&= n^2\\sigma^2 - n\\sigma^2\\\\\n&= n\\sigma^2(n-1) >0\n\\end{aligned}\n\\]"
+  },
+  {
+    "objectID": "intro.html",
+    "href": "intro.html",
+    "title": "1  前置きと準備",
+    "section": "",
+    "text": "第１章は数理統計学の学問としての位置づけが記載されている，内容としては簡単な記述統計の復習のみで，演習問題も存在しないので省略する．"
+  }
+]

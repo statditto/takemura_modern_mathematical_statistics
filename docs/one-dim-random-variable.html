@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-0.9.600">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>竹村現代数理統計学 - 2&nbsp; 確率と１次元の確率変数</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./references.html" rel="next">
+<link href="./intro.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">確率と１次元の確率変数</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">竹村現代数理統計学</a> 
+        <div class="sidebar-tools-main">
+    <a href="" title="Share" id="sidebar-tool-dropdown-0" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-share"></i></a>
+    <ul class="dropdown-menu" aria-labelledby="sidebar-tool-dropdown-0">
+        <li>
+          <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
+            <i class="bi bi-bi-twitter pe-1"></i>
+          Twitter
+          </a>
+        </li>
+        <li>
+          <a class="dropdown-item sidebar-tools-main-item" href="https://www.facebook.com/sharer/sharer.php?u=|url|">
+            <i class="bi bi-bi-facebook pe-1"></i>
+          Facebook
+          </a>
+        </li>
+    </ul>
+</div>
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">これはなんですか</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">前置きと準備</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./one-dim-random-variable.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">確率と１次元の確率変数</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">このページの内容</h2>
+   
+  <ul>
+  <li><a href="#負の二項分布の確率母関数期待値および分散を求めよ" id="toc-負の二項分布の確率母関数期待値および分散を求めよ" class="nav-link active" data-scroll-target="#負の二項分布の確率母関数期待値および分散を求めよ"> <span class="header-section-number">2.1</span> 負の二項分布の確率母関数，期待値，および分散を求めよ．</a></li>
+  <li><a href="#標準正規分布の密度関数-phix-に関する次の二式を示せまたそれを用いて正規分布-mathcalnmusigma2-の平均が-mu-分散が-sigma2-となることを確認せよ" id="toc-標準正規分布の密度関数-phix-に関する次の二式を示せまたそれを用いて正規分布-mathcalnmusigma2-の平均が-mu-分散が-sigma2-となることを確認せよ" class="nav-link" data-scroll-target="#標準正規分布の密度関数-phix-に関する次の二式を示せまたそれを用いて正規分布-mathcalnmusigma2-の平均が-mu-分散が-sigma2-となることを確認せよ"> <span class="header-section-number">2.2</span> 標準正規分布の密度関数 <span class="math inline">\(\phi(x)\)</span> に関する次の二式を示せ．また，それを用いて正規分布 <span class="math inline">\(\mathcal{N}(\mu,\sigma^2)\)</span> の平均が <span class="math inline">\(\mu\)</span> ，分散が <span class="math inline">\(\sigma^2\)</span> となることを確認せよ．</a></li>
+  <li><a href="#ガンマ関数の漸化式を用いてベータ分布-beab-の平均と期待値を求めよ" id="toc-ガンマ関数の漸化式を用いてベータ分布-beab-の平均と期待値を求めよ" class="nav-link" data-scroll-target="#ガンマ関数の漸化式を用いてベータ分布-beab-の平均と期待値を求めよ"> <span class="header-section-number">2.3</span> ガンマ関数の漸化式を用いてベータ分布 <span class="math inline">\(Be(a,b)\)</span> の平均と期待値を求めよ．</a></li>
+  <li><a href="#対数級数分布について対数関数のテーラー展開を用いて基準化係数-ctheta-を求めよまた積率母関数期待値および分散を求めよ" id="toc-対数級数分布について対数関数のテーラー展開を用いて基準化係数-ctheta-を求めよまた積率母関数期待値および分散を求めよ" class="nav-link" data-scroll-target="#対数級数分布について対数関数のテーラー展開を用いて基準化係数-ctheta-を求めよまた積率母関数期待値および分散を求めよ"> <span class="header-section-number">2.4</span> 対数級数分布について，対数関数のテーラー展開を用いて基準化係数 <span class="math inline">\(c(\theta)\)</span> を求めよ．また，積率母関数，期待値，および分散を求めよ．</a></li>
+  <li><a href="#対数正規分布の密度関数期待値分散を求めよ" id="toc-対数正規分布の密度関数期待値分散を求めよ" class="nav-link" data-scroll-target="#対数正規分布の密度関数期待値分散を求めよ"> <span class="header-section-number">2.5</span> 対数正規分布の密度関数，期待値，分散を求めよ．</a></li>
+  <li><a href="#ポアソン分布に対して-y-の分布が過分散であることを示せ" id="toc-ポアソン分布に対して-y-の分布が過分散であることを示せ" class="nav-link" data-scroll-target="#ポアソン分布に対して-y-の分布が過分散であることを示せ"> <span class="header-section-number">2.6</span> ポアソン分布に対して <span class="math inline">\(Y\)</span> の分布が過分散であることを示せ．</a></li>
+  <li><a href="#同様の議論を二項分布について行え" id="toc-同様の議論を二項分布について行え" class="nav-link" data-scroll-target="#同様の議論を二項分布について行え"> <span class="header-section-number">2.7</span> 同様の議論を二項分布について行え．</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">確率と１次元の確率変数</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<ul>
+<li>2022/06/21 13:00~</li>
+<li>発表担当：</li>
+<li>演習問題担当：
+<ul>
+<li>2.1~2.7</li>
+<li>2.8~2.14</li>
+</ul></li>
+</ul>
+<p>発表スライド</p>
+<section id="負の二項分布の確率母関数期待値および分散を求めよ" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="負の二項分布の確率母関数期待値および分散を求めよ"><span class="header-section-number">2.1</span> 負の二項分布の確率母関数，期待値，および分散を求めよ．</h2>
+<p>コイン投げを例にする．コインの表が出る確率を <span class="math inline">\(p\)</span> とし，確率変数 <span class="math inline">\(X\)</span> を <span class="math inline">\(r\)</span> 回表が出るまでの裏の回数とする． <span class="math inline">\(r+k-1\)</span> 回目までに裏が <span class="math inline">\(k\)</span> 回あらわれ，最後の <span class="math inline">\(r+k\)</span> 回目に確率 <span class="math inline">\(p\)</span> で表が出ると言い換えることができる．</p>
+<p><span class="math display">\[
+\begin{aligned}
+P(X=k) &amp;= \dbinom{r+k-1}{k} (1-p)^kp^{r-1} \times p \\
+&amp;= \dbinom{r+k-1}{k} (1-p)^kp^r
+\end{aligned}
+\]</span></p>
+<p>(2.58)式の <span class="math inline">\((1-q)^{-r}\)</span> のテーラー展開 は次の通りである．</p>
+<p><span class="math display">\[(1-q)^{-r} = \sum_{k=0}^{\infty} \dbinom{r+k-1}{k} q^k\]</span></p>
+<p>これを用いることで確率母関数は次のように表せる．</p>
+<p><span class="math display">\[
+\begin{aligned}
+G(s) &amp;= E[ s^X ] \\
+&amp;= \sum_{k=0}^{\infty} s^k p(k) \\
+&amp;= \sum_{k=0}^{\infty} s^k \dbinom{r+k-1}{k} (1-p)^kp^r \\
+&amp;= p^r \sum_{k=0}^{\infty} \dbinom{r+k-1}{k} ((1-p)s)^k \\
+&amp;= p^r \sum_{k=0}^{\infty} \dbinom{r+k-1}{k} (qs)^k \\
+&amp;= p^r (1-qs)^{-r}
+\end{aligned}
+\]</span></p>
+<p><span class="math inline">\(G(s)\)</span> を <span class="math inline">\(s\)</span> で微分して，</p>
+<p><span class="math display">\[
+\begin{aligned}
+G'(1) &amp;= (p^r (1-qs)^{-r})'\\
+&amp;= ((1-(s-1) \frac{q}{p})^{-r})' \\
+&amp;= (-r) \cdot (1-(s-1) \frac{q}{p})^{-r-1} \cdot (- \frac{q}{p}) \\
+&amp;= (-r) \cdot (- \frac{q}{p}) \\
+&amp;=  \frac{qr}{p}
+\end{aligned}
+\]</span></p>
+<p><span class="math display">\[
+\begin{aligned}
+G''(1) &amp;= \{ (-r) \cdot (1-(s-1) \frac{q}{p})^{-r-1} \cdot (- \frac{q}{p}) \}' \\
+&amp;= (\frac{qr}{p}) \cdot ((1-(s-1) \frac{q}{p})^{-r-1})' \\
+&amp;= (\frac{qr}{p}) \cdot  (-\frac{q}{p}) \cdot (-r-1) \cdot (1-(s-1) \frac{q}{p})^{-r-2}) \\
+&amp;= \frac{q^2r(r+1)}{p^2}
+\end{aligned}
+\]</span></p>
+<p><span class="math display">\[
+\begin{aligned}
+E[X] &amp;= G'(1)\\
+&amp;= \frac{(1-p)r}{p} \\
+V[X] &amp;= G''(1) + G'(1) - (G'(1))^2 \\
+&amp;= \frac{q^2r(r+1)}{p^2} + \frac{qr}{p}- (\frac{qr}{p})^2\\
+&amp;= \frac{(1-p)r}{p^2}
+\end{aligned}
+\]</span></p>
+</section>
+<section id="標準正規分布の密度関数-phix-に関する次の二式を示せまたそれを用いて正規分布-mathcalnmusigma2-の平均が-mu-分散が-sigma2-となることを確認せよ" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="標準正規分布の密度関数-phix-に関する次の二式を示せまたそれを用いて正規分布-mathcalnmusigma2-の平均が-mu-分散が-sigma2-となることを確認せよ"><span class="header-section-number">2.2</span> 標準正規分布の密度関数 <span class="math inline">\(\phi(x)\)</span> に関する次の二式を示せ．また，それを用いて正規分布 <span class="math inline">\(\mathcal{N}(\mu,\sigma^2)\)</span> の平均が <span class="math inline">\(\mu\)</span> ，分散が <span class="math inline">\(\sigma^2\)</span> となることを確認せよ．</h2>
+<p><span class="math display">\[
+\int_{-\infty}^{\infty} x \phi (x) dx = 0,\int_{-\infty}^{\infty} x^2 \phi (x) dx = 1
+\]</span></p>
+<p>第一式については， <span class="math inline">\(x\)</span> が奇関数， <span class="math inline">\(\phi(x)\)</span> が偶関数であることから，それらの積である <span class="math inline">\(x\phi(x)\)</span> は奇関数となる．そのため，明らかに0となる． 第二式については， <span class="math inline">\(x^2 \phi (x) = -x \cdot \phi (x)'\)</span> であることから部分積分を用いて</p>
+<p><span class="math display">\[
+\begin{aligned}
+\int_{-\infty}^{\infty} x^2 \phi (x) dx &amp;= 2\int_{0}^{\infty} x^2 \phi (x) dx \\
+&amp;= 2\int_{0}^{\infty} -x \cdot \phi (x)' dx \\
+&amp;= 2[-x \phi(x)]_{0}^{\infty} -  2\int_{0}^{\infty} -\phi (x) dx \\
+&amp;= 0 + 2 \times \frac{1}{2} = 1
+\end{aligned}
+\]</span></p>
+<p><span class="math inline">\(X \sim N(0,1)\)</span>，<span class="math inline">\(Y \sim \mu + \sigma X\)</span> とすると，</p>
+<p><span class="math display">\[
+\begin{aligned}
+E[Y] &amp;= E[\mu + \sigma X] \\
+&amp;= E[\mu] + E[\sigma X] \\
+&amp;= \mu \\
+V[Y] &amp;= E[(\mu + \sigma X)^2] - (E[\mu + \sigma X])^2 \\
+&amp;= E[\mu^2 + 2 \mu \sigma X + \sigma^2 X^2] - \mu^2 \\
+&amp;= \mu^2 + E[2 \mu \sigma X] + E[\sigma^2 X^2] - \mu^2 \\
+&amp;= \sigma^2 E[X^2] \\
+&amp;= \sigma^2
+\end{aligned}
+\]</span></p>
+</section>
+<section id="ガンマ関数の漸化式を用いてベータ分布-beab-の平均と期待値を求めよ" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="ガンマ関数の漸化式を用いてベータ分布-beab-の平均と期待値を求めよ"><span class="header-section-number">2.3</span> ガンマ関数の漸化式を用いてベータ分布 <span class="math inline">\(Be(a,b)\)</span> の平均と期待値を求めよ．</h2>
+<p>漸化式は次の通りである．</p>
+<p><span class="math display">\[
+\Gamma(a+1) = a \Gamma(a),B(a,b) = \frac{\Gamma(a)\Gamma(b)}{\Gamma(a+b)}
+\]</span></p>
+<p><span class="math display">\[
+\begin{aligned}
+E[X] &amp;= \frac{1}{B(a,b)} \int_0^1 x\cdot x^{a -1}(1-x)^{b-1}dx \\
+&amp;= \frac{1}{B(a,b)} \int_0^1 x^{a}(1-x)^{b-1}dx \\
+&amp;= \frac{B(a+1,b)}{B(a,b)} \\
+&amp;= \frac{\Gamma(a+1)\Gamma(b)}{\Gamma(a+b+1)} \cdot \frac{\Gamma(a+b)}{\Gamma(a) \Gamma(b)} \\
+&amp;= \frac{a\Gamma(a)\Gamma(b)}{(a+b)\Gamma(a+b)} \cdot \frac{\Gamma(a+b)}{\Gamma(a) \Gamma(b)} \\
+&amp;= \frac{a}{a+b}
+\end{aligned}
+\]</span></p>
+<p><span class="math display">\[
+\begin{aligned}
+E[X^2] &amp;= \frac{1}{B(a,b)} \int_0^1 x^2 \cdot x^{a -1}(1-x)^{b-1}dx \\
+&amp;= \frac{1}{B(a,b)} \int_0^1 x^{a+1}(1-x)^{b-1}dx \\
+&amp;= \frac{B(a+2,b)}{B(a,b)} \\
+&amp;= \frac{\Gamma(a+2)\Gamma(b)}{\Gamma(a+b+2)} \cdot \frac{\Gamma(a+b)}{\Gamma(a) \Gamma(b)} \\
+&amp;= \frac{(a+1) a \Gamma(a)\Gamma(b)}{(a+b+1) (a+b) \Gamma(a+b)} \cdot \frac{\Gamma(a+b)}{\Gamma(a) \Gamma(b)} \\
+&amp;= \frac{(a+1)a}{(a+b+1)(a+b)}
+\end{aligned}
+\]</span></p>
+<p><span class="math display">\[
+\begin{aligned}
+V[X] &amp;= E[X^2] - E[X]^2 \\
+&amp;= \frac{(a+1)a}{(a+b+1)(a+b)} - \frac{a^2}{(a+b)(a+b)} \\
+&amp;= \frac{ab}{(a+b)^2(a+b+1)}
+\end{aligned}
+\]</span></p>
+</section>
+<section id="対数級数分布について対数関数のテーラー展開を用いて基準化係数-ctheta-を求めよまた積率母関数期待値および分散を求めよ" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="対数級数分布について対数関数のテーラー展開を用いて基準化係数-ctheta-を求めよまた積率母関数期待値および分散を求めよ"><span class="header-section-number">2.4</span> 対数級数分布について，対数関数のテーラー展開を用いて基準化係数 <span class="math inline">\(c(\theta)\)</span> を求めよ．また，積率母関数，期待値，および分散を求めよ．</h2>
+<p>対数級数分布は次の式で表せる．</p>
+<p><span class="math display">\[
+p(x) = c(\theta) \frac{\theta^x}{x},x=1,2,\ldots ,0 &lt; \theta &lt; 1
+\]</span></p>
+<p>ここで，対数関数のテーラー展開について考えることで，基準化定数を求めることができる．</p>
+<p><span class="math display">\[
+\begin{aligned}
+\log(1+x) &amp;= x - \frac{x^2}{2} + \frac{x^3}{3} - \frac{x^4}{4} + \cdots\\
+\log(1-\theta) &amp;=- ( \theta + \frac{\theta^2}{2} + \frac{\theta^3}{3} + \frac{\theta^4}{4} + \cdots) \\
+-\log(1-\theta) &amp;= \sum_{k=1}^{\infty} \frac{\theta^k}{k}\\
+\therefore c(\theta) &amp;= \frac{1}{- \log(1-\theta)}
+\end{aligned}
+\]</span></p>
+<p>積率母関数はうまく対数級数分布の形になおすことで求められる．</p>
+<p><span class="math display">\[
+\begin{aligned}
+G(s) &amp;= E[S^X]\\
+&amp;= \sum_{x=1}^{\infty} s^x p(x) \\
+&amp;= c(\theta) \sum_{x=1}^{\infty} s^x \frac{(s \theta)^x}{x} \\
+&amp;= c(\theta) \cdot \frac{1}{c(s\theta)} \\
+&amp;= \frac{- \log(1- s \theta)}{- \log(1-\theta)}
+\end{aligned}
+\]</span></p>
+$$
+<span class="math display">\[\begin{aligned}
+G'(1) &amp;= (\frac{- \log(1- s \theta)}{- \log(1-\theta)})' \\
+&amp;= \frac{1}{- \log(1-\theta)} \cdot (- \frac{- \theta}{1-s\theta}) \\
+&amp;= \frac{1}{- \log(1-\theta)} \cdot \frac{\theta}{1-\theta}\\
+
+G''(1) &amp;= \frac{1}{- \log(1-\theta)} \cdot (\frac{\theta}{1-s\theta})' \\
+&amp;= \frac{1}{- \log(1-\theta)} \cdot \frac{\theta^2}{(1-\theta)^2}
+\end{aligned}\]</span>
+<p>$$</p>
+<p>頑張って計算する．</p>
+<p><span class="math display">\[
+\begin{aligned}
+Var[X] &amp;= G''(1) + E[X] - E[X]^2 \\
+&amp;= \frac{\theta}{(- \log(1-\theta))^2 (1-\theta)^2} (-\log(1-\theta)-\theta)
+\end{aligned}
+\]</span></p>
+</section>
+<section id="対数正規分布の密度関数期待値分散を求めよ" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="対数正規分布の密度関数期待値分散を求めよ"><span class="header-section-number">2.5</span> 対数正規分布の密度関数，期待値，分散を求めよ．</h2>
+<p><span class="math inline">\(X \sim \mathcal{N}(\mu,\sigma^2)\)</span>のとき，<span class="math inline">\(Y \sim e^X\)</span>の分布を対数正規分布と呼ぶ．変数変換を利用して密度関数を求める．</p>
+<p><span class="math display">\[
+\begin{aligned}
+F_Y(y) &amp;= P(Y\leq y)\\
+&amp;= P(e^X\leq y) \\
+&amp;= P(X\leq \log y)\\
+&amp;= F_X(\log y)\\
+f_Y(y) &amp;= \frac{d}{dx} F_X(\log y) \\
+&amp;= f_X(\log y) \cdot \frac{1}{y} \\
+&amp;= \frac{1}{y \sqrt{2 \pi}\sigma}\exp\{- \frac{1}{2 \sigma^2} \cdot (\log y - \mu)\}
+\end{aligned}
+\]</span></p>
+<p>解答には積率母関数を求めるかのような記載があるが，できなかった（積分が発散する）．</p>
+<p><span class="math display">\[
+\begin{aligned}
+G(s) &amp;= E[e^{\theta Y}] \\
+&amp;= \int_0^\infty e^{\theta y} f_Y(y)dy \\
+&amp;= \int_0^\infty \frac{1}{y \sqrt{2 \pi}\sigma}\exp\{- \frac{1}{2 \sigma^2} \cdot (\log y - \mu) ^2+ \theta y\} dy \\
+y=e^z,dy=\frac{dz}{y}\\
+&amp;= \int_{-\infty}^{\infty} \frac{1}{\sqrt{2 \pi}\sigma}\exp\{- \frac{1}{2 \sigma^2} \cdot (z - \mu)^2 + \theta e^z\} dz
+\end{aligned}
+\]</span></p>
+<p>これは<span class="math inline">\(\theta &gt;0\)</span> のとき，<span class="math inline">\(z \rightarrow \infty\)</span> で積分が発散してしまう．代わりに積率を求める．</p>
+<p><span class="math display">\[
+\begin{aligned}
+E[y^r] &amp;=  \int_0^\infty y^r \frac{1}{y \sqrt{2 \pi}\sigma}\exp\{- \frac{1}{2 \sigma^2} \cdot (\log y - \mu)^2 + \theta y\} dy \\
+y=e^z,dy=\frac{dz}{y}\\
+&amp;=  \int_0^\infty e^{rz} \frac{1}{\sqrt{2 \pi}\sigma} \exp\{- \frac{1}{2 \sigma^2} \cdot (z - \mu)^2\} dy \\
+&amp;= e^{\mu r+\frac{1}{2} \sigma^{2} r^{2}} \int_0^\infty  \frac{1}{\sqrt{2 \pi}\sigma} \exp\{- \frac{1}{2 \sigma^2} \cdot (z - \mu - \sigma^2r)^2\} dy
+\end{aligned}
+\]</span></p>
+<p>これにより，<span class="math inline">\(E[Y] = e^{\mu + \frac{1}{2}\sigma^2}\)</span>，<span class="math inline">\(Var[Y]=e^{2 \mu + \sigma^2}(e^{\sigma^2}-1)\)</span>であることがわかる．</p>
+</section>
+<section id="ポアソン分布に対して-y-の分布が過分散であることを示せ" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="ポアソン分布に対して-y-の分布が過分散であることを示せ"><span class="header-section-number">2.6</span> ポアソン分布に対して <span class="math inline">\(Y\)</span> の分布が過分散であることを示せ．</h2>
+<p><span class="math display">\[
+P(Y=y) = \int_0^{\infty} \frac{\lambda^y}{y!}e^{-\lambda}g(\lambda) d \lambda
+\]</span></p>
+<p><span class="math inline">\(\Lambda \sim g(\lambda)\)</span>と考え，<span class="math inline">\(\mu = E[\Lambda],\sigma^2 = Var[\Lambda]\)</span>とおく．また，条件付き期待値に関する公式は次の通りである．</p>
+<p><span class="math display">\[
+\begin{aligned}
+Var[Y] &amp;= E[k(X)] + Var[h(X)]\\
+&amp;= E[Var[Y|X]] + Var[E[Y|X]]
+\end{aligned}
+\]</span></p>
+<p>これは<span class="math inline">\(Y\)</span>の分散は「<span class="math inline">\(Y\)</span>の条件付き分散の期待値」と「<span class="math inline">\(Y\)</span>の条件付き期待値の分散」の和に分解できることを示している．</p>
+<p><span class="math display">\[
+\begin{aligned}
+E_Y[Y] &amp;= E_\Lambda[E_Y[Y|\Lambda]]\\
+&amp;= E_\Lambda[\Lambda] \\
+&amp;= \mu\\
+Var[Y] &amp;= E[Var[Y|\Lambda]] + Var[E[Y|\Lambda]] \\
+&amp;= E[\Lambda] + Var[\Lambda] \\
+&amp;= \mu + \sigma^2
+\end{aligned}
+\]</span></p>
+</section>
+<section id="同様の議論を二項分布について行え" class="level2" data-number="2.7">
+<h2 data-number="2.7" class="anchored" data-anchor-id="同様の議論を二項分布について行え"><span class="header-section-number">2.7</span> 同様の議論を二項分布について行え．</h2>
+<p><span class="math inline">\(P \sim g(\cdot)\)</span>とする．<span class="math inline">\(E[P]=E[Y/n]=p\)</span>である．<span class="math inline">\(Var[P]=\sigma^2\)</span>をおく．</p>
+<p><span class="math display">\[
+\begin{aligned}
+Var[Y] &amp;= E[Var[Y|P]] + Var[E[Y|P]] \\
+&amp;= E[nP(1-P)] + Var[nP] \\
+&amp;= E[nP]-nE[P^2]+n^2\sigma^2 \\
+&amp;= np - nE[P^2] + n^2\sigma^2
+\end{aligned}
+\]</span></p>
+<p>右辺から<span class="math inline">\(np(1-p)\)</span>を引くと</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp;= np - nE[P^2] + n^2\sigma^2 -np(1-p)\\
+&amp;= n^2\sigma^2 + np^2 - nE[P^2]\\
+&amp;= n^2\sigma^2 - n(E[P^2]-E[P]^2)\\
+&amp;= n^2\sigma^2 - n\sigma^2\\
+&amp;= n\sigma^2(n-1) &gt;0
+\end{aligned}
+\]</span></p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+    var links = window.document.querySelectorAll('a:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+          // target, if specified
+          link.setAttribute("target", "_blank");
+      }
+    }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./intro.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">前置きと準備</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./references.html" class="pagination-link">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+      <div class="nav-footer-center">Copyright 2022, Kazuyuki Sano</div>
+  </div>
+</footer>
+
+
+
+</body></html>
