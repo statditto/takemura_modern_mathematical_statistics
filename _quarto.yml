@@ -1,0 +1,41 @@
+project:
+  type: book
+language: jayy.yml
+book:
+  title: "竹村現代数理統計学"
+  author: "Kazuyuki Sano"
+  date: "2022/6/21"
+  sidebar: 
+    style: docked
+    background: light
+  page-navigation: true
+  page-footer: 
+    center: "Copyright 2022, Kazuyuki Sano"
+    background: light
+    border: false
+  search: true
+  repo-branch: main
+  sharing: [twitter, facebook]
+  chapters:
+    - index.qmd
+    - intro.qmd
+    - summary.qmd
+    - references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: yeti
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    highlight-style: arrow
+    html-math-method: mathjax
+    fig-width: 5
+    fig-height: 4
+    link-external-newwindow: true
+
+crossref:
+  ref-hyperlink: true
+
