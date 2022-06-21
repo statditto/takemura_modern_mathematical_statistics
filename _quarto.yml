@@ -1,5 +1,6 @@
 project:
   type: book
+  output-dir: docs
 language: jayy.yml
 book:
   title: "竹村現代数理統計学"
