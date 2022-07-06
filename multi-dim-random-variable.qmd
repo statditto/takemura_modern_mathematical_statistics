@@ -1,0 +1,449 @@
+# 多次元の確率変数
+
+-   2022/06/21 13:00~
+-   発表担当：
+-   演習問題担当：
+    -   2.1\~2.7
+    -   2.8\~2.14
+
+発表スライド
+
+## 確率ベクトルの同時分布
+
+二つの確率変数$X,Y$について考える．ここでは，二次元平面$\mathbb{R}^2$の点$(X,Y)$が確率的に実現するものとして考える．このとき，$X,Y$の組を2次元の確率変数あるいは確率ベクトルと呼び，$\mathbb{R}^2$での分布を同時分布と呼ぶ．より一般に$n$個の確率変数について考えることもできるが，簡単のために二次元で考える．
+
+まず，$X,Y$が両方離散確率変数であるときのことを考える．
+
+$$
+p(x,y) = P(X=x,Y=y)
+$$
+
+を確率関数と呼ぶ．「かつ」を表すときにカンマを用いることに注意する．累積分布関数も同様に
+
+$$
+F(x,y) = P (X \leq x, Y \leq y)
+$$
+
+と定義する．
+
+多次元確率分布における重要な概念は周辺分布と条件付き分布である．例えば$Y$を無視して$X$についてのみ考えた分布である．
+$$
+P_X(x) = P(X=x)=\sum_yP(X=x,Y=y)=\sum_y p(x,y)
+$$
+
+$p_X(x$を$Xの$周辺確率関数という．次に，$X=x$が観測されたもとでの条件付き分布を考える．
+
+$$
+p_{Y|X}(y) = P(Y=y|X=x) = \frac{P(X=x,Y=y)}{P(X=x)} =\frac{p(x,y)}{p_X(x)} 
+$$
+$p_X(x)=0$のとき，条件付き確率は定義されないが，
+
+$$
+p(x,y)  ={p_X(x)} p_{Y|X}(y)
+$$
+
+は成立することに注意する．
+
+$X$と$Y$が互いに独立であるとは，
+
+$$
+p(x,y)  ={p_X(x)} p_{Y}(y)
+$$
+
+が全ての$x,y$について成り立つことをいう．
+
+次に$X,Y$が共に連続な確率変数であるときについて考える．二次元の同時密度関数を
+
+$$
+f(x,y) = \lim_{\Delta x \rightarrow 0, \Delta y \rightarrow 0} \frac{P(X \in [x,x+\Delta x],Y\in [y,y+\Delta y])}{\Delta x \Delta y}
+$$
+
+で定義する．
+
+一次元の場合と同様に，累積分布関数は
+
+$$
+F(x,y) = P (X \leq x, Y \leq y)
+$$
+
+で定義できる．
+
+教科書(3.9)式を(3.7)式に代入して式変形をすると，
+
+$$
+f(x,y) = \frac{\partial^2F(x,y)}{\partial x \partial y}
+$$
+となる．
+積分すると，
+
+$$
+\begin{aligned}
+P(a \leq X \leq b, c&\leq Y \leq d)=F(b, d)-F(a, d)-F(b, c)+F(a, c) \\
+&=\int_{a}^{b}\left(\frac{\partial}{\partial x} F(x, d)-\frac{\partial}{\partial x} F(x, c)\right) d x \\
+&=\int_{a}^{b}\left(\int_{c}^{d} \frac{\partial^{2}}{\partial x \partial y} F(x, y) d y\right) d x \\
+&=\int_{a}^{b} \int_{c}^{d} f(x, y) d y d x
+\end{aligned}
+$$
+
+となる．
+
+周辺分布は$y$について積分して，
+
+$$
+\begin{aligned}
+F(x,y) &= P(X \leq x) = P (X \leq x, Y \leq \infty), F(x,\infty) \\
+&=\int_{-\infty}^{x} \int_{-\infty}^{\infty} f(u, y) d y d u
+\end{aligned}
+$$
+
+さらに，これを微分することで周辺密度関数が求められる．
+
+$$
+f_X(x) = \int_{-\infty}^{\infty} f(x, y) d y
+$$
+
+次に，条件付き密度関数について考える．離散分布と同様の定義を考えると，
+
+$$
+p_{Y|X}(y) = f_{Y|X=x}(y)  = \frac{f(x,y)}{f_X(x)} 
+$$
+
+と定義される．測度論的には怪しいらしいので本当は考える必要があるみたいですが，わからないので無視します．
+
+
+$X$と$Y$が互いに独立であるとは，
+
+$$
+f(x,y)  ={f_X(x)} f_{Y}(y)
+$$
+
+であることと定義する．
+
+ここまでの議論を多次元に拡張する．累積分布関数と同時密度関数をそれぞれ
+
+$$
+\begin{aligned}
+F(x_1, \ldots , x_n) &= P(X_1 \leq x_1, \ldots ,X_n \leq x_n) \\
+f(x_1, \ldots , x_n) &= \frac{\partial^2F(x_1, \ldots , x_n)}{\partial x_1, \ldots , \partial x_n}
+\end{aligned}
+$$
+
+と定義する．独立性および条件付き独立は練習問題で証明する．
+
+
+
+## 変数変換とヤコビアン
+
+$X=() X_1,\ldots X_n)$を$n$次元の確率ベクトルとし，同時密度関数を$f_X(x)$とする．変数変換$Y = g(X)$について考える．ここで，関数$g$は$n$次元空間$\mathbb{R}^2$から$\mathbb{R}^2$への連続微分可能な関数であるとする．
+
+$$
+g(x)=\left(\begin{array}{c}
+g_{1}(x) \\
+\vdots \\
+g_{n}(x)
+\end{array}\right)
+$$
+
+各$g_i$は連続微分可能な実数値関数とする．さらに$g(x)$は１対１の関数であり，連続微分可能な逆関数$x=g^{-1}(y)$を持つとする．
+
+$X$の密度関数から$Y$の密度関数を求めたい．このとき$X$から$Y$の変数変換のヤコビアンが必要となる．$X$の各要素を$y$の各要素で微分したものを要素とする行列$J$をヤコビ行列という．
+
+$$
+x=g^{-1}(y)=h(y)=\left(\begin{array}{c}
+h_{1}(y) \\
+\vdots \\
+h_{n}(y)
+\end{array}\right)
+$$
+
+としたとき，
+
+$$
+J=J(\partial x / \partial y)=\left(\frac{\partial x_{i}}{\partial y_{j}}\right)=\left(\begin{array}{ccc}
+\frac{\partial h_{1}(y)}{\partial y_{1}} & \ldots & \frac{\partial h_{1}(y)}{\partial y_{n}} \\
+\vdots & \ddots & \vdots \\
+\frac{\partial h_{n}(y)}{\partial y_{1}} & \cdots & \frac{\partial h_{n}(y)}{\partial y_{n}}
+\end{array}\right)
+$$
+
+である．$J$の行列式$\mathrm{det} J$をヤコビアンと呼ぶ．ヤコビアンの絶対値を用いれば$Y=g(X)$の密度関数$f_Y(y)$は次のように表される．
+
+$$
+f_Y(y) = f_X(g^{-1}(y))\cdot | \mathrm{det} J(\partial x / \partial y) |
+$$
+多重積分の変換公式より次の関係が導かれる．
+
+$$
+P(Y \in A)=P(X \in B)=\int_{B} f_{X}(x) d x=\int_{A} f_{X}\left(g^{-1}(y)\right)|\operatorname{det} J(\partial x / \partial y)| d y
+$$
+
+ヤコビアンを用いるときの3つの注意点．
+
+- 要素の順番の変更は行列式の符号のみを変化させるため，絶対値は不変
+- 行列式は転置しても変わらないことからヤコビ行列が転置されていてもいい
+- $g^{-1}(g(x))=x$を偏微分するとヤコビ行列の逆行列が得られる．
+
+三つ目の性質により，ヤコビアンは逆関数を用いずとも求めることができる．もちろん，最終的な結果を求める際には$x=g^{-1}(y)$を代入する必要があるため，逆関数を求めることは必要である．
+
+ここで，ヤコビアンを用いる具体例について考える．$X$と$Y$を互いに独立な確率変数とするときに$W=X+Y$の分布を畳み込みという．$X,Y$それぞれの密度関数を$f,g$とするとき，$Z$の密度関数について考える．ヤコビアンを考えるために$W=X$という変数を考える．このとき変換は，
+
+$$
+\left(\begin{array}{c}
+W \\
+Z
+\end{array}\right)=\left(\begin{array}{ll}
+1 & 0 \\
+1 & 1
+\end{array}\right)\left(\begin{array}{l}
+X \\
+Y
+\end{array}\right)
+$$
+逆に解くと，$X=W,Y=Z-W$となる．
+
+ヤコビアンは
+
+$$
+\operatorname{det} J=\frac{1}{\operatorname{det}\left(\begin{array}{ll}
+1 & 0 \\
+1 & 1
+\end{array}\right)}=1
+$$
+
+で表せるため，同時密度関数は$f(w)g(z-w)$となる．興味があるのは$Z$なので$w$で積分して，
+
+$$
+h(z)=\int_{-\infty}^{\infty} f(w) g(z-w) d w
+$$
+
+これが密度関数の畳み込みの公式となる．
+
+
+ヤコビアンを用いる二つ目の例として，正規分布の基準化定数を取り上げる．$\frac{1}{c}=\int_{-\infty}^{\infty} e^{-x^{2} / 2} d x$とおく．$X,Y$を互いに独立で密度関数$ce^{-x^{2}/2}$に従う確率変数とする．$(X,Y)$を曲座標表示して
+
+$$
+X=r \cos \theta, Y= r \sin \theta
+$$
+
+ここで$r,\theta$の同時密度関数を求める．$(x,y)=g^{-1}(r,\theta)$がすでに分かっている状況ということに注意する．
+
+
+$$
+J=\left(\begin{array}{ll}
+\cos \theta & - r \sin \theta \\
+\sin \theta & r \cos \theta
+\end{array}\right)
+$$
+
+絶対値は
+
+$$
+|\mathrm{det}J|=r \cos ^2 \theta + r \sin ^2 \theta = r
+$$
+
+代入すると$r,\theta$の同時密度が
+
+$$
+f(r,\theta)=c^2 r \exp (- \frac{r^2}{2}), r>0,0 \leq \theta < 2 \pi
+$$
+
+
+で表される．$r,\theta$について積分することで，$1=2 \pi c^2$が得られる．
+
+最後の例として，ガンマ分布とベータ分布の関連について議論する．$X \sim \mathrm{Ga}(a,1),Y \sim \mathrm{Ga}(b,1$とし，互いに独立な確率変数であるとする．ここで，$U=X/(X+Y),V=X+Y$という変換を考える．逆変換は$X=UV,Y=V(1-U)$である．ヤコビアンは
+
+$$
+\mathrm{det}J=\mathrm{det}\left(\begin{array}{ll}
+u & v \\
+-v & (1-u)
+\end{array}\right)
+=v
+$$
+
+変換前と変換後の同時密度関数をそれぞれ$f(x,y),g(u,v)$とすると，
+
+$$
+\begin{aligned}
+g(u,v) &= f(uv,v(1-u)) \mathrm{det}J\\
+&= \frac{1}{\Gamma(a) \Gamma(b)}v^{a+b-1}e^{-v} \cdot u^{a-1}(1-u)^{b-1} \\
+&= \frac{1}{\Gamma(a+b)}v^{a+b-1}e^{-v} \cdot \frac{\Gamma(a+b)}{\Gamma(a)\Gamma(b)}u^{a-1}(1-u)^{b-1}
+\end{aligned}
+$$
+[link](https://www.hello-statisticians.com/explain-terms-cat/beta_distribution1.html)
+
+関数を見ると$V$は$\mathrm{Ga}(a+b+1)$に従い，$U$は$\mathrm{Be}(a,b)$に従うことがわかる．また，式を調整するとベータ分布の基準化定数も出現する．
+
+
+
+## 多次元分布と期待値
+
+多次元確率関数の期待値は１次元と同様の定義がされる．簡単のために二次元確率変数$(X,Y)$について考える．$(x,y)$の実数値関数を$g(x,y)$とする．このとき，$g(X,Y)$の期待値を
+
+$$
+E[g(X, Y)]=\left\{\begin{array}{l}
+\sum_{x, y} g(x, y) p(x, y) \\
+\iint g(x, y) f(x, y) d x d y
+\end{array}\right.
+$$
+
+と定義する．
+
+この定義が，１変数の場合の定義と整合的であるかどうか，確認する必要がある．これを一般に証明するには測度論が必要となる．
+
+$X$と$Y$の今日分散は
+$$
+Cov[X,Y]=\sigma_{XY}=E[(X-\mu_X)(Y-\mu_Y)]
+$$
+
+で定義される．
+
+相関係数は
+
+$$
+Corr[X,Y]=\rho_{XY} = \frac{\sigma_{XY}}{\sigma_X\sigma_Y}
+$$
+
+で定義される．
+
+$X$と$Y$が独立であるときには
+
+$$
+\begin{aligned}
+E[X Y] &=\iint x y f(x, y) d x d y=\iint x y f_{X}(x) f_{Y}(y) d x d y \\
+&=\int x f_{X}(x) d x \int y f_{Y}(y) d y=E[X] E[Y]
+\end{aligned}
+$$
+　が成り立つ．より一般に，$X$と$Y$が独立ならば任意の１変数関数$g(X),h(Y)$について$E[g(X),h(Y)]=E[g(X)]E[h(Y)]$が成立する．
+　
+　独立と無双間の関係について
+　
+$$
+\begin{aligned}
+\operatorname{Cov}[X, Y] &=E\left[\left(X-\mu_{X}\right)\left(Y-\mu_{Y}\right)\right] \\
+&=E\left[X Y-\mu_{X} Y-X \mu_{Y}+\mu_{X} \mu_{Y}\right] \\
+&=E[X Y]-\mu_{X} \mu_{Y}=E[X Y]-E[X] E[Y]
+\end{aligned}
+$$
+
+が成り立つ．
+
+
+
+ここで，$X,Y$を確率変数とし，$Z=X+Y$の分散を求める．
+
+$$
+\begin{array}{l}
+\operatorname{Var}[X+Y]=E\left[(Z-E[Z])^{2}\right]=E\left[\left(\left(X-\mu_{X}\right)+\left(Y-\mu_{Y}\right)\right)^{2}\right] \\
+\quad=E\left[\left(X-\mu_{X}\right)^{2}\right]+E\left[\left(Y-\mu_{Y}\right)^{2}\right]+2 E\left[\left(X-\mu_{X}\right)\left(Y-\mu_{Y}\right)\right] \\
+\quad=\operatorname{Var}[X]+\operatorname{Var}[Y]+2 \operatorname{Cov}[X, Y]
+\end{array}
+$$
+
+これを$n$次元に一般化することは練習問題とする．
+
+
+$Z=a_1X_1+\ldots+a_nX_n$とし，$a_i=1$かつ$X_i$が互いに独立なとき，
+
+$$
+Var[X_1+\ldots+X_n] = \sum_{i=1}^nVar[X_i]
+$$
+
+は大切らしい．
+
+
+ここで，確率ベクトルの期待値ベクトルを定義する．
+
+$$
+E[X]=\mu=\left(\begin{array}{c}
+E\left[X_{1}\right] \\
+\vdots \\
+E\left[X_{n}\right]
+\end{array}\right)
+$$
+
+期待値の線形性はベクトル記法と整合的であることが嬉しい．（練習問題）
+
+$X=(X_1,\ldots,X_n)^\top$の要素の分散と要素間の今日分散を要素とする行列を分散共分散行列と呼ぶ．
+
+$$
+Var[X]=\Sigma = (\sigma_{ij})
+$$
+
+$$
+Var[X+Y]=\left(\begin{array}{c}
+Var\left[X_{1} + Y_1\right] \\
+\vdots \\
+Var\left[X_{n} + Y_n\right]
+\end{array}\right) \\
+= Var[X] + Var[Y]
+$$
+$a$を定数ベクトル，$B$を定数行列とすると，
+
+$$
+Var[a+BX]=BVar[X]B^\top
+$$
+
+となる．ここで，$a=0,B=(a_1,\ldots,a_n)$遠くと，問3.5の式が得られる．
+
+分散共分散行列は明らかに非負定置対称行列である．
+
+
+
+
+多次元確率ベクトルの母関数について考える．$n$次元の確率ベクトル$X=(X_1,\ldots,X_n)^\top$の特性関数は$t^\top=(t_1,\ldots,t_n)$として
+
+$$
+\phi\left(t_{1}, \ldots, t_{n}\right)=E\left[e^{i\left(t_{1} X_{1}+\cdots+t_{n} X_{n}\right)}\right]=E\left[e^{i t^{\top} X}\right]
+$$
+
+
+と表される．母関数は分布の畳み込みを考えるときに有用で，互いに独立な確率変数$X,Y$に対して，$Z=X+Y$について考える．それぞれの特性関数を$\phi_X(t),\phi_Y(t)$とすると，
+
+$$
+\phi_z(t) = E[e^{itz}] =E[e^{itX}]E[e^{itY}]=\phi_X(t)\phi_Y(t)
+$$
+
+が成り立つ．具体例は次の式，証明は練習問題で．
+
+
+$$
+\begin{array}{l}
+\operatorname{Po}(\lambda) * \operatorname{Po}(\kappa)=\operatorname{Po}(\lambda+\kappa) \\
+\mathrm{N}\left(\mu_{1}, \sigma_{1}^{2}\right) * \mathrm{~N}\left(\mu_{2}, \sigma_{2}^{2}\right)=\mathrm{N}\left(\mu_{1}+\mu_{2}, \sigma_{1}^{2}+\sigma_{2}^{2}\right) \\
+\mathrm{NB}\left(r_{1}, p\right) * \mathrm{NB}\left(r_{2}, p\right)=\mathrm{NB}\left(r_{1}+r_{2}, p\right) \\
+\mathrm{Ga}\left(\nu_{1}, \alpha\right) * \operatorname{Ga}\left(\nu_{2}, \alpha\right)=\operatorname{Ga}\left(\nu_{1}+\nu_{2}, \alpha\right)
+\end{array}
+$$
+
+
+条件付き期待値について考える．$(X,Y)$を二次元連続確率変数として，同時密度関数と条件付き密度関数を$f(x,y),f_{Y|X}(y)=f(x,y)/f_X(x)$とする．$X=x$を与えたときの$Y$の条件付き期待値は
+
+$$
+E[Y \mid X]=E[Y \mid X=x]=\int_{-\infty}^{\infty} y f_{Y \mid X=x}(y) d y
+$$
+で定義される．
+
+より一般に関数$g(X,Y)$の$X=x$を与えたときの期待値を
+
+$$
+E[g(X,Y) \mid X]=E[g(X,Y) \mid X=x]\\
+=\int_{-\infty}^{\infty} g(x,y) f_{Y \mid X=x}(y) d y
+$$
+と定義できる．
+条件付き分散」　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　
+https://su-butsu-kikaigakusyuu.hatenablog.com/entry/2018/07/14/171645
+
+$$
+\begin{aligned}
+\operatorname{Var}[Y]=& E\left[(Y-\mu)^{2}\right]=E^{X}\left[E\left[((Y-h(X))+(h(X)-\mu))^{2} \mid X\right]\right] \\
+=& E^{X}\left[E\left[(Y-h(X))^{2} \mid X\right]\right]+E^{X}\left[(h(X)-\mu)^{2}\right] \\
+& \quad+2 E^{X}[E[(Y-h(X))(h(X)-\mu) \mid X]] \\
+=& E^{X}[\operatorname{Var}[Y \mid X]]+\operatorname{Var}[E[Y \mid X]] \\
+& \quad+2 E^{X}[(h(X)-\mu) E[Y-h(X) \mid X]] \\
+=& E^{X}[\operatorname{Var}[Y \mid X]]+\operatorname{Var}[E[Y \mid X]]
+\end{aligned}
+$$
+
+
+
+## 主要な確率分布

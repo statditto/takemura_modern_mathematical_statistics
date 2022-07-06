@@ -11,7 +11,7 @@
     "href": "one-dim-random-variable.html",
     "title": "2  確率と１次元の確率変数",
     "section": "",
-    "text": "2022/06/21 13:00~\n発表担当：\n演習問題担当：\n\n2.1~2.7\n2.8~2.14\n発表スライド"
+    "text": "2022/06/21 13:00~\n発表担当：\n演習問題担当：\n\n2.1~2.7\n2.8~2.14"
   },
   {
     "objectID": "one-dim-random-variable.html#負の二項分布の確率母関数期待値および分散を求めよ",
@@ -39,7 +39,7 @@
     "href": "one-dim-random-variable.html#対数級数分布について対数関数のテーラー展開を用いて基準化係数-ctheta-を求めよまた積率母関数期待値および分散を求めよ",
     "title": "2  確率と１次元の確率変数",
     "section": "2.4 対数級数分布について，対数関数のテーラー展開を用いて基準化係数 \\(c(\\theta)\\) を求めよ．また，積率母関数，期待値，および分散を求めよ．",
-    "text": "2.4 対数級数分布について，対数関数のテーラー展開を用いて基準化係数 \\(c(\\theta)\\) を求めよ．また，積率母関数，期待値，および分散を求めよ．\n対数級数分布は次の式で表せる．\n\\[\np(x) = c(\\theta) \\frac{\\theta^x}{x},x=1,2,\\ldots ,0 < \\theta < 1\n\\]\nここで，対数関数のテーラー展開について考えることで，基準化定数を求めることができる．\n\\[\n\\begin{aligned}\n\\log(1+x) &= x - \\frac{x^2}{2} + \\frac{x^3}{3} - \\frac{x^4}{4} + \\cdots\\\\\n\\log(1-\\theta) &=- ( \\theta + \\frac{\\theta^2}{2} + \\frac{\\theta^3}{3} + \\frac{\\theta^4}{4} + \\cdots) \\\\\n-\\log(1-\\theta) &= \\sum_{k=1}^{\\infty} \\frac{\\theta^k}{k}\\\\\n\\therefore c(\\theta) &= \\frac{1}{- \\log(1-\\theta)}\n\\end{aligned}\n\\]\n積率母関数はうまく対数級数分布の形になおすことで求められる．\n\\[\n\\begin{aligned}\nG(s) &= E[S^X]\\\\\n&= \\sum_{x=1}^{\\infty} s^x p(x) \\\\\n&= c(\\theta) \\sum_{x=1}^{\\infty} s^x \\frac{(s \\theta)^x}{x} \\\\\n&= c(\\theta) \\cdot \\frac{1}{c(s\\theta)} \\\\\n&= \\frac{- \\log(1- s \\theta)}{- \\log(1-\\theta)}\n\\end{aligned}\n\\]\n$$\n\\[\\begin{aligned}\nG'(1) &= (\\frac{- \\log(1- s \\theta)}{- \\log(1-\\theta)})' \\\\\n&= \\frac{1}{- \\log(1-\\theta)} \\cdot (- \\frac{- \\theta}{1-s\\theta}) \\\\\n&= \\frac{1}{- \\log(1-\\theta)} \\cdot \\frac{\\theta}{1-\\theta}\\\\\n\nG''(1) &= \\frac{1}{- \\log(1-\\theta)} \\cdot (\\frac{\\theta}{1-s\\theta})' \\\\\n&= \\frac{1}{- \\log(1-\\theta)} \\cdot \\frac{\\theta^2}{(1-\\theta)^2}\n\\end{aligned}\\]\n$$\n頑張って計算する．\n\\[\n\\begin{aligned}\nVar[X] &= G''(1) + E[X] - E[X]^2 \\\\\n&= \\frac{\\theta}{(- \\log(1-\\theta))^2 (1-\\theta)^2} (-\\log(1-\\theta)-\\theta)\n\\end{aligned}\n\\]"
+    "text": "2.4 対数級数分布について，対数関数のテーラー展開を用いて基準化係数 \\(c(\\theta)\\) を求めよ．また，積率母関数，期待値，および分散を求めよ．\n対数級数分布は次の式で表せる．\n\\[\np(x) = c(\\theta) \\frac{\\theta^x}{x},x=1,2,\\ldots ,0 < \\theta < 1\n\\]\nここで，対数関数のテーラー展開について考えることで，基準化定数を求めることができる．\n\\[\n\\begin{aligned}\n\\log(1+x) &= x - \\frac{x^2}{2} + \\frac{x^3}{3} - \\frac{x^4}{4} + \\cdots\\\\\n\\log(1-\\theta) &=- ( \\theta + \\frac{\\theta^2}{2} + \\frac{\\theta^3}{3} + \\frac{\\theta^4}{4} + \\cdots) \\\\\n-\\log(1-\\theta) &= \\sum_{k=1}^{\\infty} \\frac{\\theta^k}{k}\\\\\n\\therefore c(\\theta) &= \\frac{1}{- \\log(1-\\theta)}\n\\end{aligned}\n\\]\n積率母関数はうまく対数級数分布の形になおすことで求められる．\n\\[\n\\begin{aligned}\nG(s) &= E[S^X]\\\\\n&= \\sum_{x=1}^{\\infty} s^x p(x) \\\\\n&= c(\\theta) \\sum_{x=1}^{\\infty}  \\frac{(s \\theta)^x}{x} \\\\\n&= c(\\theta) \\cdot \\frac{1}{c(s\\theta)} \\\\\n&= \\frac{- \\log(1- s \\theta)}{- \\log(1-\\theta)}\n\\end{aligned}\n\\]\nこれを微分して，\n\\[\n\\begin{aligned}\nG'(1) &= (\\frac{- \\log(1- s \\theta)}{- \\log(1-\\theta)})' \\\\\n&= \\frac{1}{- \\log(1-\\theta)} \\cdot (- \\frac{- \\theta}{1-s\\theta}) \\\\\n&= \\frac{1}{- \\log(1-\\theta)} \\cdot \\frac{\\theta}{1-\\theta}\\\\\nG''(1) &= \\frac{1}{- \\log(1-\\theta)} \\cdot (\\frac{\\theta}{1-s\\theta})' \\\\\n&= \\frac{1}{- \\log(1-\\theta)} \\cdot \\frac{\\theta^2}{(1-\\theta)^2}\n\\end{aligned}\n\\]\n頑張って計算する．\n\\[\n\\begin{aligned}\nVar[X] &= G''(1) + E[X] - E[X]^2 \\\\\n&= \\frac{\\theta}{(- \\log(1-\\theta))^2 (1-\\theta)^2} (-\\log(1-\\theta)-\\theta)\n\\end{aligned}\n\\]"
   },
   {
     "objectID": "one-dim-random-variable.html#対数正規分布の密度関数期待値分散を求めよ",
@@ -68,5 +68,68 @@
     "title": "1  前置きと準備",
     "section": "",
     "text": "第１章は数理統計学の学問としての位置づけが記載されている，内容としては簡単な記述統計の復習のみで，演習問題も存在しないので省略する．"
+  },
+  {
+    "objectID": "multi-dim-random-variable.html",
+    "href": "multi-dim-random-variable.html",
+    "title": "3  多次元の確率変数",
+    "section": "",
+    "text": "2022/06/21 13:00~\n発表担当：\n演習問題担当：\n\n2.1~2.7\n2.8~2.14\n発表スライド"
+  },
+  {
+    "objectID": "one-dim-random-variable.html#確率ベクトルの同時分布",
+    "href": "one-dim-random-variable.html#確率ベクトルの同時分布",
+    "title": "2  確率と１次元の確率変数",
+    "section": "2.1 確率ベクトルの同時分布",
+    "text": "2.1 確率ベクトルの同時分布\n二つの確率変数\\(X,Y\\)について考える．ここでは，二次元平面\\(\\mathbb{R}^2\\)の点\\((X,Y)\\)が確率的に実現するものとして考える．このとき，\\(X,Y\\)の組を2次元の確率変数あるいは確率ベクトルと呼び，\\(\\mathbb{R}^2\\)での分布を同時分布と呼ぶ．より一般に\\(n\\)個の確率変数について考えることもできるが，簡単のために二次元で考える．\nまず，\\(X,Y\\)が両方離散確率変数であるときのことを考える．\n\\[\np(x,y) = P(X=x,Y=y)\n\\]\nを確率関数と呼ぶ．「かつ」を表すときにカンマを用いることに注意する．累積分布関数も同様に\n\\[\nF(x,y) = P (X \\leq x, Y \\leq y)\n\\]\nと定義する．\n多次元確率分布における重要な概念は周辺分布と条件付き分布である．例えば\\(Y\\)を無視して\\(X\\)についてのみ考えた分布である．\n\\[\nP_X(x) = P(X=x)=\\sum_yP(X=x,Y=y)=\\sum_y p(x,y)\n\\]\n\\(p_X(x\\)を\\(Xの\\)周辺確率関数という．次に，\\(X=x\\)が観測されたもとでの条件付き分布を考える．"
+  },
+  {
+    "objectID": "one-dim-random-variable.html#変数変換とヤコビアン",
+    "href": "one-dim-random-variable.html#変数変換とヤコビアン",
+    "title": "2  確率と１次元の確率変数",
+    "section": "2.2 変数変換とヤコビアン",
+    "text": "2.2 変数変換とヤコビアン"
+  },
+  {
+    "objectID": "one-dim-random-variable.html#多次元分布と期待値",
+    "href": "one-dim-random-variable.html#多次元分布と期待値",
+    "title": "2  確率と１次元の確率変数",
+    "section": "2.3 多次元分布と期待値",
+    "text": "2.3 多次元分布と期待値"
+  },
+  {
+    "objectID": "one-dim-random-variable.html#主要な確率分布",
+    "href": "one-dim-random-variable.html#主要な確率分布",
+    "title": "2  確率と１次元の確率変数",
+    "section": "2.4 主要な確率分布",
+    "text": "2.4 主要な確率分布"
+  },
+  {
+    "objectID": "multi-dim-random-variable.html#確率ベクトルの同時分布",
+    "href": "multi-dim-random-variable.html#確率ベクトルの同時分布",
+    "title": "3  多次元の確率変数",
+    "section": "3.1 確率ベクトルの同時分布",
+    "text": "3.1 確率ベクトルの同時分布\n二つの確率変数\\(X,Y\\)について考える．ここでは，二次元平面\\(\\mathbb{R}^2\\)の点\\((X,Y)\\)が確率的に実現するものとして考える．このとき，\\(X,Y\\)の組を2次元の確率変数あるいは確率ベクトルと呼び，\\(\\mathbb{R}^2\\)での分布を同時分布と呼ぶ．より一般に\\(n\\)個の確率変数について考えることもできるが，簡単のために二次元で考える．\nまず，\\(X,Y\\)が両方離散確率変数であるときのことを考える．\n\\[\np(x,y) = P(X=x,Y=y)\n\\]\nを確率関数と呼ぶ．「かつ」を表すときにカンマを用いることに注意する．累積分布関数も同様に\n\\[\nF(x,y) = P (X \\leq x, Y \\leq y)\n\\]\nと定義する．\n多次元確率分布における重要な概念は周辺分布と条件付き分布である．例えば\\(Y\\)を無視して\\(X\\)についてのみ考えた分布である．\n\\[\nP_X(x) = P(X=x)=\\sum_yP(X=x,Y=y)=\\sum_y p(x,y)\n\\]\n\\(p_X(x\\)を\\(Xの\\)周辺確率関数という．次に，\\(X=x\\)が観測されたもとでの条件付き分布を考える．\n\\[\np_{Y|X}(y) = P(Y=y|X=x) = \\frac{P(X=x,Y=y)}{P(X=x)} =\\frac{p(x,y)}{p_X(x)}\n\\]\n\\(p_X(x)=0\\)のとき，条件付き確率は定義されないが，\n\\[\np(x,y)  ={p_X(x)} p_{Y|X}(y)\n\\]\nは成立することに注意する．\n\\(X\\)と\\(Y\\)が互いに独立であるとは，\n\\[\np(x,y)  ={p_X(x)} p_{Y}(y)\n\\]\nが全ての\\(x,y\\)について成り立つことをいう．\n次に\\(X,Y\\)が共に連続な確率変数であるときについて考える．二次元の同時密度関数を\n\\[\nf(x,y) = \\lim_{\\Delta x \\rightarrow 0, \\Delta y \\rightarrow 0} \\frac{P(X \\in [x,x+\\Delta x],Y\\in [y,y+\\Delta y])}{\\Delta x \\Delta y}\n\\]\nで定義する．\n一次元の場合と同様に，累積分布関数は\n\\[\nF(x,y) = P (X \\leq x, Y \\leq y)\n\\]\nで定義できる．\n教科書(3.9)式を(3.7)式に代入して式変形をすると，\n\\[\nf(x,y) = \\frac{\\partial^2F(x,y)}{\\partial x \\partial y}\n\\]\nとなる． 積分すると，\n\\[\n\\begin{aligned}\nP(a \\leq X \\leq b, c&\\leq Y \\leq d)=F(b, d)-F(a, d)-F(b, c)+F(a, c) \\\\\n&=\\int_{a}^{b}\\left(\\frac{\\partial}{\\partial x} F(x, d)-\\frac{\\partial}{\\partial x} F(x, c)\\right) d x \\\\\n&=\\int_{a}^{b}\\left(\\int_{c}^{d} \\frac{\\partial^{2}}{\\partial x \\partial y} F(x, y) d y\\right) d x \\\\\n&=\\int_{a}^{b} \\int_{c}^{d} f(x, y) d y d x\n\\end{aligned}\n\\]\nとなる．\n周辺分布は\\(y\\)について積分して，\n\\[\n\\begin{aligned}\nF(x,y) &= P(X \\leq x) = P (X \\leq x, Y \\leq \\infty), F(x,\\infty) \\\\\n&=\\int_{-\\infty}^{x} \\int_{-\\infty}^{\\infty} f(u, y) d y d u\n\\end{aligned}\n\\]\nさらに，これを微分することで周辺密度関数が求められる．\n\\[\nf_X(x) = \\int_{-\\infty}^{\\infty} f(x, y) d y\n\\]\n次に，条件付き密度関数について考える．離散分布と同様の定義を考えると，\n\\[\np_{Y|X}(y) = f_{Y|X=x}(y)  = \\frac{f(x,y)}{f_X(x)}\n\\]\nと定義される．測度論的には怪しいらしいので本当は考える必要があるみたいですが，わからないので無視します．\n\\(X\\)と\\(Y\\)が互いに独立であるとは，\n\\[\nf(x,y)  ={f_X(x)} f_{Y}(y)\n\\]\nであることと定義する．\nここまでの議論を多次元に拡張する．累積分布関数と同時密度関数をそれぞれ\n\\[\n\\begin{aligned}\nF(x_1, \\ldots , x_n) &= P(X_1 \\leq x_1, \\ldots ,X_n \\leq x_n) \\\\\nf(x_1, \\ldots , x_n) &= \\frac{\\partial^2F(x_1, \\ldots , x_n)}{\\partial x_1, \\ldots , \\partial x_n}\n\\end{aligned}\n\\]\nと定義する．独立性および条件付き独立は練習問題で証明する．"
+  },
+  {
+    "objectID": "multi-dim-random-variable.html#変数変換とヤコビアン",
+    "href": "multi-dim-random-variable.html#変数変換とヤコビアン",
+    "title": "3  多次元の確率変数",
+    "section": "3.2 変数変換とヤコビアン",
+    "text": "3.2 変数変換とヤコビアン\n\\(X=() X_1,\\ldots X_n)\\)を\\(n\\)次元の確率ベクトルとし，同時密度関数を\\(f_X(x)\\)とする．変数変換\\(Y = g(X)\\)について考える．ここで，関数\\(g\\)は\\(n\\)次元空間\\(\\mathbb{R}^2\\)から\\(\\mathbb{R}^2\\)への連続微分可能な関数であるとする．\n\\[\ng(x)=\\left(\\begin{array}{c}\ng_{1}(x) \\\\\n\\vdots \\\\\ng_{n}(x)\n\\end{array}\\right)\n\\]\n各\\(g_i\\)は連続微分可能な実数値関数とする．さらに\\(g(x)\\)は１対１の関数であり，連続微分可能な逆関数\\(x=g^{-1}(y)\\)を持つとする．\n\\(X\\)の密度関数から\\(Y\\)の密度関数を求めたい．このとき\\(X\\)から\\(Y\\)の変数変換のヤコビアンが必要となる．\\(X\\)の各要素を\\(y\\)の各要素で微分したものを要素とする行列\\(J\\)をヤコビ行列という．\n\\[\nx=g^{-1}(y)=h(y)=\\left(\\begin{array}{c}\nh_{1}(y) \\\\\n\\vdots \\\\\nh_{n}(y)\n\\end{array}\\right)\n\\]\nとしたとき，\n\\[\nJ=J(\\partial x / \\partial y)=\\left(\\frac{\\partial x_{i}}{\\partial y_{j}}\\right)=\\left(\\begin{array}{ccc}\n\\frac{\\partial h_{1}(y)}{\\partial y_{1}} & \\ldots & \\frac{\\partial h_{1}(y)}{\\partial y_{n}} \\\\\n\\vdots & \\ddots & \\vdots \\\\\n\\frac{\\partial h_{n}(y)}{\\partial y_{1}} & \\cdots & \\frac{\\partial h_{n}(y)}{\\partial y_{n}}\n\\end{array}\\right)\n\\]\nである．\\(J\\)の行列式\\(\\mathrm{det} J\\)をヤコビアンと呼ぶ．ヤコビアンの絶対値を用いれば\\(Y=g(X)\\)の密度関数\\(f_Y(y)\\)は次のように表される．\n\\[\nf_Y(y) = f_X(g^{-1}(y))\\cdot | \\mathrm{det} J(\\partial x / \\partial y) |\n\\]\n多重積分の変換公式より次の関係が導かれる．\n\\[\nP(Y \\in A)=P(X \\in B)=\\int_{B} f_{X}(x) d x=\\int_{A} f_{X}\\left(g^{-1}(y)\\right)|\\operatorname{det} J(\\partial x / \\partial y)| d y\n\\]\nヤコビアンを用いるときの3つの注意点．\n\n要素の順番の変更は行列式の符号のみを変化させるため，絶対値は不変\n行列式は転置しても変わらないことからヤコビ行列が転置されていてもいい\n\\(g^{-1}(g(x))=x\\)を偏微分するとヤコビ行列の逆行列が得られる．\n\n三つ目の性質により，ヤコビアンは逆関数を用いずとも求めることができる．もちろん，最終的な結果を求める際には\\(x=g^{-1}(y)\\)を代入する必要があるため，逆関数を求めることは必要である．\nここで，ヤコビアンを用いる具体例について考える．\\(X\\)と\\(Y\\)を互いに独立な確率変数とするときに\\(W=X+Y\\)の分布を畳み込みという．\\(X,Y\\)それぞれの密度関数を\\(f,g\\)とするとき，\\(Z\\)の密度関数について考える．ヤコビアンを考えるために\\(W=X\\)という変数を考える．このとき変換は，\n\\[\n\\left(\\begin{array}{c}\nW \\\\\nZ\n\\end{array}\\right)=\\left(\\begin{array}{ll}\n1 & 0 \\\\\n1 & 1\n\\end{array}\\right)\\left(\\begin{array}{l}\nX \\\\\nY\n\\end{array}\\right)\n\\]\n逆に解くと，\\(X=W,Y=Z-W\\)となる．\nヤコビアンは\n\\[\n\\operatorname{det} J=\\frac{1}{\\operatorname{det}\\left(\\begin{array}{ll}\n1 & 0 \\\\\n1 & 1\n\\end{array}\\right)}=1\n\\]\nで表せるため，同時密度関数は\\(f(w)g(z-w)\\)となる．興味があるのは\\(Z\\)なので\\(w\\)で積分して，\n\\[\nh(z)=\\int_{-\\infty}^{\\infty} f(w) g(z-w) d w\n\\]\nこれが密度関数の畳み込みの公式となる．\nヤコビアンを用いる二つ目の例として，正規分布の基準化定数を取り上げる．\\(\\frac{1}{c}=\\int_{-\\infty}^{\\infty} e^{-x^{2} / 2} d x\\)とおく．\\(X,Y\\)を互いに独立で密度関数\\(ce^{-x^{2}/2}\\)に従う確率変数とする．\\((X,Y)\\)を曲座標表示して\n\\[\nX=r \\cos \\theta, Y= r \\sin \\theta\n\\]\nここで\\(r,\\theta\\)の同時密度関数を求める．\\((x,y)=g^{-1}(r,\\theta)\\)がすでに分かっている状況ということに注意する．\n\\[\nJ=\\left(\\begin{array}{ll}\n\\cos \\theta & - r \\sin \\theta \\\\\n\\sin \\theta & r \\cos \\theta\n\\end{array}\\right)\n\\]\n絶対値は\n\\[\n|\\mathrm{det}J|=r \\cos ^2 \\theta + r \\sin ^2 \\theta = r\n\\]\n代入すると\\(r,\\theta\\)の同時密度が\n\\[\nf(r,\\theta)=c^2 r \\exp (- \\frac{r^2}{2}), r>0,0 \\leq \\theta < 2 \\pi\n\\]\nで表される．\\(r,\\theta\\)について積分することで，\\(1=2 \\pi c^2\\)が得られる．\n最後の例として，ガンマ分布とベータ分布の関連について議論する．\\(X \\sim \\mathrm{Ga}(a,1),Y \\sim \\mathrm{Ga}(b,1\\)とし，互いに独立な確率変数であるとする．ここで，\\(U=X/(X+Y),V=X+Y\\)という変換を考える．逆変換は\\(X=UV,Y=V(1-U)\\)である．ヤコビアンは\n\\[\n\\mathrm{det}J=\\mathrm{det}\\left(\\begin{array}{ll}\nu & v \\\\\n-v & (1-u)\n\\end{array}\\right)\n=v\n\\]\n変換前と変換後の同時密度関数をそれぞれ\\(f(x,y),g(u,v)\\)とすると，\n\\[\n\\begin{aligned}\ng(u,v) &= f(uv,v(1-u)) \\mathrm{det}J\\\\\n&= \\frac{1}{\\Gamma(a) \\Gamma(b)}v^{a+b-1}e^{-v} \\cdot u^{a-1}(1-u)^{b-1} \\\\\n&= \\frac{1}{\\Gamma(a+b)}v^{a+b-1}e^{-v} \\cdot \\frac{\\Gamma(a+b)}{\\Gamma(a)\\Gamma(b)}u^{a-1}(1-u)^{b-1}\n\\end{aligned}\n\\]\nlink\n関数を見ると\\(V\\)は\\(\\mathrm{Ga}(a+b+1)\\)に従い，\\(U\\)は\\(\\mathrm{Be}(a,b)\\)に従うことがわかる．また，式を調整するとベータ分布の基準化定数も出現する．"
+  },
+  {
+    "objectID": "multi-dim-random-variable.html#多次元分布と期待値",
+    "href": "multi-dim-random-variable.html#多次元分布と期待値",
+    "title": "3  多次元の確率変数",
+    "section": "3.3 多次元分布と期待値",
+    "text": "3.3 多次元分布と期待値\n多次元確率関数の期待値は１次元と同様の定義がされる．簡単のために二次元確率変数\\((X,Y)\\)について考える．\\((x,y)\\)の実数値関数を\\(g(x,y)\\)とする．このとき，\\(g(X,Y)\\)の期待値を\n\\[\nE[g(X, Y)]=\\left\\{\\begin{array}{l}\n\\sum_{x, y} g(x, y) p(x, y) \\\\\n\\iint g(x, y) f(x, y) d x d y\n\\end{array}\\right.\n\\]\nと定義する．\nこの定義が，１変数の場合の定義と整合的であるかどうか，確認する必要がある．これを一般に証明するには測度論が必要となる．\n\\(X\\)と\\(Y\\)の今日分散は\n\\[\nCov[X,Y]=\\sigma_{XY}=E[(X-\\mu_X)(Y-\\mu_Y)]\n\\]\nで定義される．\n相関係数は\n\\[\nCorr[X,Y]=\\rho_{XY} = \\frac{\\sigma_{XY}}{\\sigma_X\\sigma_Y}\n\\]\nで定義される．\n\\(X\\)と\\(Y\\)が独立であるときには\n\\[\n\\begin{aligned}\nE[X Y] &=\\iint x y f(x, y) d x d y=\\iint x y f_{X}(x) f_{Y}(y) d x d y \\\\\n&=\\int x f_{X}(x) d x \\int y f_{Y}(y) d y=E[X] E[Y]\n\\end{aligned}\n\\]\n　が成り立つ．より一般に，\\(X\\)と\\(Y\\)が独立ならば任意の１変数関数\\(g(X),h(Y)\\)について\\(E[g(X),h(Y)]=E[g(X)]E[h(Y)]\\)が成立する． 　 　独立と無双間の関係について 　\n\\[\n\\begin{aligned}\n\\operatorname{Cov}[X, Y] &=E\\left[\\left(X-\\mu_{X}\\right)\\left(Y-\\mu_{Y}\\right)\\right] \\\\\n&=E\\left[X Y-\\mu_{X} Y-X \\mu_{Y}+\\mu_{X} \\mu_{Y}\\right] \\\\\n&=E[X Y]-\\mu_{X} \\mu_{Y}=E[X Y]-E[X] E[Y]\n\\end{aligned}\n\\]\nが成り立つ．\nここで，\\(X,Y\\)を確率変数とし，\\(Z=X+Y\\)の分散を求める．\n\\[\n\\begin{array}{l}\n\\operatorname{Var}[X+Y]=E\\left[(Z-E[Z])^{2}\\right]=E\\left[\\left(\\left(X-\\mu_{X}\\right)+\\left(Y-\\mu_{Y}\\right)\\right)^{2}\\right] \\\\\n\\quad=E\\left[\\left(X-\\mu_{X}\\right)^{2}\\right]+E\\left[\\left(Y-\\mu_{Y}\\right)^{2}\\right]+2 E\\left[\\left(X-\\mu_{X}\\right)\\left(Y-\\mu_{Y}\\right)\\right] \\\\\n\\quad=\\operatorname{Var}[X]+\\operatorname{Var}[Y]+2 \\operatorname{Cov}[X, Y]\n\\end{array}\n\\]\nこれを\\(n\\)次元に一般化することは練習問題とする．\n\\(Z=a_1X_1+\\ldots+a_nX_n\\)とし，\\(a_i=1\\)かつ\\(X_i\\)が互いに独立なとき，\n\\[\nVar[X_1+\\ldots+X_n] = \\sum_{i=1}^nVar[X_i]\n\\]\nは大切らしい．\nここで，確率ベクトルの期待値ベクトルを定義する．\n\\[\nE[X]=\\mu=\\left(\\begin{array}{c}\nE\\left[X_{1}\\right] \\\\\n\\vdots \\\\\nE\\left[X_{n}\\right]\n\\end{array}\\right)\n\\]\n期待値の線形性はベクトル記法と整合的であることが嬉しい．（練習問題）\n\\(X=(X_1,\\ldots,X_n)^\\top\\)の要素の分散と要素間の今日分散を要素とする行列を分散共分散行列と呼ぶ．\n\\[\nVar[X]=\\Sigma = (\\sigma_{ij})\n\\]\n\\[\nVar[X+Y]=\\left(\\begin{array}{c}\nVar\\left[X_{1} + Y_1\\right] \\\\\n\\vdots \\\\\nVar\\left[X_{n} + Y_n\\right]\n\\end{array}\\right) \\\\\n= Var[X] + Var[Y]\n\\]\n\\(a\\)を定数ベクトル，\\(B\\)を定数行列とすると，\n\\[\nVar[a+BX]=BVar[X]B^\\top\n\\]\nとなる．ここで，\\(a=0,B=(a_1,\\ldots,a_n)\\)遠くと，問3.5の式が得られる．\n分散共分散行列は明らかに非負定置対称行列である．\n多次元確率ベクトルの母関数について考える．\\(n\\)次元の確率ベクトル\\(X=(X_1,\\ldots,X_n)^\\top\\)の特性関数は\\(t^\\top=(t_1,\\ldots,t_n)\\)として\n\\[\n\\phi\\left(t_{1}, \\ldots, t_{n}\\right)=E\\left[e^{i\\left(t_{1} X_{1}+\\cdots+t_{n} X_{n}\\right)}\\right]=E\\left[e^{i t^{\\top} X}\\right]\n\\]\nと表される．母関数は分布の畳み込みを考えるときに有用で，互いに独立な確率変数\\(X,Y\\)に対して，\\(Z=X+Y\\)について考える．それぞれの特性関数を\\(\\phi_X(t),\\phi_Y(t)\\)とすると，\n\\[\n\\phi_z(t) = E[e^{itz}] =E[e^{itX}]E[e^{itY}]=\\phi_X(t)\\phi_Y(t)\n\\]\nが成り立つ．具体例は次の式，証明は練習問題で．\n\\[\n\\begin{array}{l}\n\\operatorname{Po}(\\lambda) * \\operatorname{Po}(\\kappa)=\\operatorname{Po}(\\lambda+\\kappa) \\\\\n\\mathrm{N}\\left(\\mu_{1}, \\sigma_{1}^{2}\\right) * \\mathrm{~N}\\left(\\mu_{2}, \\sigma_{2}^{2}\\right)=\\mathrm{N}\\left(\\mu_{1}+\\mu_{2}, \\sigma_{1}^{2}+\\sigma_{2}^{2}\\right) \\\\\n\\mathrm{NB}\\left(r_{1}, p\\right) * \\mathrm{NB}\\left(r_{2}, p\\right)=\\mathrm{NB}\\left(r_{1}+r_{2}, p\\right) \\\\\n\\mathrm{Ga}\\left(\\nu_{1}, \\alpha\\right) * \\operatorname{Ga}\\left(\\nu_{2}, \\alpha\\right)=\\operatorname{Ga}\\left(\\nu_{1}+\\nu_{2}, \\alpha\\right)\n\\end{array}\n\\]\n条件付き期待値について考える．\\((X,Y)\\)を二次元連続確率変数として，同時密度関数と条件付き密度関数を\\(f(x,y),f_{Y|X}(y)=f(x,y)/f_X(x)\\)とする．\\(X=x\\)を与えたときの\\(Y\\)の条件付き期待値は\n\\[\nE[Y \\mid X]=E[Y \\mid X=x]=\\int_{-\\infty}^{\\infty} y f_{Y \\mid X=x}(y) d y\n\\]\nで定義される．\nより一般に関数\\(g(X,Y)\\)の\\(X=x\\)を与えたときの期待値を\n\\[\nE[g(X,Y) \\mid X]=E[g(X,Y) \\mid X=x]\\\\\n=\\int_{-\\infty}^{\\infty} g(x,y) f_{Y \\mid X=x}(y) d y\n\\]\nと定義できる． 条件付き分散」　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　 https://su-butsu-kikaigakusyuu.hatenablog.com/entry/2018/07/14/171645\n\\[\n\\begin{aligned}\n\\operatorname{Var}[Y]=& E\\left[(Y-\\mu)^{2}\\right]=E^{X}\\left[E\\left[((Y-h(X))+(h(X)-\\mu))^{2} \\mid X\\right]\\right] \\\\\n=& E^{X}\\left[E\\left[(Y-h(X))^{2} \\mid X\\right]\\right]+E^{X}\\left[(h(X)-\\mu)^{2}\\right] \\\\\n& \\quad+2 E^{X}[E[(Y-h(X))(h(X)-\\mu) \\mid X]] \\\\\n=& E^{X}[\\operatorname{Var}[Y \\mid X]]+\\operatorname{Var}[E[Y \\mid X]] \\\\\n& \\quad+2 E^{X}[(h(X)-\\mu) E[Y-h(X) \\mid X]] \\\\\n=& E^{X}[\\operatorname{Var}[Y \\mid X]]+\\operatorname{Var}[E[Y \\mid X]]\n\\end{aligned}\n\\]"
+  },
+  {
+    "objectID": "multi-dim-random-variable.html#主要な確率分布",
+    "href": "multi-dim-random-variable.html#主要な確率分布",
+    "title": "3  多次元の確率変数",
+    "section": "3.4 主要な確率分布",
+    "text": "3.4 主要な確率分布"
   }
 ]

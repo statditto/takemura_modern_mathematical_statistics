@@ -6,7 +6,6 @@
   - 2.1~2.7
   - 2.8~2.14
   
-発表スライド
 
 ## 負の二項分布の確率母関数，期待値，および分散を求めよ．
 
@@ -162,17 +161,19 @@ $$
 \begin{aligned}
 G(s) &= E[S^X]\\
 &= \sum_{x=1}^{\infty} s^x p(x) \\
-&= c(\theta) \sum_{x=1}^{\infty} s^x \frac{(s \theta)^x}{x} \\
+&= c(\theta) \sum_{x=1}^{\infty}  \frac{(s \theta)^x}{x} \\
 &= c(\theta) \cdot \frac{1}{c(s\theta)} \\
 &= \frac{- \log(1- s \theta)}{- \log(1-\theta)} 
 \end{aligned}
 $$
+
+これを微分して，
+
 $$
 \begin{aligned}
 G'(1) &= (\frac{- \log(1- s \theta)}{- \log(1-\theta)})' \\
 &= \frac{1}{- \log(1-\theta)} \cdot (- \frac{- \theta}{1-s\theta}) \\
 &= \frac{1}{- \log(1-\theta)} \cdot \frac{\theta}{1-\theta}\\
-
 G''(1) &= \frac{1}{- \log(1-\theta)} \cdot (\frac{\theta}{1-s\theta})' \\
 &= \frac{1}{- \log(1-\theta)} \cdot \frac{\theta^2}{(1-\theta)^2}
 \end{aligned}

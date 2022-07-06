@@ -25,7 +25,7 @@ ul.task-list{list-style: none;}
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./references.html" rel="next">
+<link href="./multi-dim-random-variable.html" rel="next">
 <link href="./intro.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -123,6 +123,11 @@ ul.task-list{list-style: none;}
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./multi-dim-random-variable.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">多次元の確率変数</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
   </div>
 </li>
@@ -173,7 +178,6 @@ ul.task-list{list-style: none;}
 <li>2.8~2.14</li>
 </ul></li>
 </ul>
-<p>発表スライド</p>
 <section id="負の二項分布の確率母関数期待値および分散を求めよ" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="負の二項分布の確率母関数期待値および分散を求めよ"><span class="header-section-number">2.1</span> 負の二項分布の確率母関数，期待値，および分散を求めよ．</h2>
 <p>コイン投げを例にする．コインの表が出る確率を <span class="math inline">\(p\)</span> とし，確率変数 <span class="math inline">\(X\)</span> を <span class="math inline">\(r\)</span> 回表が出るまでの裏の回数とする． <span class="math inline">\(r+k-1\)</span> 回目までに裏が <span class="math inline">\(k\)</span> 回あらわれ，最後の <span class="math inline">\(r+k\)</span> 回目に確率 <span class="math inline">\(p\)</span> で表が出ると言い換えることができる．</p>
@@ -306,21 +310,21 @@ p(x) = c(\theta) \frac{\theta^x}{x},x=1,2,\ldots ,0 &lt; \theta &lt; 1
 \begin{aligned}
 G(s) &amp;= E[S^X]\\
 &amp;= \sum_{x=1}^{\infty} s^x p(x) \\
-&amp;= c(\theta) \sum_{x=1}^{\infty} s^x \frac{(s \theta)^x}{x} \\
+&amp;= c(\theta) \sum_{x=1}^{\infty}  \frac{(s \theta)^x}{x} \\
 &amp;= c(\theta) \cdot \frac{1}{c(s\theta)} \\
 &amp;= \frac{- \log(1- s \theta)}{- \log(1-\theta)}
 \end{aligned}
 \]</span></p>
-$$
-<span class="math display">\[\begin{aligned}
+<p>これを微分して，</p>
+<p><span class="math display">\[
+\begin{aligned}
 G'(1) &amp;= (\frac{- \log(1- s \theta)}{- \log(1-\theta)})' \\
 &amp;= \frac{1}{- \log(1-\theta)} \cdot (- \frac{- \theta}{1-s\theta}) \\
 &amp;= \frac{1}{- \log(1-\theta)} \cdot \frac{\theta}{1-\theta}\\
-
 G''(1) &amp;= \frac{1}{- \log(1-\theta)} \cdot (\frac{\theta}{1-s\theta})' \\
 &amp;= \frac{1}{- \log(1-\theta)} \cdot \frac{\theta^2}{(1-\theta)^2}
-\end{aligned}\]</span>
-<p>$$</p>
+\end{aligned}
+\]</span></p>
 <p>頑張って計算する．</p>
 <p><span class="math display">\[
 \begin{aligned}
@@ -514,8 +518,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./references.html" class="pagination-link">
-        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./multi-dim-random-variable.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">多次元の確率変数</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

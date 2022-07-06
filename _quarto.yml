@@ -21,6 +21,7 @@ book:
     - index.qmd
     - intro.qmd
     - one-dim-random-variable.qmd
+    - multi-dim-random-variable.qmd
     - references.qmd
 
 bibliography: references.bib

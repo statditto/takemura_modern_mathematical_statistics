@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-0.9.600">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>竹村現代数理統計学 - 3&nbsp; 多次元の確率変数</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./references.html" rel="next">
+<link href="./one-dim-random-variable.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">多次元の確率変数</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">竹村現代数理統計学</a> 
+        <div class="sidebar-tools-main">
+    <a href="" title="Share" id="sidebar-tool-dropdown-0" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-share"></i></a>
+    <ul class="dropdown-menu" aria-labelledby="sidebar-tool-dropdown-0">
+        <li>
+          <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
+            <i class="bi bi-bi-twitter pe-1"></i>
+          Twitter
+          </a>
+        </li>
+        <li>
+          <a class="dropdown-item sidebar-tools-main-item" href="https://www.facebook.com/sharer/sharer.php?u=|url|">
+            <i class="bi bi-bi-facebook pe-1"></i>
+          Facebook
+          </a>
+        </li>
+    </ul>
+</div>
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">これはなんですか</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">前置きと準備</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./one-dim-random-variable.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">確率と１次元の確率変数</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./multi-dim-random-variable.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">多次元の確率変数</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">このページの内容</h2>
+   
+  <ul>
+  <li><a href="#確率ベクトルの同時分布" id="toc-確率ベクトルの同時分布" class="nav-link active" data-scroll-target="#確率ベクトルの同時分布"> <span class="header-section-number">3.1</span> 確率ベクトルの同時分布</a></li>
+  <li><a href="#変数変換とヤコビアン" id="toc-変数変換とヤコビアン" class="nav-link" data-scroll-target="#変数変換とヤコビアン"> <span class="header-section-number">3.2</span> 変数変換とヤコビアン</a></li>
+  <li><a href="#多次元分布と期待値" id="toc-多次元分布と期待値" class="nav-link" data-scroll-target="#多次元分布と期待値"> <span class="header-section-number">3.3</span> 多次元分布と期待値</a></li>
+  <li><a href="#主要な確率分布" id="toc-主要な確率分布" class="nav-link" data-scroll-target="#主要な確率分布"> <span class="header-section-number">3.4</span> 主要な確率分布</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">多次元の確率変数</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<ul>
+<li>2022/06/21 13:00~</li>
+<li>発表担当：</li>
+<li>演習問題担当：
+<ul>
+<li>2.1~2.7</li>
+<li>2.8~2.14</li>
+</ul></li>
+</ul>
+<p>発表スライド</p>
+<section id="確率ベクトルの同時分布" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="確率ベクトルの同時分布"><span class="header-section-number">3.1</span> 確率ベクトルの同時分布</h2>
+<p>二つの確率変数<span class="math inline">\(X,Y\)</span>について考える．ここでは，二次元平面<span class="math inline">\(\mathbb{R}^2\)</span>の点<span class="math inline">\((X,Y)\)</span>が確率的に実現するものとして考える．このとき，<span class="math inline">\(X,Y\)</span>の組を2次元の確率変数あるいは確率ベクトルと呼び，<span class="math inline">\(\mathbb{R}^2\)</span>での分布を同時分布と呼ぶ．より一般に<span class="math inline">\(n\)</span>個の確率変数について考えることもできるが，簡単のために二次元で考える．</p>
+<p>まず，<span class="math inline">\(X,Y\)</span>が両方離散確率変数であるときのことを考える．</p>
+<p><span class="math display">\[
+p(x,y) = P(X=x,Y=y)
+\]</span></p>
+<p>を確率関数と呼ぶ．「かつ」を表すときにカンマを用いることに注意する．累積分布関数も同様に</p>
+<p><span class="math display">\[
+F(x,y) = P (X \leq x, Y \leq y)
+\]</span></p>
+<p>と定義する．</p>
+<p>多次元確率分布における重要な概念は周辺分布と条件付き分布である．例えば<span class="math inline">\(Y\)</span>を無視して<span class="math inline">\(X\)</span>についてのみ考えた分布である．</p>
+<p><span class="math display">\[
+P_X(x) = P(X=x)=\sum_yP(X=x,Y=y)=\sum_y p(x,y)
+\]</span></p>
+<p><span class="math inline">\(p_X(x\)</span>を<span class="math inline">\(Xの\)</span>周辺確率関数という．次に，<span class="math inline">\(X=x\)</span>が観測されたもとでの条件付き分布を考える．</p>
+<p><span class="math display">\[
+p_{Y|X}(y) = P(Y=y|X=x) = \frac{P(X=x,Y=y)}{P(X=x)} =\frac{p(x,y)}{p_X(x)}
+\]</span></p>
+<p><span class="math inline">\(p_X(x)=0\)</span>のとき，条件付き確率は定義されないが，</p>
+<p><span class="math display">\[
+p(x,y)  ={p_X(x)} p_{Y|X}(y)
+\]</span></p>
+<p>は成立することに注意する．</p>
+<p><span class="math inline">\(X\)</span>と<span class="math inline">\(Y\)</span>が互いに独立であるとは，</p>
+<p><span class="math display">\[
+p(x,y)  ={p_X(x)} p_{Y}(y)
+\]</span></p>
+<p>が全ての<span class="math inline">\(x,y\)</span>について成り立つことをいう．</p>
+<p>次に<span class="math inline">\(X,Y\)</span>が共に連続な確率変数であるときについて考える．二次元の同時密度関数を</p>
+<p><span class="math display">\[
+f(x,y) = \lim_{\Delta x \rightarrow 0, \Delta y \rightarrow 0} \frac{P(X \in [x,x+\Delta x],Y\in [y,y+\Delta y])}{\Delta x \Delta y}
+\]</span></p>
+<p>で定義する．</p>
+<p>一次元の場合と同様に，累積分布関数は</p>
+<p><span class="math display">\[
+F(x,y) = P (X \leq x, Y \leq y)
+\]</span></p>
+<p>で定義できる．</p>
+<p>教科書(3.9)式を(3.7)式に代入して式変形をすると，</p>
+<p><span class="math display">\[
+f(x,y) = \frac{\partial^2F(x,y)}{\partial x \partial y}
+\]</span></p>
+<p>となる． 積分すると，</p>
+<p><span class="math display">\[
+\begin{aligned}
+P(a \leq X \leq b, c&amp;\leq Y \leq d)=F(b, d)-F(a, d)-F(b, c)+F(a, c) \\
+&amp;=\int_{a}^{b}\left(\frac{\partial}{\partial x} F(x, d)-\frac{\partial}{\partial x} F(x, c)\right) d x \\
+&amp;=\int_{a}^{b}\left(\int_{c}^{d} \frac{\partial^{2}}{\partial x \partial y} F(x, y) d y\right) d x \\
+&amp;=\int_{a}^{b} \int_{c}^{d} f(x, y) d y d x
+\end{aligned}
+\]</span></p>
+<p>となる．</p>
+<p>周辺分布は<span class="math inline">\(y\)</span>について積分して，</p>
+<p><span class="math display">\[
+\begin{aligned}
+F(x,y) &amp;= P(X \leq x) = P (X \leq x, Y \leq \infty), F(x,\infty) \\
+&amp;=\int_{-\infty}^{x} \int_{-\infty}^{\infty} f(u, y) d y d u
+\end{aligned}
+\]</span></p>
+<p>さらに，これを微分することで周辺密度関数が求められる．</p>
+<p><span class="math display">\[
+f_X(x) = \int_{-\infty}^{\infty} f(x, y) d y
+\]</span></p>
+<p>次に，条件付き密度関数について考える．離散分布と同様の定義を考えると，</p>
+<p><span class="math display">\[
+p_{Y|X}(y) = f_{Y|X=x}(y)  = \frac{f(x,y)}{f_X(x)}
+\]</span></p>
+<p>と定義される．測度論的には怪しいらしいので本当は考える必要があるみたいですが，わからないので無視します．</p>
+<p><span class="math inline">\(X\)</span>と<span class="math inline">\(Y\)</span>が互いに独立であるとは，</p>
+<p><span class="math display">\[
+f(x,y)  ={f_X(x)} f_{Y}(y)
+\]</span></p>
+<p>であることと定義する．</p>
+<p>ここまでの議論を多次元に拡張する．累積分布関数と同時密度関数をそれぞれ</p>
+<p><span class="math display">\[
+\begin{aligned}
+F(x_1, \ldots , x_n) &amp;= P(X_1 \leq x_1, \ldots ,X_n \leq x_n) \\
+f(x_1, \ldots , x_n) &amp;= \frac{\partial^2F(x_1, \ldots , x_n)}{\partial x_1, \ldots , \partial x_n}
+\end{aligned}
+\]</span></p>
+<p>と定義する．独立性および条件付き独立は練習問題で証明する．</p>
+</section>
+<section id="変数変換とヤコビアン" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="変数変換とヤコビアン"><span class="header-section-number">3.2</span> 変数変換とヤコビアン</h2>
+<p><span class="math inline">\(X=() X_1,\ldots X_n)\)</span>を<span class="math inline">\(n\)</span>次元の確率ベクトルとし，同時密度関数を<span class="math inline">\(f_X(x)\)</span>とする．変数変換<span class="math inline">\(Y = g(X)\)</span>について考える．ここで，関数<span class="math inline">\(g\)</span>は<span class="math inline">\(n\)</span>次元空間<span class="math inline">\(\mathbb{R}^2\)</span>から<span class="math inline">\(\mathbb{R}^2\)</span>への連続微分可能な関数であるとする．</p>
+<p><span class="math display">\[
+g(x)=\left(\begin{array}{c}
+g_{1}(x) \\
+\vdots \\
+g_{n}(x)
+\end{array}\right)
+\]</span></p>
+<p>各<span class="math inline">\(g_i\)</span>は連続微分可能な実数値関数とする．さらに<span class="math inline">\(g(x)\)</span>は１対１の関数であり，連続微分可能な逆関数<span class="math inline">\(x=g^{-1}(y)\)</span>を持つとする．</p>
+<p><span class="math inline">\(X\)</span>の密度関数から<span class="math inline">\(Y\)</span>の密度関数を求めたい．このとき<span class="math inline">\(X\)</span>から<span class="math inline">\(Y\)</span>の変数変換のヤコビアンが必要となる．<span class="math inline">\(X\)</span>の各要素を<span class="math inline">\(y\)</span>の各要素で微分したものを要素とする行列<span class="math inline">\(J\)</span>をヤコビ行列という．</p>
+<p><span class="math display">\[
+x=g^{-1}(y)=h(y)=\left(\begin{array}{c}
+h_{1}(y) \\
+\vdots \\
+h_{n}(y)
+\end{array}\right)
+\]</span></p>
+<p>としたとき，</p>
+<p><span class="math display">\[
+J=J(\partial x / \partial y)=\left(\frac{\partial x_{i}}{\partial y_{j}}\right)=\left(\begin{array}{ccc}
+\frac{\partial h_{1}(y)}{\partial y_{1}} &amp; \ldots &amp; \frac{\partial h_{1}(y)}{\partial y_{n}} \\
+\vdots &amp; \ddots &amp; \vdots \\
+\frac{\partial h_{n}(y)}{\partial y_{1}} &amp; \cdots &amp; \frac{\partial h_{n}(y)}{\partial y_{n}}
+\end{array}\right)
+\]</span></p>
+<p>である．<span class="math inline">\(J\)</span>の行列式<span class="math inline">\(\mathrm{det} J\)</span>をヤコビアンと呼ぶ．ヤコビアンの絶対値を用いれば<span class="math inline">\(Y=g(X)\)</span>の密度関数<span class="math inline">\(f_Y(y)\)</span>は次のように表される．</p>
+<p><span class="math display">\[
+f_Y(y) = f_X(g^{-1}(y))\cdot | \mathrm{det} J(\partial x / \partial y) |
+\]</span></p>
+<p>多重積分の変換公式より次の関係が導かれる．</p>
+<p><span class="math display">\[
+P(Y \in A)=P(X \in B)=\int_{B} f_{X}(x) d x=\int_{A} f_{X}\left(g^{-1}(y)\right)|\operatorname{det} J(\partial x / \partial y)| d y
+\]</span></p>
+<p>ヤコビアンを用いるときの3つの注意点．</p>
+<ul>
+<li>要素の順番の変更は行列式の符号のみを変化させるため，絶対値は不変</li>
+<li>行列式は転置しても変わらないことからヤコビ行列が転置されていてもいい</li>
+<li><span class="math inline">\(g^{-1}(g(x))=x\)</span>を偏微分するとヤコビ行列の逆行列が得られる．</li>
+</ul>
+<p>三つ目の性質により，ヤコビアンは逆関数を用いずとも求めることができる．もちろん，最終的な結果を求める際には<span class="math inline">\(x=g^{-1}(y)\)</span>を代入する必要があるため，逆関数を求めることは必要である．</p>
+<p>ここで，ヤコビアンを用いる具体例について考える．<span class="math inline">\(X\)</span>と<span class="math inline">\(Y\)</span>を互いに独立な確率変数とするときに<span class="math inline">\(W=X+Y\)</span>の分布を畳み込みという．<span class="math inline">\(X,Y\)</span>それぞれの密度関数を<span class="math inline">\(f,g\)</span>とするとき，<span class="math inline">\(Z\)</span>の密度関数について考える．ヤコビアンを考えるために<span class="math inline">\(W=X\)</span>という変数を考える．このとき変換は，</p>
+<p><span class="math display">\[
+\left(\begin{array}{c}
+W \\
+Z
+\end{array}\right)=\left(\begin{array}{ll}
+1 &amp; 0 \\
+1 &amp; 1
+\end{array}\right)\left(\begin{array}{l}
+X \\
+Y
+\end{array}\right)
+\]</span></p>
+<p>逆に解くと，<span class="math inline">\(X=W,Y=Z-W\)</span>となる．</p>
+<p>ヤコビアンは</p>
+<p><span class="math display">\[
+\operatorname{det} J=\frac{1}{\operatorname{det}\left(\begin{array}{ll}
+1 &amp; 0 \\
+1 &amp; 1
+\end{array}\right)}=1
+\]</span></p>
+<p>で表せるため，同時密度関数は<span class="math inline">\(f(w)g(z-w)\)</span>となる．興味があるのは<span class="math inline">\(Z\)</span>なので<span class="math inline">\(w\)</span>で積分して，</p>
+<p><span class="math display">\[
+h(z)=\int_{-\infty}^{\infty} f(w) g(z-w) d w
+\]</span></p>
+<p>これが密度関数の畳み込みの公式となる．</p>
+<p>ヤコビアンを用いる二つ目の例として，正規分布の基準化定数を取り上げる．<span class="math inline">\(\frac{1}{c}=\int_{-\infty}^{\infty} e^{-x^{2} / 2} d x\)</span>とおく．<span class="math inline">\(X,Y\)</span>を互いに独立で密度関数<span class="math inline">\(ce^{-x^{2}/2}\)</span>に従う確率変数とする．<span class="math inline">\((X,Y)\)</span>を曲座標表示して</p>
+<p><span class="math display">\[
+X=r \cos \theta, Y= r \sin \theta
+\]</span></p>
+<p>ここで<span class="math inline">\(r,\theta\)</span>の同時密度関数を求める．<span class="math inline">\((x,y)=g^{-1}(r,\theta)\)</span>がすでに分かっている状況ということに注意する．</p>
+<p><span class="math display">\[
+J=\left(\begin{array}{ll}
+\cos \theta &amp; - r \sin \theta \\
+\sin \theta &amp; r \cos \theta
+\end{array}\right)
+\]</span></p>
+<p>絶対値は</p>
+<p><span class="math display">\[
+|\mathrm{det}J|=r \cos ^2 \theta + r \sin ^2 \theta = r
+\]</span></p>
+<p>代入すると<span class="math inline">\(r,\theta\)</span>の同時密度が</p>
+<p><span class="math display">\[
+f(r,\theta)=c^2 r \exp (- \frac{r^2}{2}), r&gt;0,0 \leq \theta &lt; 2 \pi
+\]</span></p>
+<p>で表される．<span class="math inline">\(r,\theta\)</span>について積分することで，<span class="math inline">\(1=2 \pi c^2\)</span>が得られる．</p>
+<p>最後の例として，ガンマ分布とベータ分布の関連について議論する．<span class="math inline">\(X \sim \mathrm{Ga}(a,1),Y \sim \mathrm{Ga}(b,1\)</span>とし，互いに独立な確率変数であるとする．ここで，<span class="math inline">\(U=X/(X+Y),V=X+Y\)</span>という変換を考える．逆変換は<span class="math inline">\(X=UV,Y=V(1-U)\)</span>である．ヤコビアンは</p>
+<p><span class="math display">\[
+\mathrm{det}J=\mathrm{det}\left(\begin{array}{ll}
+u &amp; v \\
+-v &amp; (1-u)
+\end{array}\right)
+=v
+\]</span></p>
+<p>変換前と変換後の同時密度関数をそれぞれ<span class="math inline">\(f(x,y),g(u,v)\)</span>とすると，</p>
+<p><span class="math display">\[
+\begin{aligned}
+g(u,v) &amp;= f(uv,v(1-u)) \mathrm{det}J\\
+&amp;= \frac{1}{\Gamma(a) \Gamma(b)}v^{a+b-1}e^{-v} \cdot u^{a-1}(1-u)^{b-1} \\
+&amp;= \frac{1}{\Gamma(a+b)}v^{a+b-1}e^{-v} \cdot \frac{\Gamma(a+b)}{\Gamma(a)\Gamma(b)}u^{a-1}(1-u)^{b-1}
+\end{aligned}
+\]</span></p>
+<p><a href="https://www.hello-statisticians.com/explain-terms-cat/beta_distribution1.html">link</a></p>
+<p>関数を見ると<span class="math inline">\(V\)</span>は<span class="math inline">\(\mathrm{Ga}(a+b+1)\)</span>に従い，<span class="math inline">\(U\)</span>は<span class="math inline">\(\mathrm{Be}(a,b)\)</span>に従うことがわかる．また，式を調整するとベータ分布の基準化定数も出現する．</p>
+</section>
+<section id="多次元分布と期待値" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="多次元分布と期待値"><span class="header-section-number">3.3</span> 多次元分布と期待値</h2>
+<p>多次元確率関数の期待値は１次元と同様の定義がされる．簡単のために二次元確率変数<span class="math inline">\((X,Y)\)</span>について考える．<span class="math inline">\((x,y)\)</span>の実数値関数を<span class="math inline">\(g(x,y)\)</span>とする．このとき，<span class="math inline">\(g(X,Y)\)</span>の期待値を</p>
+<p><span class="math display">\[
+E[g(X, Y)]=\left\{\begin{array}{l}
+\sum_{x, y} g(x, y) p(x, y) \\
+\iint g(x, y) f(x, y) d x d y
+\end{array}\right.
+\]</span></p>
+<p>と定義する．</p>
+<p>この定義が，１変数の場合の定義と整合的であるかどうか，確認する必要がある．これを一般に証明するには測度論が必要となる．</p>
+<p><span class="math inline">\(X\)</span>と<span class="math inline">\(Y\)</span>の今日分散は</p>
+<p><span class="math display">\[
+Cov[X,Y]=\sigma_{XY}=E[(X-\mu_X)(Y-\mu_Y)]
+\]</span></p>
+<p>で定義される．</p>
+<p>相関係数は</p>
+<p><span class="math display">\[
+Corr[X,Y]=\rho_{XY} = \frac{\sigma_{XY}}{\sigma_X\sigma_Y}
+\]</span></p>
+<p>で定義される．</p>
+<p><span class="math inline">\(X\)</span>と<span class="math inline">\(Y\)</span>が独立であるときには</p>
+<p><span class="math display">\[
+\begin{aligned}
+E[X Y] &amp;=\iint x y f(x, y) d x d y=\iint x y f_{X}(x) f_{Y}(y) d x d y \\
+&amp;=\int x f_{X}(x) d x \int y f_{Y}(y) d y=E[X] E[Y]
+\end{aligned}
+\]</span></p>
+<p>　が成り立つ．より一般に，<span class="math inline">\(X\)</span>と<span class="math inline">\(Y\)</span>が独立ならば任意の１変数関数<span class="math inline">\(g(X),h(Y)\)</span>について<span class="math inline">\(E[g(X),h(Y)]=E[g(X)]E[h(Y)]\)</span>が成立する． 　 　独立と無双間の関係について 　</p>
+<p><span class="math display">\[
+\begin{aligned}
+\operatorname{Cov}[X, Y] &amp;=E\left[\left(X-\mu_{X}\right)\left(Y-\mu_{Y}\right)\right] \\
+&amp;=E\left[X Y-\mu_{X} Y-X \mu_{Y}+\mu_{X} \mu_{Y}\right] \\
+&amp;=E[X Y]-\mu_{X} \mu_{Y}=E[X Y]-E[X] E[Y]
+\end{aligned}
+\]</span></p>
+<p>が成り立つ．</p>
+<p>ここで，<span class="math inline">\(X,Y\)</span>を確率変数とし，<span class="math inline">\(Z=X+Y\)</span>の分散を求める．</p>
+<p><span class="math display">\[
+\begin{array}{l}
+\operatorname{Var}[X+Y]=E\left[(Z-E[Z])^{2}\right]=E\left[\left(\left(X-\mu_{X}\right)+\left(Y-\mu_{Y}\right)\right)^{2}\right] \\
+\quad=E\left[\left(X-\mu_{X}\right)^{2}\right]+E\left[\left(Y-\mu_{Y}\right)^{2}\right]+2 E\left[\left(X-\mu_{X}\right)\left(Y-\mu_{Y}\right)\right] \\
+\quad=\operatorname{Var}[X]+\operatorname{Var}[Y]+2 \operatorname{Cov}[X, Y]
+\end{array}
+\]</span></p>
+<p>これを<span class="math inline">\(n\)</span>次元に一般化することは練習問題とする．</p>
+<p><span class="math inline">\(Z=a_1X_1+\ldots+a_nX_n\)</span>とし，<span class="math inline">\(a_i=1\)</span>かつ<span class="math inline">\(X_i\)</span>が互いに独立なとき，</p>
+<p><span class="math display">\[
+Var[X_1+\ldots+X_n] = \sum_{i=1}^nVar[X_i]
+\]</span></p>
+<p>は大切らしい．</p>
+<p>ここで，確率ベクトルの期待値ベクトルを定義する．</p>
+<p><span class="math display">\[
+E[X]=\mu=\left(\begin{array}{c}
+E\left[X_{1}\right] \\
+\vdots \\
+E\left[X_{n}\right]
+\end{array}\right)
+\]</span></p>
+<p>期待値の線形性はベクトル記法と整合的であることが嬉しい．（練習問題）</p>
+<p><span class="math inline">\(X=(X_1,\ldots,X_n)^\top\)</span>の要素の分散と要素間の今日分散を要素とする行列を分散共分散行列と呼ぶ．</p>
+<p><span class="math display">\[
+Var[X]=\Sigma = (\sigma_{ij})
+\]</span></p>
+<p><span class="math display">\[
+Var[X+Y]=\left(\begin{array}{c}
+Var\left[X_{1} + Y_1\right] \\
+\vdots \\
+Var\left[X_{n} + Y_n\right]
+\end{array}\right) \\
+= Var[X] + Var[Y]
+\]</span></p>
+<p><span class="math inline">\(a\)</span>を定数ベクトル，<span class="math inline">\(B\)</span>を定数行列とすると，</p>
+<p><span class="math display">\[
+Var[a+BX]=BVar[X]B^\top
+\]</span></p>
+<p>となる．ここで，<span class="math inline">\(a=0,B=(a_1,\ldots,a_n)\)</span>遠くと，問3.5の式が得られる．</p>
+<p>分散共分散行列は明らかに非負定置対称行列である．</p>
+<p>多次元確率ベクトルの母関数について考える．<span class="math inline">\(n\)</span>次元の確率ベクトル<span class="math inline">\(X=(X_1,\ldots,X_n)^\top\)</span>の特性関数は<span class="math inline">\(t^\top=(t_1,\ldots,t_n)\)</span>として</p>
+<p><span class="math display">\[
+\phi\left(t_{1}, \ldots, t_{n}\right)=E\left[e^{i\left(t_{1} X_{1}+\cdots+t_{n} X_{n}\right)}\right]=E\left[e^{i t^{\top} X}\right]
+\]</span></p>
+<p>と表される．母関数は分布の畳み込みを考えるときに有用で，互いに独立な確率変数<span class="math inline">\(X,Y\)</span>に対して，<span class="math inline">\(Z=X+Y\)</span>について考える．それぞれの特性関数を<span class="math inline">\(\phi_X(t),\phi_Y(t)\)</span>とすると，</p>
+<p><span class="math display">\[
+\phi_z(t) = E[e^{itz}] =E[e^{itX}]E[e^{itY}]=\phi_X(t)\phi_Y(t)
+\]</span></p>
+<p>が成り立つ．具体例は次の式，証明は練習問題で．</p>
+<p><span class="math display">\[
+\begin{array}{l}
+\operatorname{Po}(\lambda) * \operatorname{Po}(\kappa)=\operatorname{Po}(\lambda+\kappa) \\
+\mathrm{N}\left(\mu_{1}, \sigma_{1}^{2}\right) * \mathrm{~N}\left(\mu_{2}, \sigma_{2}^{2}\right)=\mathrm{N}\left(\mu_{1}+\mu_{2}, \sigma_{1}^{2}+\sigma_{2}^{2}\right) \\
+\mathrm{NB}\left(r_{1}, p\right) * \mathrm{NB}\left(r_{2}, p\right)=\mathrm{NB}\left(r_{1}+r_{2}, p\right) \\
+\mathrm{Ga}\left(\nu_{1}, \alpha\right) * \operatorname{Ga}\left(\nu_{2}, \alpha\right)=\operatorname{Ga}\left(\nu_{1}+\nu_{2}, \alpha\right)
+\end{array}
+\]</span></p>
+<p>条件付き期待値について考える．<span class="math inline">\((X,Y)\)</span>を二次元連続確率変数として，同時密度関数と条件付き密度関数を<span class="math inline">\(f(x,y),f_{Y|X}(y)=f(x,y)/f_X(x)\)</span>とする．<span class="math inline">\(X=x\)</span>を与えたときの<span class="math inline">\(Y\)</span>の条件付き期待値は</p>
+<p><span class="math display">\[
+E[Y \mid X]=E[Y \mid X=x]=\int_{-\infty}^{\infty} y f_{Y \mid X=x}(y) d y
+\]</span></p>
+<p>で定義される．</p>
+<p>より一般に関数<span class="math inline">\(g(X,Y)\)</span>の<span class="math inline">\(X=x\)</span>を与えたときの期待値を</p>
+<p><span class="math display">\[
+E[g(X,Y) \mid X]=E[g(X,Y) \mid X=x]\\
+=\int_{-\infty}^{\infty} g(x,y) f_{Y \mid X=x}(y) d y
+\]</span></p>
+<p>と定義できる． 条件付き分散」　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　 https://su-butsu-kikaigakusyuu.hatenablog.com/entry/2018/07/14/171645</p>
+<p><span class="math display">\[
+\begin{aligned}
+\operatorname{Var}[Y]=&amp; E\left[(Y-\mu)^{2}\right]=E^{X}\left[E\left[((Y-h(X))+(h(X)-\mu))^{2} \mid X\right]\right] \\
+=&amp; E^{X}\left[E\left[(Y-h(X))^{2} \mid X\right]\right]+E^{X}\left[(h(X)-\mu)^{2}\right] \\
+&amp; \quad+2 E^{X}[E[(Y-h(X))(h(X)-\mu) \mid X]] \\
+=&amp; E^{X}[\operatorname{Var}[Y \mid X]]+\operatorname{Var}[E[Y \mid X]] \\
+&amp; \quad+2 E^{X}[(h(X)-\mu) E[Y-h(X) \mid X]] \\
+=&amp; E^{X}[\operatorname{Var}[Y \mid X]]+\operatorname{Var}[E[Y \mid X]]
+\end{aligned}
+\]</span></p>
+</section>
+<section id="主要な確率分布" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="主要な確率分布"><span class="header-section-number">3.4</span> 主要な確率分布</h2>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+    var links = window.document.querySelectorAll('a:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+          // target, if specified
+          link.setAttribute("target", "_blank");
+      }
+    }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./one-dim-random-variable.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">確率と１次元の確率変数</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./references.html" class="pagination-link">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+      <div class="nav-footer-center">Copyright 2022, Kazuyuki Sano</div>
+  </div>
+</footer>
+
+
+
+</body></html>
