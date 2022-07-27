@@ -22,6 +22,7 @@ book:
     - intro.qmd
     - one-dim-random-variable.qmd
     - multi-dim-random-variable.qmd
+    - statistic-and-sampling-distribution.qmd
     - references.qmd
 
 bibliography: references.bib

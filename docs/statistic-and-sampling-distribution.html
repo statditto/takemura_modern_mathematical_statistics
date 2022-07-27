@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-0.9.600">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>竹村現代数理統計学 - 4&nbsp; 統計量と標本分布</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./references.html" rel="next">
+<link href="./multi-dim-random-variable.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">統計量と標本分布</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">竹村現代数理統計学</a> 
+        <div class="sidebar-tools-main">
+    <a href="" title="Share" id="sidebar-tool-dropdown-0" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-share"></i></a>
+    <ul class="dropdown-menu" aria-labelledby="sidebar-tool-dropdown-0">
+        <li>
+          <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
+            <i class="bi bi-bi-twitter pe-1"></i>
+          Twitter
+          </a>
+        </li>
+        <li>
+          <a class="dropdown-item sidebar-tools-main-item" href="https://www.facebook.com/sharer/sharer.php?u=|url|">
+            <i class="bi bi-bi-facebook pe-1"></i>
+          Facebook
+          </a>
+        </li>
+    </ul>
+</div>
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">これはなんですか</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">前置きと準備</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./one-dim-random-variable.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">確率と１次元の確率変数</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./multi-dim-random-variable.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">多次元の確率変数</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./statistic-and-sampling-distribution.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">統計量と標本分布</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">このページの内容</h2>
+   
+  <ul>
+  <li><a href="#式を確かめよ" id="toc-式を確かめよ" class="nav-link active" data-scroll-target="#式を確かめよ"> <span class="header-section-number">4.1</span> (4.19)式を確かめよ</a></li>
+  <li><a href="#自由度mがm-rightarrow-inftyのときt分布の密度関数が正規分布の密度関数に収束することを示せ" id="toc-自由度mがm-rightarrow-inftyのときt分布の密度関数が正規分布の密度関数に収束することを示せ" class="nav-link" data-scroll-target="#自由度mがm-rightarrow-inftyのときt分布の密度関数が正規分布の密度関数に収束することを示せ"> <span class="header-section-number">4.2</span> 自由度<span class="math inline">\(m\)</span>が<span class="math inline">\(m \rightarrow \infty\)</span>のとき，<span class="math inline">\(t\)</span>分布の密度関数が正規分布の密度関数に収束することを示せ．</a></li>
+  <li><a href="#yが自由度lmのf分布に従うとするm-rightarrow-inftyのときlyの密度関数が自由度lのカイ二乗分布の密度関数に収束することを示せ" id="toc-yが自由度lmのf分布に従うとするm-rightarrow-inftyのときlyの密度関数が自由度lのカイ二乗分布の密度関数に収束することを示せ" class="nav-link" data-scroll-target="#yが自由度lmのf分布に従うとするm-rightarrow-inftyのときlyの密度関数が自由度lのカイ二乗分布の密度関数に収束することを示せ"> <span class="header-section-number">4.3</span> <span class="math inline">\(Y\)</span>が自由度<span class="math inline">\((l,m)\)</span>の<span class="math inline">\(F\)</span>分布に従うとする．<span class="math inline">\(m \rightarrow \infty\)</span>のとき，<span class="math inline">\(lY\)</span>の密度関数が自由度<span class="math inline">\(l\)</span>のカイ二乗分布の密度関数に収束することを示せ．</a></li>
+  <li><a href="#式を示せ" id="toc-式を示せ" class="nav-link" data-scroll-target="#式を示せ"> <span class="header-section-number">4.4</span> (4.25)式を示せ．</a></li>
+  <li><a href="#式を示せ-1" id="toc-式を示せ-1" class="nav-link" data-scroll-target="#式を示せ-1"> <span class="header-section-number">4.5</span> (4.26)式を示せ．</a></li>
+  <li><a href="#式を示せ-2" id="toc-式を示せ-2" class="nav-link" data-scroll-target="#式を示せ-2"> <span class="header-section-number">4.6</span> (4.51)式を示せ．</a></li>
+  <li><a href="#コーシー分布が有限の期待値と分散を持たないことを示せ" id="toc-コーシー分布が有限の期待値と分散を持たないことを示せ" class="nav-link" data-scroll-target="#コーシー分布が有限の期待値と分散を持たないことを示せ"> <span class="header-section-number">4.7</span> コーシー分布が有限の期待値と分散を持たないことを示せ．</a></li>
+  <li><a href="#非復元無作為抽出についてcovx_1x_2---sigma2n-1を示せ" id="toc-非復元無作為抽出についてcovx_1x_2---sigma2n-1を示せ" class="nav-link" data-scroll-target="#非復元無作為抽出についてcovx_1x_2---sigma2n-1を示せ"> <span class="header-section-number">4.8</span> 非復元無作為抽出について<span class="math inline">\(Cov[X_1,X_2]= - \sigma^2/(N-1)\)</span>を示せ．</a></li>
+  <li><a href="#helmart変換に関する次の議論について答えよ" id="toc-helmart変換に関する次の議論について答えよ" class="nav-link" data-scroll-target="#helmart変換に関する次の議論について答えよ"> <span class="header-section-number">4.9</span> Helmart変換に関する次の議論について答えよ．</a></li>
+  <li><a href="#リサンプリングに関する次の問いについて答えよ" id="toc-リサンプリングに関する次の問いについて答えよ" class="nav-link" data-scroll-target="#リサンプリングに関する次の問いについて答えよ"> <span class="header-section-number">4.10</span> リサンプリングに関する次の問いについて答えよ．</a></li>
+  <li><a href="#一様分布u-sim-u01からの順序統計量の平均と分散共分散を求めよ" id="toc-一様分布u-sim-u01からの順序統計量の平均と分散共分散を求めよ" class="nav-link" data-scroll-target="#一様分布u-sim-u01からの順序統計量の平均と分散共分散を求めよ"> <span class="header-section-number">4.11</span> 一様分布<span class="math inline">\(U \sim U[0,1]\)</span>からの順序統計量の平均と分散，共分散を求めよ．</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">統計量と標本分布</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<ul>
+<li>2022/07/20,27 13:00~</li>
+<li>発表担当：</li>
+<li>演習問題担当：
+<ul>
+<li>4.1~4.4 kirihara</li>
+<li>4.5~4.14 sano</li>
+</ul></li>
+</ul>
+<p>発表スライド</p>
+<section id="式を確かめよ" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="式を確かめよ"><span class="header-section-number">4.1</span> (4.19)式を確かめよ</h2>
+</section>
+<section id="自由度mがm-rightarrow-inftyのときt分布の密度関数が正規分布の密度関数に収束することを示せ" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="自由度mがm-rightarrow-inftyのときt分布の密度関数が正規分布の密度関数に収束することを示せ"><span class="header-section-number">4.2</span> 自由度<span class="math inline">\(m\)</span>が<span class="math inline">\(m \rightarrow \infty\)</span>のとき，<span class="math inline">\(t\)</span>分布の密度関数が正規分布の密度関数に収束することを示せ．</h2>
+<p><span class="math display">\[
+f_T(t)=\frac{\Gamma\left(\frac{m+1}{2}\right)}{\sqrt{\pi m} \Gamma\left(\frac{m}{2}\right)}\left(1+\frac{t^{2}}{m}\right)^{-(m+1) / 2}
+\]</span></p>
+<p><span class="math inline">\(m=2k\)</span>として，</p>
+<p><span class="math display">\[
+\begin{aligned}
+f_T(t)&amp;=\frac{\Gamma(k+1/2)}{\sqrt{2k \pi} \Gamma\left(k\right)}\left(1+\frac{t^{2}}{2k}\right)^{-(2k+1) / 2}\\
+&amp;= \frac{1}{\sqrt{2\pi}} \frac{\Gamma(k+1/2)}{\sqrt{k} \Gamma\left(k\right)} \left(1+\frac{t^{2}}{2k}\right)^{-(2k+1) / 2}
+\end{aligned}
+\]</span></p>
+<p>関数の積の極限は極限の積と等しくなることを利用する．</p>
+<p><span class="math display">\[
+\begin{aligned}
+\lim_{m \rightarrow \infty}f_T(t)
+&amp;= \frac{1}{\sqrt{2\pi}} \lim_{k \rightarrow \infty}\frac{\Gamma(k+1/2)}{\sqrt{k} \Gamma\left(k\right)} \lim_{k \rightarrow \infty}\left(1+\frac{t^{2}}{2k}\right)^{-(2k+1) / 2}
+\end{aligned}
+\]</span></p>
+<p>スターリングの公式<span class="math inline">\(\Gamma(a+1) \rightarrow \sqrt{2 \pi} a^{a+1/2}e^{-a}\)</span>を用いて展開していく．</p>
+<p><span class="math display">\[
+\begin{aligned}
+\lim_{k \rightarrow \infty}\frac{\Gamma(k+1/2)}{\sqrt{k} \Gamma\left(k\right)}
+&amp;= \lim_{k \rightarrow \infty} \frac{\sqrt{2\pi}(k-1/2)^ke^{-(k-1/2)}}{\sqrt{k}\sqrt{2\pi}k^{k-1/2}e^{-k}}\\
+&amp;=\lim_{k \rightarrow \infty} \frac{(k-1/2)^k}{\sqrt{k}k^{k-1/2}e^{-1/2}}\\
+&amp;= \lim_{k \rightarrow \infty} e^{1/2}(1-1/2k)^k\\
+&amp;= e^{1/2}\lim_{k \rightarrow \infty}((1-1/2k)^{2k})^{1/2}\\
+&amp;=e^{1/2}e^{-1/2}\\
+&amp;=1
+\end{aligned}
+\]</span></p>
+<p><span class="math display">\[
+\begin{aligned}
+\lim_{k \rightarrow \infty}\left(1+\frac{t^{2}}{2k}\right)^{-(2k+1) / 2}
+&amp;= \lim_{k \rightarrow \infty}\left(1+\frac{t^{2}}{2k}\right)^{-k} \left(1+\frac{t^{2}}{2k}\right)^{-1/2}\\
+&amp;= \lim_{k \rightarrow \infty}\left(\left(1+\frac{t^{2}}{2k}\right)^{2k/t^2}\right)^{-t^2/2} \left(1+\frac{t^{2}}{2k}\right)^{-1/2}\\
+&amp;= e^{-t^2/2} \cdot 1\\
+&amp;=e^{-t^2/2}
+\end{aligned}
+\]</span></p>
+<p>以上の計算によって，標準正規分布に収束することが示された．</p>
+<p><span class="math display">\[
+\begin{aligned}
+\lim_{m \rightarrow \infty}f_T(t)
+&amp;= \frac{1}{\sqrt{2\pi}} \lim_{k \rightarrow \infty}\frac{\Gamma(k+1/2)}{\sqrt{k} \Gamma\left(k\right)} \lim_{k \rightarrow \infty}\left(1+\frac{t^{2}}{2k}\right)^{-(2k+1) / 2}\\
+&amp;= \frac{1}{\sqrt{2\pi}} \cdot 1 \cdot e^{-t^2/2}\\
+&amp;= \frac{1}{\sqrt{2\pi}} e^{-t^2/2}
+\end{aligned}
+\]</span></p>
+</section>
+<section id="yが自由度lmのf分布に従うとするm-rightarrow-inftyのときlyの密度関数が自由度lのカイ二乗分布の密度関数に収束することを示せ" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="yが自由度lmのf分布に従うとするm-rightarrow-inftyのときlyの密度関数が自由度lのカイ二乗分布の密度関数に収束することを示せ"><span class="header-section-number">4.3</span> <span class="math inline">\(Y\)</span>が自由度<span class="math inline">\((l,m)\)</span>の<span class="math inline">\(F\)</span>分布に従うとする．<span class="math inline">\(m \rightarrow \infty\)</span>のとき，<span class="math inline">\(lY\)</span>の密度関数が自由度<span class="math inline">\(l\)</span>のカイ二乗分布の密度関数に収束することを示せ．</h2>
+<p><span class="math inline">\(Y=lY\)</span>として変数変換する．</p>
+<p><span class="math display">\[
+\begin{aligned}
+f &amp;= \frac{l^{l/2} m ^{m/2}}{B(l/2,m/2)}\cdot\frac{(y/l)^{l/2-1}}{(m+y)^{(l+m)/2}}\cdot l\\
+&amp;= \frac{\Gamma((l+m)/2)}{\Gamma(l/2)\Gamma(m/2)} \cdot \frac{m^{m/2} y^{l/2-1}}{(m+y)^{(l+m)/2}}\\
+&amp;= \frac{y^{l/2-1}}{\Gamma(l/2)}\cdot\left(\frac{m}{m+y} \right)^{m/2} \cdot \frac{\Gamma((l+m)/2)}{\Gamma(m/2) (m+y)^{l/2}}
+\end{aligned}
+\]</span></p>
+<p>全問と同様に関数の積の極限は極限の積と等しくなることを利用する．</p>
+<p><span class="math display">\[
+\begin{aligned}
+\lim_{m \rightarrow \infty} f
+&amp;= \frac{y^{l/2-1}}{\Gamma(l/2)} \cdot \lim_{m \rightarrow \infty} \left(\frac{m}{m+y} \right)^{m/2} \cdot \lim_{m \rightarrow \infty}\frac{\Gamma((l+m)/2)}{\Gamma(m/2) (m+y)^{l/2}}
+\end{aligned}
+\]</span></p>
+<p><span class="math display">\[
+\begin{aligned}
+\lim_{m \rightarrow \infty} \left(\frac{m}{m+y} \right)^{m/2}
+&amp;= \lim_{m \rightarrow \infty} \left(1- \frac{y}{m+y} \right)^{m/2} \\
+&amp;= \lim_{m \rightarrow \infty} \left( \left(1- \frac{y}{m+y} \right)^{(m+y)/y} \right)^{y/(m+y) \cdot m/2} \\
+&amp;= e^{-l/2}
+\end{aligned}
+\]</span></p>
+<p><span class="math display">\[
+\begin{aligned}
+\frac{\Gamma((l+m)/2)}{\Gamma(m/2) (m+y)^{l/2}}
+&amp;= \frac{\sqrt{2\pi}((l+m)/2)^{(l+m-1)/2}e^{-(l+m)/2}}{\sqrt{2\pi}(m/2)^{(m-1)/2}e^{-m/2} (m+y)^{l/2}}\\
+&amp;= \frac{((l+m)/2)^{(l+m-1)/2}e^{-l/2}}{(m/2)^{(m-1)/2}(m+y)^{l/2}}\\
+&amp;= \frac{((l+m)/2)^{(m-1)/2} ((l+m)/2)^{l/2} e^{-l/2}}{(m/2)^{(m-1)/2}(m+y)^{l/2}}\\
+&amp;= \frac{\left(1+ \frac{l}{m} \right)^{m/2} \cdot  \left(1+ \frac{l}{m} \right)^{-1/2} \cdot ((l+m)/2)^{l/2} e^{-l/2} }{(m+y)^{l/2}}\\
+&amp;= \left( \left(1+ \frac{l}{m} \right)^{m/l} \right)^{l/2} \cdot \left(1+ \frac{l}{m} \right)^{-1/2}  \cdot \left( \frac{l+m}{2m+2y} \right)^{l/2} \cdot e^{-l/2}\\
+\end{aligned}
+\]</span></p>
+<p>極限をとると</p>
+<p><span class="math display">\[
+e^{l/2} \cdot 1 \cdot \left( \frac{1}{2} \right)^{l/2} \cdot e^{-l/2} = \left( \frac{1}{2} \right)^{l/2}
+\]</span></p>
+<p>したがってカイ二乗分布の密度関数に収束することが示された．</p>
+</section>
+<section id="式を示せ" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="式を示せ"><span class="header-section-number">4.4</span> (4.25)式を示せ．</h2>
+<p>(4.14)式は今回の問題設定でも成立する．</p>
+<p><span class="math display">\[
+\sum_{i=1}^{m}(X_i-\bar X)^2 = \sum_{i=2}^{m} Y_i^2
+\]</span></p>
+<p><span class="math inline">\(E[Y] = E[GX] = GE[X] = G \mu\)</span>を用いると，非心度は</p>
+<p><span class="math display">\[
+\begin{aligned}
+\lambda = \sum_{i=2}^{m}E[Y_i]^2 &amp;= E[Y]^\top E[Y] - E[Y_1]^2 \\
+&amp;= (G \mu)^\top (G \mu ) - m \bar \mu ^2 \\
+&amp;= \mu^\top \mu - \mu ^2\\
+&amp;= \sum_{i=1}^{m}(\mu_i-\bar \mu)^2
+\end{aligned}
+\]</span></p>
+</section>
+<section id="式を示せ-1" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="式を示せ-1"><span class="header-section-number">4.5</span> (4.26)式を示せ．</h2>
+<p><span class="math display">\[
+\begin{align}
+f(t,v) &amp;= \frac{v^{\frac{m+1}{2}-1} e^{-\frac{v}{2}(1+\frac{t^2}{m})} e^{-\frac{\lambda^2}{2}} e^{t \lambda \sqrt{\frac{v}{m}}}}{2^{\frac{m}{2}} \Gamma \left( \frac{m}{2} \right) \sqrt{2 \pi m}} \\
+&amp;= \frac{v^{\frac{m+1}{2}-1} e^{-\frac{v}{2}(1+\frac{t^2}{m})} e^{-\frac{\lambda^2}{2}}}{2^{\frac{m}{2}} \Gamma \left( \frac{m}{2} \right) \sqrt{2 \pi m}} \times \sum_{j=0}^{\infty} \frac{t^j \lambda^j v^{\frac{j}{2}}}{j! m^{\frac{j}{2}}} \\
+&amp;= \frac{e^{-\frac{\lambda^2}{2}}}{\sqrt{\pi m} \Gamma \left( \frac{m}{2} \right)} \sum_{j=0}^{\infty} \frac{v^{\frac{m+1}{2}-1} e^{-\frac{v}{2}(1+\frac{t^2}{m})} t^j \lambda^j v^{\frac{j}{2}}}{j! m^{\frac{j}{2}} 2^{\frac{m+1}{2}}} \\
+&amp;= \frac{e^{-\frac{\lambda^2}{2}}}{\sqrt{\pi m} \Gamma \left( \frac{m}{2} \right)} \sum_{j=0}^{\infty} v^{\frac{m+1+j}{2}-1} e^{-\frac{v}{2}(1+\frac{t^2}{m})} \times \frac{t^j \lambda^j}{j! m^{\frac{j}{2}} 2^{\frac{m+1}{2}}}\\
+\int_{0}^{\infty} f(t,v) dv &amp;= \int_{0}^{\infty} \frac{e^{-\frac{\lambda^2}{2}}}{\sqrt{\pi m} \Gamma \left( \frac{m}{2} \right)} \sum_{j=0}^{\infty} v^{\frac{m+1+j}{2}-1} e^{-\frac{v}{2}(1+\frac{t^2}{m})} \times \frac{t^j \lambda^j}{j! m^{\frac{j}{2}} 2^{\frac{m+1}{2}}} dv \\
+&amp;= \frac{e^{-\frac{\lambda^2}{2}}}{\sqrt{\pi m} \Gamma \left( \frac{m}{2} \right)} \sum_{j=0}^{\infty} \frac{t^j \lambda^j}{j! m^{\frac{j}{2}} 2^{\frac{m+1}{2}}} \int_{0}^{\infty} v^{\frac{m+1+j}{2}-1} e^{-\frac{v}{2}(1+\frac{t^2}{m})} dv \\
+&amp;= \frac{e^{-\frac{\lambda^2}{2}}}{\sqrt{\pi m} \Gamma \left( \frac{m}{2} \right)} \sum_{j=0}^{\infty} \frac{t^j \lambda^j}{j! m^{\frac{j}{2}} 2^{\frac{m+1}{2}}} \left(\frac{2}{1+\frac{t^2}{m}}\right)^{\frac{m+1+j}{2}} \Gamma \left( \frac{m+1+j}{2} \right) \\
+&amp;= \frac{e^{-\frac{\lambda^2}{2}}}{\sqrt{\pi m} \Gamma \left( \frac{m}{2} \right)} \sum_{j=0}^{\infty} \frac{\Gamma \left( \frac{m+1+j}{2} \right) 2^{\frac{j}{2}} t^j \lambda^j}{\left(\frac{2}{1+\frac{t^2}{m}}\right)^{\frac{m+1+j}{2}} j! m^{\frac{j}{2}}}
+\end{align}
+\]</span></p>
+</section>
+<section id="式を示せ-2" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="式を示せ-2"><span class="header-section-number">4.6</span> (4.51)式を示せ．</h2>
+<p>n個の値がそれぞれの区間に一定数落ちることを考える．</p>
+<ul>
+<li><span class="math inline">\((-\infty,u)\)</span>にi-1個</li>
+<li><span class="math inline">\([u,u+du)\)</span>に1個</li>
+<li><span class="math inline">\((u,v)\)</span>にj-i+1個</li>
+<li><span class="math inline">\([v+dv]\)</span>に1個</li>
+<li><span class="math inline">\((v,\infty)\)</span>にn-j個</li>
+</ul>
+<p>この3項分布を考えると，</p>
+<p><span class="math display">\[
+\begin{eqnarray}
+&amp;&amp; f_{X_{(i)}, X_{(j)}}(u, v)du dv \\
+&amp;=&amp; \dfrac{n!}{(i-1)!(j-i-1)!(n-j)!} \\
+&amp;&amp; \times F_X(u)^{i-1}f_X(u)du\left[F_X(v)-F_X(u)\right]^{j-i-1} f_X(v)dv\left[1-F_X(v)\right]^{n-j}
+\end{eqnarray}
+\]</span></p>
+</section>
+<section id="コーシー分布が有限の期待値と分散を持たないことを示せ" class="level2" data-number="4.7">
+<h2 data-number="4.7" class="anchored" data-anchor-id="コーシー分布が有限の期待値と分散を持たないことを示せ"><span class="header-section-number">4.7</span> コーシー分布が有限の期待値と分散を持たないことを示せ．</h2>
+<p>期待値が存在しないことを示すために，特定の区間で発散することを示す．．</p>
+<p><span class="math display">\[
+\begin{align}
+\int_{1}^{\infty} tf(t) dt &amp;= \int_{1}^{\infty} t \times \frac{1}{\pi (1+t^2)} dt \\
+&amp;= \frac{1}{\pi} \int_{1}^{\infty} \frac{t}{(1+t^2)} dt \\
+&amp;= \frac{1}{\pi} \left[ \frac{1}{2}\log(1+t^2) \right]_1^{\infty} \\
+&amp;= \infty
+\end{align}
+\]</span></p>
+<p>次に<span class="math inline">\(U \sim U[0,1]\)</span>のとき，<span class="math inline">\(X = \tan(\pi(U-\frac{1}{2}))\)</span>がコーシー分布に従うことを示す．</p>
+<p>逆関数を考える．</p>
+<p><span class="math display">\[
+\begin{align}
+x &amp;= \tan(\pi(u-\frac{1}{2}))\\
+\tan ^{-1}(x) &amp;= \pi(u-\frac{1}{2}) \\
+u &amp;= \frac{1}{2} + \frac{1}{\pi} \tan ^{-1}(x)
+\end{align}
+\]</span></p>
+<p>よって密度関数と累積分布関数は，</p>
+<p><span class="math display">\[
+\begin{align}
+f(x) &amp;= 1 \cdot \frac{du}{dx}\\
+&amp;= \frac{1}{\pi (1+x^2)} \\
+\int_{-\infty}^{x} f(x) &amp;= \frac{1}{\pi} \left[\tan ^{-1}(x) \right]_{-\infty}^{x}\\
+&amp;= \frac{1}{\pi}(\tan ^{-1}(x)-(-\frac{\pi}{2}))\\
+&amp;= \frac{1}{2} + \frac{1}{\pi} \tan ^{-1}(x)
+\end{align}
+\]</span></p>
+</section>
+<section id="非復元無作為抽出についてcovx_1x_2---sigma2n-1を示せ" class="level2" data-number="4.8">
+<h2 data-number="4.8" class="anchored" data-anchor-id="非復元無作為抽出についてcovx_1x_2---sigma2n-1を示せ"><span class="header-section-number">4.8</span> 非復元無作為抽出について<span class="math inline">\(Cov[X_1,X_2]= - \sigma^2/(N-1)\)</span>を示せ．</h2>
+<p>(3.37)式を用いる．</p>
+<p><span class="math display">\[
+\begin{align}
+Var[X_1+ \ldots X_N] &amp;= \sum_{i=1}^N Var[X_i] + 2 \sum_{i&lt;j}Cov[X_i,X_j]\\
+0 &amp;= \sum_{i=1}^N Var[X_1] + 2 \sum_{i&lt;j}Cov[X_1,X_2]\\
+0 &amp;= N Var[X_1] +  N(N-1)Cov[X_1,X_2]\\
+Cov[X_1,X_2] &amp;= - \sigma^2/(N-1)
+\end{align}
+\]</span></p>
+</section>
+<section id="helmart変換に関する次の議論について答えよ" class="level2" data-number="4.9">
+<h2 data-number="4.9" class="anchored" data-anchor-id="helmart変換に関する次の議論について答えよ"><span class="header-section-number">4.9</span> Helmart変換に関する次の議論について答えよ．</h2>
+<p>板書で補足します．</p>
+<ol type="1">
+<li><span class="math inline">\((W_1,\ldots W_n)\)</span>の分散共分散行列を求めよ．</li>
+</ol>
+<p>正規分布の和についての再生性を利用する．</p>
+<p><span class="math display">\[
+\begin{align}
+Var[X+Y] &amp;= Var[X] + Var[Y] + 2Cov[X,Y]\\
+2Cov[X,Y] &amp;= Var[X+Y] - Var[X] - Var[Y]\\
+2Cov[W_i,W_j] &amp;= Var[W_i+W_j] - Var[W_i] - Var[W_j]\\
+2Cov[W_i,W_j] &amp;= \{ 4(n-j+1) + (n-i+1)-(n-j+1) - (n-i+1) - (n-j+1) \}\\
+Cov[W_i,W_j] &amp;= n-j+1
+\end{align}
+\]</span></p>
+<p>(2)<span class="math inline">\(1 \leq k &lt;n\)</span>として，<span class="math inline">\((W_1,\ldots W_k)\)</span>の分散共分散行列の逆行列を求めよ．</p>
+<p>意味不明．</p>
+</section>
+<section id="リサンプリングに関する次の問いについて答えよ" class="level2" data-number="4.10">
+<h2 data-number="4.10" class="anchored" data-anchor-id="リサンプリングに関する次の問いについて答えよ"><span class="header-section-number">4.10</span> リサンプリングに関する次の問いについて答えよ．</h2>
+<p>(1)，(2)は明らかなので省略．</p>
+<p>(3)<span class="math inline">\(S_n = n - (I_1+\cdots + I_n)\)</span>の期待値と分散を求めよ．</p>
+<p><span class="math inline">\(E[I_n]= \left( 1- \frac{1}{n} \right)^n\)</span>より，<span class="math inline">\(E[S_n] = n - \left( 1- \frac{1}{n} \right)^n \cdot n\)</span>である．</p>
+<p>分散は，<span class="math inline">\(Var[S_n] = E[{S_n}^2]-(E[S_n])^2\)</span>を利用する．</p>
+<p><span class="math display">\[
+\begin{align}
+E[{S_n}^2] &amp;= E[n^2-2n(I_1+\cdots+I_n) + (I_1+\cdots+I_n)^2]\\
+&amp;= n^2 -2n \cdot \left( 1- \frac{1}{n} \right)^n \cdot n + E[{I_1}^2+\cdots {I_n}^2] +2 \sum_{i&lt;j}E[I_iI_j]\\
+&amp;= n^2 -2n^2 \cdot \left( 1- \frac{1}{n} \right)^n + \left( 1- \frac{1}{n} \right)^n \cdot n + n(n-1)\left( 1- \frac{2}{n} \right)^n \\
+(E[S_n])^2 &amp;= n^2 -2n^2\left( 1- \frac{1}{n} \right)^n+\left( 1- \frac{1}{n} \right)^{2n}n^2
+\end{align}
+\]</span></p>
+<p>したがって</p>
+<p><span class="math display">\[
+\begin{align}
+Var[S_n] &amp;= E[{S_n}^2]-(E[S_n])^2\\
+&amp;= n\left( 1- \frac{1}{n} \right)^n+n(n-1)\left( 1- \frac{2}{n} \right)^n-n^2\left( 1- \frac{1}{n} \right)^{2n}
+\end{align}
+\]</span></p>
+<p>(4)<span class="math inline">\(n \rightarrow \infty\)</span>のときの<span class="math inline">\(S_n/n\)</span>確率収束先を求めよ．</p>
+<p><span class="math display">\[
+\begin{align}
+\lim_{n \rightarrow \infty} E[S_n/n] &amp;= \lim_{n \rightarrow \infty}\left(1 - \left( 1- \frac{1}{n} \right)^n\right) \\
+&amp;= 1 - e^{-1}\\
+\lim_{n \rightarrow \infty} Var[S_n/n] &amp;= \lim_{n \rightarrow \infty} Var[S_n]/n^2\\
+&amp;=\lim_{n \rightarrow \infty} \left( \frac{1}{n}\left( 1- \frac{1}{n} \right)^n+ \frac{n-1}{n}\left( 1- \frac{2}{n} \right)^n-\left( 1- \frac{1}{n} \right)^{2n} \right)\\
+&amp;= 0 + e^{-2} - e^{-2}\\
+&amp;= 0
+\end{align}
+\]</span></p>
+</section>
+<section id="一様分布u-sim-u01からの順序統計量の平均と分散共分散を求めよ" class="level2" data-number="4.11">
+<h2 data-number="4.11" class="anchored" data-anchor-id="一様分布u-sim-u01からの順序統計量の平均と分散共分散を求めよ"><span class="header-section-number">4.11</span> 一様分布<span class="math inline">\(U \sim U[0,1]\)</span>からの順序統計量の平均と分散，共分散を求めよ．</h2>
+<p>(4.50)式より，ベータ分布に従うことがわかる．<span class="math inline">\(a=i, b=n-i+1\)</span>と考えて，ベータ分布の期待値，分散に代入して，</p>
+<p><span class="math display">\[
+\begin{align}
+E[X] &amp;= \frac{a}{a+b} \\
+&amp;= \frac{i}{i+n-i+1} \\
+&amp;= \frac{i}{n+1} \\
+Var[X] &amp;= \frac{ab}{(a+b)^2(a+b+1)} \\
+&amp;= \frac{i(n-i+1)}{(i+n-i+1)^2(i+n-i+1+1)} \\
+&amp;= \frac{i(n-i+1)}{(n+1)^2(n+2)}
+\end{align}
+\]</span></p>
+<p>次に分散共分散行列について，</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+    var links = window.document.querySelectorAll('a:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+          // target, if specified
+          link.setAttribute("target", "_blank");
+      }
+    }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./multi-dim-random-variable.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">多次元の確率変数</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./references.html" class="pagination-link">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+      <div class="nav-footer-center">Copyright 2022, Kazuyuki Sano</div>
+  </div>
+</footer>
+
+
+
+</body></html>

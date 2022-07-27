@@ -130,6 +130,111 @@
     "href": "multi-dim-random-variable.html#主要な確率分布",
     "title": "3  多次元の確率変数",
     "section": "3.4 主要な確率分布",
-    "text": "3.4 主要な確率分布"
+    "text": "3.4 主要な確率分布\n\nlibrary(tidyverse)\n\n── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──\n\n\n✔ ggplot2 3.3.6     ✔ purrr   0.3.4\n✔ tibble  3.1.7     ✔ dplyr   1.0.9\n✔ tidyr   1.2.0     ✔ stringr 1.4.0\n✔ readr   2.1.2     ✔ forcats 0.5.1\n\n\n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\n\n\n\ndf <- tibble(\n  var1_1 = (1:10),\n  var10_1 = letters[1:10],\n  var11_1 = letters[11:20],\n  var2_1 = LETTERS[1:10],\n  var10_2 = runif(10, min = 10, max = 15)\n)\n\ndf %>% \n  mutate(id = row_number()) %>% \n  pivot_longer(!id,\n               names_to = c(\"first_num\",\"second_num\"),\n               names_prefix = \"var\",\n               names_sep = \"_\",\n               names_transform = as.integer,\n               values_transform=as.list)  %>% \n  arrange(first_num,second_num) %>% \n  bind_rows(.,mutate(.,second_num=5*second_num,value = NA)) %>% \n  pivot_wider(names_from = c(first_num,second_num),\n              names_glue = \"var{first_num}_{second_num}\") %>% \n  unnest()\n\nWarning: `cols` is now required when using unnest().\nPlease use `cols = c(var1_1, var2_1, var10_1, var10_2, var11_1, var1_5, var2_5, \n    var10_5, var10_10, var11_5)`\n\n\n# A tibble: 10 × 11\n      id var1_1 var2_1 var10_1 var10_2 var11_1 var1_5 var2_5 var10_5 var10_10\n   <int>  <int> <chr>  <chr>     <dbl> <chr>   <lgl>  <lgl>  <lgl>   <lgl>   \n 1     1      1 A      a          10.2 k       NA     NA     NA      NA      \n 2     2      2 B      b          11.6 l       NA     NA     NA      NA      \n 3     3      3 C      c          12.3 m       NA     NA     NA      NA      \n 4     4      4 D      d          11.8 n       NA     NA     NA      NA      \n 5     5      5 E      e          13.6 o       NA     NA     NA      NA      \n 6     6      6 F      f          13.3 p       NA     NA     NA      NA      \n 7     7      7 G      g          14.5 q       NA     NA     NA      NA      \n 8     8      8 H      h          14.7 r       NA     NA     NA      NA      \n 9     9      9 I      i          10.5 s       NA     NA     NA      NA      \n10    10     10 J      j          12.0 t       NA     NA     NA      NA      \n# … with 1 more variable: var11_5 <lgl>\n\n# mutate(c = str_c(a,b,sep=\"_\")) %>% \n  # mutate(d = str_c(a,b*5,sep=\"_\")) %>% \n  # select(!c(\"a\",\"b\")) %>% \n  # pivot_longer(!c(\"id\",\"value\"),\n  #              names_to = \"name\",\n  #              values_to = \"col_name\") %>% \n  # pivot_wider(id,names_from = col_name)"
+  },
+  {
+    "objectID": "statistic-and-sampling-distribution.html",
+    "href": "statistic-and-sampling-distribution.html",
+    "title": "4  統計量と標本分布",
+    "section": "",
+    "text": "2022/07/20,27 13:00~\n発表担当：\n演習問題担当：\n\n4.1~4.4 kirihara\n4.5~4.14 sano\n発表スライド"
+  },
+  {
+    "objectID": "statistic-and-sampling-distribution.html#式を確かめよ",
+    "href": "statistic-and-sampling-distribution.html#式を確かめよ",
+    "title": "4  統計量と標本分布",
+    "section": "4.1 (4.19)式を確かめよ",
+    "text": "4.1 (4.19)式を確かめよ"
+  },
+  {
+    "objectID": "statistic-and-sampling-distribution.html#自由度mがm-leftarrow-inftyのとき",
+    "href": "statistic-and-sampling-distribution.html#自由度mがm-leftarrow-inftyのとき",
+    "title": "4  統計量と標本分布",
+    "section": "4.2 自由度\\(m\\)が\\(m \\leftarrow \\infty\\)のとき，",
+    "text": "4.2 自由度\\(m\\)が\\(m \\leftarrow \\infty\\)のとき，"
+  },
+  {
+    "objectID": "statistic-and-sampling-distribution.html#自由度mがm-rightarrow-inftyのときt分布の密度関数が正規分布の密度関数に収束することを示せ",
+    "href": "statistic-and-sampling-distribution.html#自由度mがm-rightarrow-inftyのときt分布の密度関数が正規分布の密度関数に収束することを示せ",
+    "title": "4  統計量と標本分布",
+    "section": "4.2 自由度\\(m\\)が\\(m \\rightarrow \\infty\\)のとき，\\(t\\)分布の密度関数が正規分布の密度関数に収束することを示せ．",
+    "text": "4.2 自由度\\(m\\)が\\(m \\rightarrow \\infty\\)のとき，\\(t\\)分布の密度関数が正規分布の密度関数に収束することを示せ．\n\\[\nf_T(t)=\\frac{\\Gamma\\left(\\frac{m+1}{2}\\right)}{\\sqrt{\\pi m} \\Gamma\\left(\\frac{m}{2}\\right)}\\left(1+\\frac{t^{2}}{m}\\right)^{-(m+1) / 2}\n\\]\n\\(m=2k\\)として，\n\\[\n\\begin{aligned}\nf_T(t)&=\\frac{\\Gamma(k+1/2)}{\\sqrt{2k \\pi} \\Gamma\\left(k\\right)}\\left(1+\\frac{t^{2}}{2k}\\right)^{-(2k+1) / 2}\\\\\n&= \\frac{1}{\\sqrt{2\\pi}} \\frac{\\Gamma(k+1/2)}{\\sqrt{k} \\Gamma\\left(k\\right)} \\left(1+\\frac{t^{2}}{2k}\\right)^{-(2k+1) / 2}\n\\end{aligned}\n\\]\n関数の積の極限は極限の積と等しくなることを利用する．\n\\[\n\\begin{aligned}\n\\lim_{m \\rightarrow \\infty}f_T(t)\n&= \\frac{1}{\\sqrt{2\\pi}} \\lim_{k \\rightarrow \\infty}\\frac{\\Gamma(k+1/2)}{\\sqrt{k} \\Gamma\\left(k\\right)} \\lim_{k \\rightarrow \\infty}\\left(1+\\frac{t^{2}}{2k}\\right)^{-(2k+1) / 2}\n\\end{aligned}\n\\]\nスターリングの公式\\(\\Gamma(a+1) \\rightarrow \\sqrt{2 \\pi} a^{a+1/2}e^{-a}\\)を用いて展開していく．\n\\[\n\\begin{aligned}\n\\lim_{k \\rightarrow \\infty}\\frac{\\Gamma(k+1/2)}{\\sqrt{k} \\Gamma\\left(k\\right)}\n&= \\lim_{k \\rightarrow \\infty} \\frac{\\sqrt{2\\pi}(k-1/2)^ke^{-(k-1/2)}}{\\sqrt{k}\\sqrt{2\\pi}k^{k-1/2}e^{-k}}\\\\\n&=\\lim_{k \\rightarrow \\infty} \\frac{(k-1/2)^k}{\\sqrt{k}k^{k-1/2}e^{-1/2}}\\\\\n&= \\lim_{k \\rightarrow \\infty} e^{1/2}(1-1/2k)^k\\\\\n&= e^{1/2}\\lim_{k \\rightarrow \\infty}((1-1/2k)^{2k})^{1/2}\\\\\n&=e^{1/2}e^{-1/2}\\\\\n&=1\n\\end{aligned}\n\\]\n\\[\n\\begin{aligned}\n\\lim_{k \\rightarrow \\infty}\\left(1+\\frac{t^{2}}{2k}\\right)^{-(2k+1) / 2}\n&= \\lim_{k \\rightarrow \\infty}\\left(1+\\frac{t^{2}}{2k}\\right)^{-k} \\left(1+\\frac{t^{2}}{2k}\\right)^{-1/2}\\\\\n&= \\lim_{k \\rightarrow \\infty}\\left(\\left(1+\\frac{t^{2}}{2k}\\right)^{2k/t^2}\\right)^{-t^2/2} \\left(1+\\frac{t^{2}}{2k}\\right)^{-1/2}\\\\\n&= e^{-t^2/2} \\cdot 1\\\\\n&=e^{-t^2/2}\n\\end{aligned}\n\\]\n以上の計算によって，標準正規分布に収束することが示された．\n\\[\n\\begin{aligned}\n\\lim_{m \\rightarrow \\infty}f_T(t)\n&= \\frac{1}{\\sqrt{2\\pi}} \\lim_{k \\rightarrow \\infty}\\frac{\\Gamma(k+1/2)}{\\sqrt{k} \\Gamma\\left(k\\right)} \\lim_{k \\rightarrow \\infty}\\left(1+\\frac{t^{2}}{2k}\\right)^{-(2k+1) / 2}\\\\\n&= \\frac{1}{\\sqrt{2\\pi}} \\cdot 1 \\cdot e^{-t^2/2}\\\\\n&= \\frac{1}{\\sqrt{2\\pi}} e^{-t^2/2}\n\\end{aligned}\n\\]"
+  },
+  {
+    "objectID": "statistic-and-sampling-distribution.html#yが自由度lmのf分布に従うとするm-rightarrow-inftyのときlyの密度関数が自由度lのカイ二乗分布の密度関数に収束することを示せ",
+    "href": "statistic-and-sampling-distribution.html#yが自由度lmのf分布に従うとするm-rightarrow-inftyのときlyの密度関数が自由度lのカイ二乗分布の密度関数に収束することを示せ",
+    "title": "4  統計量と標本分布",
+    "section": "4.3 \\(Y\\)が自由度\\((l,m)\\)の\\(F\\)分布に従うとする．\\(m \\rightarrow \\infty\\)のとき，\\(lY\\)の密度関数が自由度\\(l\\)のカイ二乗分布の密度関数に収束することを示せ．",
+    "text": "4.3 \\(Y\\)が自由度\\((l,m)\\)の\\(F\\)分布に従うとする．\\(m \\rightarrow \\infty\\)のとき，\\(lY\\)の密度関数が自由度\\(l\\)のカイ二乗分布の密度関数に収束することを示せ．\n\\(Y=lY\\)として変数変換する．\n\\[\n\\begin{aligned}\nf &= \\frac{l^{l/2} m ^{m/2}}{B(l/2,m/2)}\\cdot\\frac{(y/l)^{l/2-1}}{(m+y)^{(l+m)/2}}\\cdot l\\\\\n&= \\frac{\\Gamma((l+m)/2)}{\\Gamma(l/2)\\Gamma(m/2)} \\cdot \\frac{m^{m/2} y^{l/2-1}}{(m+y)^{(l+m)/2}}\\\\\n&= \\frac{y^{l/2-1}}{\\Gamma(l/2)}\\cdot\\left(\\frac{m}{m+y} \\right)^{m/2} \\cdot \\frac{\\Gamma((l+m)/2)}{\\Gamma(m/2) (m+y)^{l/2}}\n\\end{aligned}\n\\]\n全問と同様に関数の積の極限は極限の積と等しくなることを利用する．\n\\[\n\\begin{aligned}\n\\lim_{m \\rightarrow \\infty} f\n&= \\frac{y^{l/2-1}}{\\Gamma(l/2)} \\cdot \\lim_{m \\rightarrow \\infty} \\left(\\frac{m}{m+y} \\right)^{m/2} \\cdot \\lim_{m \\rightarrow \\infty}\\frac{\\Gamma((l+m)/2)}{\\Gamma(m/2) (m+y)^{l/2}}\n\\end{aligned}\n\\]\n\\[\n\\begin{aligned}\n\\lim_{m \\rightarrow \\infty} \\left(\\frac{m}{m+y} \\right)^{m/2}\n&= \\lim_{m \\rightarrow \\infty} \\left(1- \\frac{y}{m+y} \\right)^{m/2} \\\\\n&= \\lim_{m \\rightarrow \\infty} \\left( \\left(1- \\frac{y}{m+y} \\right)^{(m+y)/y} \\right)^{y/(m+y) \\cdot m/2} \\\\\n&= e^{-l/2}\n\\end{aligned}\n\\]\n\\[\n\\begin{aligned}\n\\frac{\\Gamma((l+m)/2)}{\\Gamma(m/2) (m+y)^{l/2}}\n&= \\frac{\\sqrt{2\\pi}((l+m)/2)^{(l+m-1)/2}e^{-(l+m)/2}}{\\sqrt{2\\pi}(m/2)^{(m-1)/2}e^{-m/2} (m+y)^{l/2}}\\\\\n&= \\frac{((l+m)/2)^{(l+m-1)/2}e^{-l/2}}{(m/2)^{(m-1)/2}(m+y)^{l/2}}\\\\\n&= \\frac{((l+m)/2)^{(m-1)/2} ((l+m)/2)^{l/2} e^{-l/2}}{(m/2)^{(m-1)/2}(m+y)^{l/2}}\\\\\n&= \\frac{\\left(1+ \\frac{l}{m} \\right)^{m/2} \\cdot  \\left(1+ \\frac{l}{m} \\right)^{-1/2} \\cdot ((l+m)/2)^{l/2} e^{-l/2} }{(m+y)^{l/2}}\\\\\n&= \\left( \\left(1+ \\frac{l}{m} \\right)^{m/l} \\right)^{l/2} \\cdot \\left(1+ \\frac{l}{m} \\right)^{-1/2}  \\cdot \\left( \\frac{l+m}{2m+2y} \\right)^{l/2} \\cdot e^{-l/2}\\\\\n\\end{aligned}\n\\]\n極限をとると\n\\[\ne^{l/2} \\cdot 1 \\cdot \\left( \\frac{1}{2} \\right)^{l/2} \\cdot e^{-l/2} = \\left( \\frac{1}{2} \\right)^{l/2}\n\\]\nしたがってカイ二乗分布の密度関数に収束することが示された．"
+  },
+  {
+    "objectID": "statistic-and-sampling-distribution.html#式を示せ",
+    "href": "statistic-and-sampling-distribution.html#式を示せ",
+    "title": "4  統計量と標本分布",
+    "section": "4.4 (4.25)式を示せ．",
+    "text": "4.4 (4.25)式を示せ．\n(4.14)式は今回の問題設定でも成立する．\n\\[\n\\sum_{i=1}^{m}(X_i-\\bar X)^2 = \\sum_{i=2}^{m} Y_i^2\n\\]\n\\(E[Y] = E[GX] = GE[X] = G \\mu\\)を用いると，非心度は\n\\[\n\\begin{aligned}\n\\lambda = \\sum_{i=2}^{m}E[Y_i]^2 &= E[Y]^\\top E[Y] - E[Y_1]^2 \\\\\n&= (G \\mu)^\\top (G \\mu ) - m \\bar \\mu ^2 \\\\\n&= \\mu^\\top \\mu - \\mu ^2\\\\\n&= \\sum_{i=1}^{m}(\\mu_i-\\bar \\mu)^2\n\\end{aligned}\n\\]"
+  },
+  {
+    "objectID": "statistic-and-sampling-distribution.html#式を示せ-1",
+    "href": "statistic-and-sampling-distribution.html#式を示せ-1",
+    "title": "4  統計量と標本分布",
+    "section": "4.5 (4.26)式を示せ．",
+    "text": "4.5 (4.26)式を示せ．\n\\[\n\\begin{align}\nf(t,v) &= \\frac{v^{\\frac{m+1}{2}-1} e^{-\\frac{v}{2}(1+\\frac{t^2}{m})} e^{-\\frac{\\lambda^2}{2}} e^{t \\lambda \\sqrt{\\frac{v}{m}}}}{2^{\\frac{m}{2}} \\Gamma \\left( \\frac{m}{2} \\right) \\sqrt{2 \\pi m}} \\\\\n&= \\frac{v^{\\frac{m+1}{2}-1} e^{-\\frac{v}{2}(1+\\frac{t^2}{m})} e^{-\\frac{\\lambda^2}{2}}}{2^{\\frac{m}{2}} \\Gamma \\left( \\frac{m}{2} \\right) \\sqrt{2 \\pi m}} \\times \\sum_{j=0}^{\\infty} \\frac{t^j \\lambda^j v^{\\frac{j}{2}}}{j! m^{\\frac{j}{2}}} \\\\\n&= \\frac{e^{-\\frac{\\lambda^2}{2}}}{\\sqrt{\\pi m} \\Gamma \\left( \\frac{m}{2} \\right)} \\sum_{j=0}^{\\infty} \\frac{v^{\\frac{m+1}{2}-1} e^{-\\frac{v}{2}(1+\\frac{t^2}{m})} t^j \\lambda^j v^{\\frac{j}{2}}}{j! m^{\\frac{j}{2}} 2^{\\frac{m+1}{2}}} \\\\\n&= \\frac{e^{-\\frac{\\lambda^2}{2}}}{\\sqrt{\\pi m} \\Gamma \\left( \\frac{m}{2} \\right)} \\sum_{j=0}^{\\infty} v^{\\frac{m+1+j}{2}-1} e^{-\\frac{v}{2}(1+\\frac{t^2}{m})} \\times \\frac{t^j \\lambda^j}{j! m^{\\frac{j}{2}} 2^{\\frac{m+1}{2}}}\\\\\n\\int_{0}^{\\infty} f(t,v) dv &= \\int_{0}^{\\infty} \\frac{e^{-\\frac{\\lambda^2}{2}}}{\\sqrt{\\pi m} \\Gamma \\left( \\frac{m}{2} \\right)} \\sum_{j=0}^{\\infty} v^{\\frac{m+1+j}{2}-1} e^{-\\frac{v}{2}(1+\\frac{t^2}{m})} \\times \\frac{t^j \\lambda^j}{j! m^{\\frac{j}{2}} 2^{\\frac{m+1}{2}}} dv \\\\\n&= \\frac{e^{-\\frac{\\lambda^2}{2}}}{\\sqrt{\\pi m} \\Gamma \\left( \\frac{m}{2} \\right)} \\sum_{j=0}^{\\infty} \\frac{t^j \\lambda^j}{j! m^{\\frac{j}{2}} 2^{\\frac{m+1}{2}}} \\int_{0}^{\\infty} v^{\\frac{m+1+j}{2}-1} e^{-\\frac{v}{2}(1+\\frac{t^2}{m})} dv \\\\\n&= \\frac{e^{-\\frac{\\lambda^2}{2}}}{\\sqrt{\\pi m} \\Gamma \\left( \\frac{m}{2} \\right)} \\sum_{j=0}^{\\infty} \\frac{t^j \\lambda^j}{j! m^{\\frac{j}{2}} 2^{\\frac{m+1}{2}}} \\left(\\frac{2}{1+\\frac{t^2}{m}}\\right)^{\\frac{m+1+j}{2}} \\Gamma \\left( \\frac{m+1+j}{2} \\right) \\\\\n&= \\frac{e^{-\\frac{\\lambda^2}{2}}}{\\sqrt{\\pi m} \\Gamma \\left( \\frac{m}{2} \\right)} \\sum_{j=0}^{\\infty} \\frac{\\Gamma \\left( \\frac{m+1+j}{2} \\right) 2^{\\frac{j}{2}} t^j \\lambda^j}{\\left(\\frac{2}{1+\\frac{t^2}{m}}\\right)^{\\frac{m+1+j}{2}} j! m^{\\frac{j}{2}}}\n\\end{align}\n\\]"
+  },
+  {
+    "objectID": "statistic-and-sampling-distribution.html#式を示せ-2",
+    "href": "statistic-and-sampling-distribution.html#式を示せ-2",
+    "title": "4  統計量と標本分布",
+    "section": "4.6 (4.51)式を示せ．",
+    "text": "4.6 (4.51)式を示せ．\nn個の値がそれぞれの区間に一定数落ちることを考える．\n\n\\((-\\infty,u)\\)にi-1個\n\\([u,u+du)\\)に1個\n\\((u,v)\\)にj-i+1個\n\\([v+dv]\\)に1個\n\\((v,\\infty)\\)にn-j個\n\nこの3項分布を考えると，\n\\[\n\\begin{eqnarray}\n&& f_{X_{(i)}, X_{(j)}}(u, v)du dv \\\\\n&=& \\dfrac{n!}{(i-1)!(j-i-1)!(n-j)!} \\\\\n&& \\times F_X(u)^{i-1}f_X(u)du\\left[F_X(v)-F_X(u)\\right]^{j-i-1} f_X(v)dv\\left[1-F_X(v)\\right]^{n-j}\n\\end{eqnarray}\n\\]"
+  },
+  {
+    "objectID": "statistic-and-sampling-distribution.html#コーシー分布が有限の期待値と分散を持たないことを示せ",
+    "href": "statistic-and-sampling-distribution.html#コーシー分布が有限の期待値と分散を持たないことを示せ",
+    "title": "4  統計量と標本分布",
+    "section": "4.7 コーシー分布が有限の期待値と分散を持たないことを示せ．",
+    "text": "4.7 コーシー分布が有限の期待値と分散を持たないことを示せ．\n期待値が存在しないことを示すために，特定の区間で発散することを示す．．\n\\[\n\\begin{align}\n\\int_{1}^{\\infty} tf(t) dt &= \\int_{1}^{\\infty} t \\times \\frac{1}{\\pi (1+t^2)} dt \\\\\n&= \\frac{1}{\\pi} \\int_{1}^{\\infty} \\frac{t}{(1+t^2)} dt \\\\\n&= \\frac{1}{\\pi} \\left[ \\frac{1}{2}\\log(1+t^2) \\right]_1^{\\infty} \\\\\n&= \\infty\n\\end{align}\n\\]\n次に\\(U \\sim U[0,1]\\)のとき，\\(X = \\tan(\\pi(U-\\frac{1}{2}))\\)がコーシー分布に従うことを示す．\n逆関数を考える．\n\\[\n\\begin{align}\nx &= \\tan(\\pi(u-\\frac{1}{2}))\\\\\n\\tan ^{-1}(x) &= \\pi(u-\\frac{1}{2}) \\\\\nu &= \\frac{1}{2} + \\frac{1}{\\pi} \\tan ^{-1}(x)\n\\end{align}\n\\]\nよって密度関数と累積分布関数は，\n\\[\n\\begin{align}\nf(x) &= 1 \\cdot \\frac{du}{dx}\\\\\n&= \\frac{1}{\\pi (1+x^2)} \\\\\n\\int_{-\\infty}^{x} f(x) &= \\frac{1}{\\pi} \\left[\\tan ^{-1}(x) \\right]_{-\\infty}^{x}\\\\\n&= \\frac{1}{\\pi}(\\tan ^{-1}(x)-(-\\frac{\\pi}{2}))\\\\\n&= \\frac{1}{2} + \\frac{1}{\\pi} \\tan ^{-1}(x)\n\\end{align}\n\\]"
+  },
+  {
+    "objectID": "statistic-and-sampling-distribution.html#非復元無作為抽出について",
+    "href": "statistic-and-sampling-distribution.html#非復元無作為抽出について",
+    "title": "4  統計量と標本分布",
+    "section": "4.8 非復元無作為抽出について",
+    "text": "4.8 非復元無作為抽出について"
+  },
+  {
+    "objectID": "statistic-and-sampling-distribution.html#非復元無作為抽出についてcovx_1x_2---sigma2n-1をせ",
+    "href": "statistic-and-sampling-distribution.html#非復元無作為抽出についてcovx_1x_2---sigma2n-1をせ",
+    "title": "4  統計量と標本分布",
+    "section": "4.8 非復元無作為抽出について\\(Cov[X_1,X_2]= - \\sigma^2/(N-1)\\)をせ．",
+    "text": "4.8 非復元無作為抽出について\\(Cov[X_1,X_2]= - \\sigma^2/(N-1)\\)をせ．"
+  },
+  {
+    "objectID": "statistic-and-sampling-distribution.html#非復元無作為抽出についてcovx_1x_2---sigma2n-1を示せ",
+    "href": "statistic-and-sampling-distribution.html#非復元無作為抽出についてcovx_1x_2---sigma2n-1を示せ",
+    "title": "4  統計量と標本分布",
+    "section": "4.8 非復元無作為抽出について\\(Cov[X_1,X_2]= - \\sigma^2/(N-1)\\)を示せ．",
+    "text": "4.8 非復元無作為抽出について\\(Cov[X_1,X_2]= - \\sigma^2/(N-1)\\)を示せ．\n(3.37)式を用いる．\n\\[\n\\begin{align}\nVar[X_1+ \\ldots X_N] &= \\sum_{i=1}^N Var[X_i] + 2 \\sum_{i<j}Cov[X_i,X_j]\\\\\n0 &= \\sum_{i=1}^N Var[X_1] + 2 \\sum_{i<j}Cov[X_1,X_2]\\\\\n0 &= N Var[X_1] +  N(N-1)Cov[X_1,X_2]\\\\\nCov[X_1,X_2] &= - \\sigma^2/(N-1)\n\\end{align}\n\\]"
+  },
+  {
+    "objectID": "statistic-and-sampling-distribution.html#helmart変換に関する次の議論について答えよ",
+    "href": "statistic-and-sampling-distribution.html#helmart変換に関する次の議論について答えよ",
+    "title": "4  統計量と標本分布",
+    "section": "4.9 Helmart変換に関する次の議論について答えよ．",
+    "text": "4.9 Helmart変換に関する次の議論について答えよ．\n板書で補足します．\n\n\\((W_1,\\ldots W_n)\\)の分散共分散行列を求めよ．\n\n正規分布の和についての再生性を利用する．\n\\[\n\\begin{align}\nVar[X+Y] &= Var[X] + Var[Y] + 2Cov[X,Y]\\\\\n2Cov[X,Y] &= Var[X+Y] - Var[X] - Var[Y]\\\\\n2Cov[W_i,W_j] &= Var[W_i+W_j] - Var[W_i] - Var[W_j]\\\\\n2Cov[W_i,W_j] &= \\{ 4(n-j+1) + (n-i+1)-(n-j+1) - (n-i+1) - (n-j+1) \\}\\\\\nCov[W_i,W_j] &= n-j+1\n\\end{align}\n\\]\n(2)\\(1 \\leq k <n\\)として，\\((W_1,\\ldots W_k)\\)の分散共分散行列の逆行列を求めよ．\n意味不明．"
+  },
+  {
+    "objectID": "statistic-and-sampling-distribution.html#リサンプリングに関する次の問いについて答えよ",
+    "href": "statistic-and-sampling-distribution.html#リサンプリングに関する次の問いについて答えよ",
+    "title": "4  統計量と標本分布",
+    "section": "4.10 リサンプリングに関する次の問いについて答えよ．",
+    "text": "4.10 リサンプリングに関する次の問いについて答えよ．\n(1)，(2)は明らかなので省略．\n(3)\\(S_n = n - (I_1+\\cdots + I_n)\\)の期待値と分散を求めよ．\n\\(E[I_n]= \\left( 1- \\frac{1}{n} \\right)^n\\)より，\\(E[S_n] = n - \\left( 1- \\frac{1}{n} \\right)^n \\cdot n\\)である．\n分散は，\\(Var[S_n] = E[{S_n}^2]-(E[S_n])^2\\)を利用する．\n\\[\n\\begin{align}\nE[{S_n}^2] &= E[n^2-2n(I_1+\\cdots+I_n) + (I_1+\\cdots+I_n)^2]\\\\\n&= n^2 -2n \\cdot \\left( 1- \\frac{1}{n} \\right)^n \\cdot n + E[{I_1}^2+\\cdots {I_n}^2] +2 \\sum_{i<j}E[I_iI_j]\\\\\n&= n^2 -2n^2 \\cdot \\left( 1- \\frac{1}{n} \\right)^n + \\left( 1- \\frac{1}{n} \\right)^n \\cdot n + n(n-1)\\left( 1- \\frac{2}{n} \\right)^n \\\\\n(E[S_n])^2 &= n^2 -2n^2\\left( 1- \\frac{1}{n} \\right)^n+\\left( 1- \\frac{1}{n} \\right)^{2n}n^2\n\\end{align}\n\\]\nしたがって\n\\[\n\\begin{align}\nVar[S_n] &= E[{S_n}^2]-(E[S_n])^2\\\\\n&= n\\left( 1- \\frac{1}{n} \\right)^n+n(n-1)\\left( 1- \\frac{2}{n} \\right)^n-n^2\\left( 1- \\frac{1}{n} \\right)^{2n}\n\\end{align}\n\\]\n(4)\\(n \\rightarrow \\infty\\)のときの\\(S_n/n\\)確率収束先を求めよ．\n\\[\n\\begin{align}\n\\lim_{n \\rightarrow \\infty} E[S_n/n] &= \\lim_{n \\rightarrow \\infty}\\left(1 - \\left( 1- \\frac{1}{n} \\right)^n\\right) \\\\\n&= 1 - e^{-1}\\\\\n\\lim_{n \\rightarrow \\infty} Var[S_n/n] &= \\lim_{n \\rightarrow \\infty} Var[S_n]/n^2\\\\\n&=\\lim_{n \\rightarrow \\infty} \\left( \\frac{1}{n}\\left( 1- \\frac{1}{n} \\right)^n+ \\frac{n-1}{n}\\left( 1- \\frac{2}{n} \\right)^n-\\left( 1- \\frac{1}{n} \\right)^{2n} \\right)\\\\\n&= 0 + e^{-2} - e^{-2}\\\\\n&= 0\n\\end{align}\n\\]"
+  },
+  {
+    "objectID": "statistic-and-sampling-distribution.html#一様分布u-sim-u01からの順序統計量の平均と分散共分散を求めよ",
+    "href": "statistic-and-sampling-distribution.html#一様分布u-sim-u01からの順序統計量の平均と分散共分散を求めよ",
+    "title": "4  統計量と標本分布",
+    "section": "4.11 一様分布\\(U \\sim U[0,1]\\)からの順序統計量の平均と分散，共分散を求めよ．",
+    "text": "4.11 一様分布\\(U \\sim U[0,1]\\)からの順序統計量の平均と分散，共分散を求めよ．\n(4.50)式より，ベータ分布に従うことがわかる．\\(a=i, b=n-i+1\\)と考えて，ベータ分布の期待値，分散に代入して，\n\\[\n\\begin{align}\nE[X] &= \\frac{a}{a+b} \\\\\n&= \\frac{i}{i+n-i+1} \\\\\n&= \\frac{i}{n+1} \\\\\nVar[X] &= \\frac{ab}{(a+b)^2(a+b+1)} \\\\\n&= \\frac{i(n-i+1)}{(i+n-i+1)^2(i+n-i+1+1)} \\\\\n&= \\frac{i(n-i+1)}{(n+1)^2(n+2)}\n\\end{align}\n\\]\n次に分散共分散行列について，"
   }
 ]

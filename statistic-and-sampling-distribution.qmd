@@ -1,0 +1,311 @@
+# 統計量と標本分布
+
+-   2022/07/20,27 13:00~
+-   発表担当：
+-   演習問題担当：
+    -   4.1\~4.4 kirihara
+    -   4.5\~4.14 sano
+
+発表スライド
+
+## (4.19)式を確かめよ
+
+## 自由度$m$が$m \rightarrow \infty$のとき，$t$分布の密度関数が正規分布の密度関数に収束することを示せ．
+
+$$
+f_T(t)=\frac{\Gamma\left(\frac{m+1}{2}\right)}{\sqrt{\pi m} \Gamma\left(\frac{m}{2}\right)}\left(1+\frac{t^{2}}{m}\right)^{-(m+1) / 2}
+$$
+
+$m=2k$として，
+
+$$
+\begin{aligned}
+f_T(t)&=\frac{\Gamma(k+1/2)}{\sqrt{2k \pi} \Gamma\left(k\right)}\left(1+\frac{t^{2}}{2k}\right)^{-(2k+1) / 2}\\
+&= \frac{1}{\sqrt{2\pi}} \frac{\Gamma(k+1/2)}{\sqrt{k} \Gamma\left(k\right)} \left(1+\frac{t^{2}}{2k}\right)^{-(2k+1) / 2}
+\end{aligned}
+$$
+
+関数の積の極限は極限の積と等しくなることを利用する．
+
+$$
+\begin{aligned}
+\lim_{m \rightarrow \infty}f_T(t)
+&= \frac{1}{\sqrt{2\pi}} \lim_{k \rightarrow \infty}\frac{\Gamma(k+1/2)}{\sqrt{k} \Gamma\left(k\right)} \lim_{k \rightarrow \infty}\left(1+\frac{t^{2}}{2k}\right)^{-(2k+1) / 2}
+\end{aligned}
+$$
+スターリングの公式$\Gamma(a+1) \rightarrow \sqrt{2 \pi} a^{a+1/2}e^{-a}$を用いて展開していく．
+
+$$
+\begin{aligned}
+\lim_{k \rightarrow \infty}\frac{\Gamma(k+1/2)}{\sqrt{k} \Gamma\left(k\right)} 
+&= \lim_{k \rightarrow \infty} \frac{\sqrt{2\pi}(k-1/2)^ke^{-(k-1/2)}}{\sqrt{k}\sqrt{2\pi}k^{k-1/2}e^{-k}}\\
+&=\lim_{k \rightarrow \infty} \frac{(k-1/2)^k}{\sqrt{k}k^{k-1/2}e^{-1/2}}\\
+&= \lim_{k \rightarrow \infty} e^{1/2}(1-1/2k)^k\\
+&= e^{1/2}\lim_{k \rightarrow \infty}((1-1/2k)^{2k})^{1/2}\\
+&=e^{1/2}e^{-1/2}\\
+&=1
+\end{aligned}
+$$
+
+$$
+\begin{aligned}
+\lim_{k \rightarrow \infty}\left(1+\frac{t^{2}}{2k}\right)^{-(2k+1) / 2} 
+&= \lim_{k \rightarrow \infty}\left(1+\frac{t^{2}}{2k}\right)^{-k} \left(1+\frac{t^{2}}{2k}\right)^{-1/2}\\
+&= \lim_{k \rightarrow \infty}\left(\left(1+\frac{t^{2}}{2k}\right)^{2k/t^2}\right)^{-t^2/2} \left(1+\frac{t^{2}}{2k}\right)^{-1/2}\\
+&= e^{-t^2/2} \cdot 1\\
+&=e^{-t^2/2}
+\end{aligned}
+$$
+
+以上の計算によって，標準正規分布に収束することが示された．
+
+$$
+\begin{aligned}
+\lim_{m \rightarrow \infty}f_T(t)
+&= \frac{1}{\sqrt{2\pi}} \lim_{k \rightarrow \infty}\frac{\Gamma(k+1/2)}{\sqrt{k} \Gamma\left(k\right)} \lim_{k \rightarrow \infty}\left(1+\frac{t^{2}}{2k}\right)^{-(2k+1) / 2}\\
+&= \frac{1}{\sqrt{2\pi}} \cdot 1 \cdot e^{-t^2/2}\\
+&= \frac{1}{\sqrt{2\pi}} e^{-t^2/2}
+\end{aligned}
+$$
+
+
+
+## $Y$が自由度$(l,m)$の$F$分布に従うとする．$m \rightarrow \infty$のとき，$lY$の密度関数が自由度$l$のカイ二乗分布の密度関数に収束することを示せ．
+ 
+ $Y=lY$として変数変換する．
+ 
+ 
+$$
+\begin{aligned}
+f &= \frac{l^{l/2} m ^{m/2}}{B(l/2,m/2)}\cdot\frac{(y/l)^{l/2-1}}{(m+y)^{(l+m)/2}}\cdot l\\
+&= \frac{\Gamma((l+m)/2)}{\Gamma(l/2)\Gamma(m/2)} \cdot \frac{m^{m/2} y^{l/2-1}}{(m+y)^{(l+m)/2}}\\
+&= \frac{y^{l/2-1}}{\Gamma(l/2)}\cdot\left(\frac{m}{m+y} \right)^{m/2} \cdot \frac{\Gamma((l+m)/2)}{\Gamma(m/2) (m+y)^{l/2}}
+\end{aligned}
+$$
+ 
+ 全問と同様に関数の積の極限は極限の積と等しくなることを利用する．
+ 
+$$
+\begin{aligned}
+\lim_{m \rightarrow \infty} f 
+&= \frac{y^{l/2-1}}{\Gamma(l/2)} \cdot \lim_{m \rightarrow \infty} \left(\frac{m}{m+y} \right)^{m/2} \cdot \lim_{m \rightarrow \infty}\frac{\Gamma((l+m)/2)}{\Gamma(m/2) (m+y)^{l/2}}
+\end{aligned}
+$$
+$$
+\begin{aligned}
+\lim_{m \rightarrow \infty} \left(\frac{m}{m+y} \right)^{m/2} 
+&= \lim_{m \rightarrow \infty} \left(1- \frac{y}{m+y} \right)^{m/2} \\
+&= \lim_{m \rightarrow \infty} \left( \left(1- \frac{y}{m+y} \right)^{(m+y)/y} \right)^{y/(m+y) \cdot m/2} \\
+&= e^{-l/2}
+\end{aligned}
+$$
+ 
+$$
+\begin{aligned}
+\frac{\Gamma((l+m)/2)}{\Gamma(m/2) (m+y)^{l/2}}
+&= \frac{\sqrt{2\pi}((l+m)/2)^{(l+m-1)/2}e^{-(l+m)/2}}{\sqrt{2\pi}(m/2)^{(m-1)/2}e^{-m/2} (m+y)^{l/2}}\\
+&= \frac{((l+m)/2)^{(l+m-1)/2}e^{-l/2}}{(m/2)^{(m-1)/2}(m+y)^{l/2}}\\
+&= \frac{((l+m)/2)^{(m-1)/2} ((l+m)/2)^{l/2} e^{-l/2}}{(m/2)^{(m-1)/2}(m+y)^{l/2}}\\
+&= \frac{\left(1+ \frac{l}{m} \right)^{m/2} \cdot  \left(1+ \frac{l}{m} \right)^{-1/2} \cdot ((l+m)/2)^{l/2} e^{-l/2} }{(m+y)^{l/2}}\\
+&= \left( \left(1+ \frac{l}{m} \right)^{m/l} \right)^{l/2} \cdot \left(1+ \frac{l}{m} \right)^{-1/2}  \cdot \left( \frac{l+m}{2m+2y} \right)^{l/2} \cdot e^{-l/2}\\
+\end{aligned}
+$$
+ 
+ 極限をとると
+ 
+$$
+ e^{l/2} \cdot 1 \cdot \left( \frac{1}{2} \right)^{l/2} \cdot e^{-l/2} = \left( \frac{1}{2} \right)^{l/2}
+$$
+
+したがってカイ二乗分布の密度関数に収束することが示された．
+
+
+## (4.25)式を示せ．
+
+
+(4.14)式は今回の問題設定でも成立する．
+
+$$
+\sum_{i=1}^{m}(X_i-\bar X)^2 = \sum_{i=2}^{m} Y_i^2
+$$
+
+$E[Y] = E[GX] = GE[X] = G \mu$を用いると，非心度は
+
+$$
+\begin{aligned}
+\lambda = \sum_{i=2}^{m}E[Y_i]^2 &= E[Y]^\top E[Y] - E[Y_1]^2 \\
+&= (G \mu)^\top (G \mu ) - m \bar \mu ^2 \\
+&= \mu^\top \mu - \mu ^2\\
+&= \sum_{i=1}^{m}(\mu_i-\bar \mu)^2
+\end{aligned}
+$$
+
+## (4.26)式を示せ．
+
+$$
+\begin{align}
+f(t,v) &= \frac{v^{\frac{m+1}{2}-1} e^{-\frac{v}{2}(1+\frac{t^2}{m})} e^{-\frac{\lambda^2}{2}} e^{t \lambda \sqrt{\frac{v}{m}}}}{2^{\frac{m}{2}} \Gamma \left( \frac{m}{2} \right) \sqrt{2 \pi m}} \\
+&= \frac{v^{\frac{m+1}{2}-1} e^{-\frac{v}{2}(1+\frac{t^2}{m})} e^{-\frac{\lambda^2}{2}}}{2^{\frac{m}{2}} \Gamma \left( \frac{m}{2} \right) \sqrt{2 \pi m}} \times \sum_{j=0}^{\infty} \frac{t^j \lambda^j v^{\frac{j}{2}}}{j! m^{\frac{j}{2}}} \\
+&= \frac{e^{-\frac{\lambda^2}{2}}}{\sqrt{\pi m} \Gamma \left( \frac{m}{2} \right)} \sum_{j=0}^{\infty} \frac{v^{\frac{m+1}{2}-1} e^{-\frac{v}{2}(1+\frac{t^2}{m})} t^j \lambda^j v^{\frac{j}{2}}}{j! m^{\frac{j}{2}} 2^{\frac{m+1}{2}}} \\
+&= \frac{e^{-\frac{\lambda^2}{2}}}{\sqrt{\pi m} \Gamma \left( \frac{m}{2} \right)} \sum_{j=0}^{\infty} v^{\frac{m+1+j}{2}-1} e^{-\frac{v}{2}(1+\frac{t^2}{m})} \times \frac{t^j \lambda^j}{j! m^{\frac{j}{2}} 2^{\frac{m+1}{2}}}\\
+\int_{0}^{\infty} f(t,v) dv &= \int_{0}^{\infty} \frac{e^{-\frac{\lambda^2}{2}}}{\sqrt{\pi m} \Gamma \left( \frac{m}{2} \right)} \sum_{j=0}^{\infty} v^{\frac{m+1+j}{2}-1} e^{-\frac{v}{2}(1+\frac{t^2}{m})} \times \frac{t^j \lambda^j}{j! m^{\frac{j}{2}} 2^{\frac{m+1}{2}}} dv \\
+&= \frac{e^{-\frac{\lambda^2}{2}}}{\sqrt{\pi m} \Gamma \left( \frac{m}{2} \right)} \sum_{j=0}^{\infty} \frac{t^j \lambda^j}{j! m^{\frac{j}{2}} 2^{\frac{m+1}{2}}} \int_{0}^{\infty} v^{\frac{m+1+j}{2}-1} e^{-\frac{v}{2}(1+\frac{t^2}{m})} dv \\
+&= \frac{e^{-\frac{\lambda^2}{2}}}{\sqrt{\pi m} \Gamma \left( \frac{m}{2} \right)} \sum_{j=0}^{\infty} \frac{t^j \lambda^j}{j! m^{\frac{j}{2}} 2^{\frac{m+1}{2}}} \left(\frac{2}{1+\frac{t^2}{m}}\right)^{\frac{m+1+j}{2}} \Gamma \left( \frac{m+1+j}{2} \right) \\
+&= \frac{e^{-\frac{\lambda^2}{2}}}{\sqrt{\pi m} \Gamma \left( \frac{m}{2} \right)} \sum_{j=0}^{\infty} \frac{\Gamma \left( \frac{m+1+j}{2} \right) 2^{\frac{j}{2}} t^j \lambda^j}{\left(\frac{2}{1+\frac{t^2}{m}}\right)^{\frac{m+1+j}{2}} j! m^{\frac{j}{2}}}
+\end{align}
+$$
+
+
+## (4.51)式を示せ．
+
+n個の値がそれぞれの区間に一定数落ちることを考える．
+
+- $(-\infty,u)$にi-1個
+- $[u,u+du)$に1個
+- $(u,v)$にj-i+1個
+- $[v+dv]$に1個
+- $(v,\infty)$にn-j個
+
+この3項分布を考えると，
+
+$$
+\begin{eqnarray} 
+&& f_{X_{(i)}, X_{(j)}}(u, v)du dv \\ 
+&=& \dfrac{n!}{(i-1)!(j-i-1)!(n-j)!} \\ 
+&& \times F_X(u)^{i-1}f_X(u)du\left[F_X(v)-F_X(u)\right]^{j-i-1} f_X(v)dv\left[1-F_X(v)\right]^{n-j} 
+\end{eqnarray}
+$$
+
+## コーシー分布が有限の期待値と分散を持たないことを示せ．
+
+期待値が存在しないことを示すために，特定の区間で発散することを示す．．
+
+$$
+\begin{align}
+\int_{1}^{\infty} tf(t) dt &= \int_{1}^{\infty} t \times \frac{1}{\pi (1+t^2)} dt \\
+&= \frac{1}{\pi} \int_{1}^{\infty} \frac{t}{(1+t^2)} dt \\
+&= \frac{1}{\pi} \left[ \frac{1}{2}\log(1+t^2) \right]_1^{\infty} \\
+&= \infty
+\end{align}
+$$
+
+次に$U \sim U[0,1]$のとき，$X = \tan(\pi(U-\frac{1}{2}))$がコーシー分布に従うことを示す．
+
+逆関数を考える．
+
+$$
+\begin{align}
+x &= \tan(\pi(u-\frac{1}{2}))\\
+\tan ^{-1}(x) &= \pi(u-\frac{1}{2}) \\
+u &= \frac{1}{2} + \frac{1}{\pi} \tan ^{-1}(x)
+\end{align}
+$$
+
+よって密度関数と累積分布関数は，
+
+$$
+\begin{align}
+f(x) &= 1 \cdot \frac{du}{dx}\\
+&= \frac{1}{\pi (1+x^2)} \\
+\int_{-\infty}^{x} f(x) &= \frac{1}{\pi} \left[\tan ^{-1}(x) \right]_{-\infty}^{x}\\
+&= \frac{1}{\pi}(\tan ^{-1}(x)-(-\frac{\pi}{2}))\\
+&= \frac{1}{2} + \frac{1}{\pi} \tan ^{-1}(x)
+\end{align}
+$$
+
+## 非復元無作為抽出について$Cov[X_1,X_2]= - \sigma^2/(N-1)$を示せ．
+
+(3.37)式を用いる．
+
+$$
+\begin{align}
+Var[X_1+ \ldots X_N] &= \sum_{i=1}^N Var[X_i] + 2 \sum_{i<j}Cov[X_i,X_j]\\
+0 &= \sum_{i=1}^N Var[X_1] + 2 \sum_{i<j}Cov[X_1,X_2]\\
+0 &= N Var[X_1] +  N(N-1)Cov[X_1,X_2]\\
+Cov[X_1,X_2] &= - \sigma^2/(N-1)
+\end{align}
+$$
+
+## Helmart変換に関する次の議論について答えよ．
+
+板書で補足します．
+
+(1) $(W_1,\ldots W_n)$の分散共分散行列を求めよ．
+
+正規分布の和についての再生性を利用する．
+
+$$
+\begin{align}
+Var[X+Y] &= Var[X] + Var[Y] + 2Cov[X,Y]\\
+2Cov[X,Y] &= Var[X+Y] - Var[X] - Var[Y]\\
+2Cov[W_i,W_j] &= Var[W_i+W_j] - Var[W_i] - Var[W_j]\\
+2Cov[W_i,W_j] &= \{ 4(n-j+1) + (n-i+1)-(n-j+1) - (n-i+1) - (n-j+1) \}\\
+Cov[W_i,W_j] &= n-j+1
+\end{align}
+$$
+
+ (2)$1 \leq k <n$として，$(W_1,\ldots W_k)$の分散共分散行列の逆行列を求めよ．
+
+意味不明．
+
+
+## リサンプリングに関する次の問いについて答えよ．
+
+(1)，(2)は明らかなので省略．
+
+(3)$S_n = n - (I_1+\cdots + I_n)$の期待値と分散を求めよ．
+
+$E[I_n]= \left( 1- \frac{1}{n} \right)^n$より，$E[S_n] = n - \left( 1- \frac{1}{n} \right)^n \cdot n$である．
+
+分散は，$Var[S_n] = E[{S_n}^2]-(E[S_n])^2$を利用する．
+
+$$
+\begin{align}
+E[{S_n}^2] &= E[n^2-2n(I_1+\cdots+I_n) + (I_1+\cdots+I_n)^2]\\
+&= n^2 -2n \cdot \left( 1- \frac{1}{n} \right)^n \cdot n + E[{I_1}^2+\cdots {I_n}^2] +2 \sum_{i<j}E[I_iI_j]\\
+&= n^2 -2n^2 \cdot \left( 1- \frac{1}{n} \right)^n + \left( 1- \frac{1}{n} \right)^n \cdot n + n(n-1)\left( 1- \frac{2}{n} \right)^n \\
+(E[S_n])^2 &= n^2 -2n^2\left( 1- \frac{1}{n} \right)^n+\left( 1- \frac{1}{n} \right)^{2n}n^2
+\end{align}
+$$
+
+したがって
+
+$$
+\begin{align}
+Var[S_n] &= E[{S_n}^2]-(E[S_n])^2\\
+&= n\left( 1- \frac{1}{n} \right)^n+n(n-1)\left( 1- \frac{2}{n} \right)^n-n^2\left( 1- \frac{1}{n} \right)^{2n}
+\end{align}
+$$
+
+(4)$n \rightarrow \infty$のときの$S_n/n$確率収束先を求めよ．
+
+$$
+\begin{align}
+\lim_{n \rightarrow \infty} E[S_n/n] &= \lim_{n \rightarrow \infty}\left(1 - \left( 1- \frac{1}{n} \right)^n\right) \\
+&= 1 - e^{-1}\\
+\lim_{n \rightarrow \infty} Var[S_n/n] &= \lim_{n \rightarrow \infty} Var[S_n]/n^2\\
+&=\lim_{n \rightarrow \infty} \left( \frac{1}{n}\left( 1- \frac{1}{n} \right)^n+ \frac{n-1}{n}\left( 1- \frac{2}{n} \right)^n-\left( 1- \frac{1}{n} \right)^{2n} \right)\\
+&= 0 + e^{-2} - e^{-2}\\
+&= 0
+\end{align}
+$$
+
+## 一様分布$U \sim U[0,1]$からの順序統計量の平均と分散，共分散を求めよ．
+
+(4.50)式より，ベータ分布に従うことがわかる．$a=i, b=n-i+1$と考えて，ベータ分布の期待値，分散に代入して，
+
+$$
+\begin{align}
+E[X] &= \frac{a}{a+b} \\
+&= \frac{i}{i+n-i+1} \\
+&= \frac{i}{n+1} \\
+Var[X] &= \frac{ab}{(a+b)^2(a+b+1)} \\
+&= \frac{i(n-i+1)}{(i+n-i+1)^2(i+n-i+1+1)} \\
+&= \frac{i(n-i+1)}{(n+1)^2(n+2)}
+\end{align}
+$$
+
+
+次に分散共分散行列について，
+
+

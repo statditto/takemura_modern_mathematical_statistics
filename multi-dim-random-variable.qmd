@@ -447,3 +447,40 @@ $$
 
 
 ## 主要な確率分布
+
+
+```{r}
+library(tidyverse)
+```
+
+```{r}
+df <- tibble(
+  var1_1 = (1:10),
+  var10_1 = letters[1:10],
+  var11_1 = letters[11:20],
+  var2_1 = LETTERS[1:10],
+  var10_2 = runif(10, min = 10, max = 15)
+)
+
+df %>% 
+  mutate(id = row_number()) %>% 
+  pivot_longer(!id,
+               names_to = c("first_num","second_num"),
+               names_prefix = "var",
+               names_sep = "_",
+               names_transform = as.integer,
+               values_transform=as.list)  %>% 
+  arrange(first_num,second_num) %>% 
+  bind_rows(.,mutate(.,second_num=5*second_num,value = NA)) %>% 
+  pivot_wider(names_from = c(first_num,second_num),
+              names_glue = "var{first_num}_{second_num}") %>% 
+  unnest()
+# mutate(c = str_c(a,b,sep="_")) %>% 
+  # mutate(d = str_c(a,b*5,sep="_")) %>% 
+  # select(!c("a","b")) %>% 
+  # pivot_longer(!c("id","value"),
+  #              names_to = "name",
+  #              values_to = "col_name") %>% 
+  # pivot_wider(id,names_from = col_name) 
+```
+
